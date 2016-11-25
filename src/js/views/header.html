@@ -1,0 +1,45 @@
+
+<div id="menu-container">
+  <header class="oj-web-applayout-header header">
+    <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+      <div data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
+        <div class="logo">
+          <img src="images/logo.png"></img>
+        </div>
+        <div>
+          <h1 class="oj-web-applayout-header-title appcolor" title="Application Name" data-bind="text: appName"></h1> 
+        </div>  
+        
+        <!-- ko foreach: menulist -->
+            <!-- To handle menu item selection, use a select listener as shown, not a click listener. -->
+            <a id="myLauncher" href="#" data-bind="click: launch, text: name"></a>
+
+            <ul style="display:none" aria-labelledby="myLauncher" 
+                data-bind="attr: {'id': 'myMenu' + id}, ojComponent: {
+                    component: 'ojMenu', select: menuItemSelect, 
+                    open: menuOpen, close: menuClose, 
+                    openOptions: {
+                        launcher: '#myLauncher'
+                    }
+                }">
+              <!-- ko template: {name: 'menuItemTemplate', foreach: $data.menus, as: 'submenu'} -->
+              <!-- /ko -->
+            </ul>
+        <!-- /ko -->
+         
+      </div>
+      </div>
+    <!--</div>-->
+  </header>
+
+</div>
+
+<script type="text/html" id="menuItemTemplate">
+  <li>
+    <a href="#" data-bind="text: name"></a>
+    <!-- ko if: submenu.menus -->
+      <ul data-bind="template: {name: 'menuItemTemplate', foreach: submenu.menus, as: 'submenu'}">
+      </ul>
+    <!-- /ko -->
+  </li>
+</script>

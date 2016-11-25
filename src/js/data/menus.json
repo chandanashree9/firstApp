@@ -1,0 +1,75 @@
+{
+    "main-menus":[
+        {
+            "name": "My Plan",
+            "id":1,
+            "menus": [
+                {   "name": "Desires"    },
+                {   "name": "Decisions" },
+                {   "name": "Budget"  },
+                {   "name": "Assets"    },
+                {   "name": "Transactions"    },
+                {   "name": "Life", 
+                    "menus": [
+                        {   "name": "Health"  },
+                        {   "name": "Education"    },
+                        {   "name": "Work"    },
+                        {   "name": "Career"    },
+                        {   "name": "Personal Growth"    }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "My World",
+            "id":2,
+            "menus": [
+                {   "name": "My Profile'"    },
+                {   "name": "My Household" , "menus":
+                    [
+                        {   "name": "Invitees"  }
+                    ]
+                },
+                {   "name": "My Banking"  },
+                {   "name": "Bill Pay"    },
+                {   "name": "My Calendar"    },
+                {   "name": "My Advisors"    },
+                {   "name": "My Documents"    },
+                {   "name": "My Workrooms", "menus":
+                    [
+                        {   "name": "Estate Planner"  },
+                        {   "name": "Wealth Manager"    },
+                        {   "name": "Accountant"    },
+                        {   "name": "Financial Advice"    }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Advisors",
+            "id":3,
+            "menus": [
+                {   "name": "Find an Advisor"    },
+                {   "name": "Invite Advisor"  }
+            ]
+        },
+        {
+            "name": "knowledge Resources",
+            "id":4,
+            "menus": [
+                {   "name": "Earn"    },
+                {   "name": "Pay"  },
+                {   "name": "Receive"    },
+                {   "name": "Save"  },
+                {   "name": "Protect"    },
+                {   "name": "Invest"  },
+                {   "name": "Spend"    },
+                {   "name": "Borrow"  },
+                {   "name": "Share"    },
+                {   "name": "Gift"  },
+                {   "name": "Distribute"    },
+                {   "name": "Transfer"  }
+            ]
+        }
+    ]
+}

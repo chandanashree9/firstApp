@@ -1,0 +1,45 @@
+/*
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+.header{
+	background-color: #174B51;
+
+}
+.appcolor{
+	color:#FFFFFF;
+
+	
+}
+#myLauncher{
+	padding:30px;
+	color:#FFFFFF;
+
+}
+.logo{
+	border-radius: 50%;
+	padding: 7px;
+	background-color:#FFFFFF;
+	float: left;
+}
+ul a{
+ 
+  text-align: center;
+  display:inline-block;
+  vertical-align:top;
+}
+.align{
+	 padding: 0px;
+  height: 24px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  display: inline;
+  top:30px;
+
+}
+.alignscreen{
+  border:1px solid;
+}

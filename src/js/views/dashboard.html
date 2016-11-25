@@ -1,0 +1,58 @@
+<div id="dashboard-container">
+	<div class="oj-flex oj-flex-items-pad alignscreen">
+  		<div class="oj-sm-12 oj-lg-9 oj-xl-6 oj-flex-item demo-coldrop-A"><h4>Pending Decisions & Actions</h4>
+		  	<!-- Display Pending Decisions Data -->
+			<ul id="listview" aria-label="list using collection" style="height:100%" 
+		       data-bind="ojComponent: {component: 'ojListView', data: pendingdecisions, item: {template: 'pendingdecision_template'}, selectionMode: 'single', rootAttributes: {style: 'width:60%;height:35%;overflow-x:hidden'}, scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}}">
+			</ul>
+
+			<script type="text/html" id="pendingdecision_template">
+			    <li>
+			        <div class="oj-flex" style="flex-wrap: nowrap">
+			            <div class="demo-content oj-flex-item">
+			                <div>
+			                    <strong data-bind="text: topic"></strong>	                    
+			                </div>
+			                <div class="demo-tweet">
+			                    <span style="word-wrap: break-word" data-bind="text: decision"></span> 
+			                </div>        
+			                
+			            </div>
+			        </div>
+			    </li>
+			</script>
+
+			<!-- Display Activities Data -->
+			<h4>Activities</h4>
+			<ul id="listview" aria-label="list using collection" style="height:100%" 
+		       data-bind="ojComponent: {component: 'ojListView', data: activities, item: {template: 'activity_template'}, selectionMode: 'single', rootAttributes: {style: 'width:60%;height:35%;overflow-x:hidden'}, scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}}">
+			</ul>
+
+			<script type="text/html" id="activity_template">
+			    <li>
+			        <div class="oj-flex" style="flex-wrap: nowrap">
+			            <div class="demo-content oj-flex-item">
+			                <div>
+			                    <strong data-bind="text: theme"></strong>	                    
+			                </div>
+			                <div class="demo-tweet">
+			                    <span style="word-wrap: break-word" data-bind="text: content"></span> 
+			                </div>        
+			                
+			            </div>
+			        </div>
+			    </li>
+			</script>
+  		</div>
+
+  		<div class="oj-sm-12 oj-lg-3 oj-xl-3 oj-flex-item demo-coldrop-B"><h4>B</h4>
+  			Content
+  		</div>
+
+
+  		<div class="oj-sm-12 oj-lg-3 oj-xl-3 oj-flex-item demo-coldrop-C"><h4>C</h4>
+  			Content
+  		</div>
+
+  	</div>
+</div>
