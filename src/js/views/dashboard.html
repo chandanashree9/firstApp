@@ -1,11 +1,30 @@
-<div id="dashboard-container">
-	<div class="oj-flex oj-flex-items-pad alignscreen">
-  		<div class="oj-sm-12 oj-lg-9 oj-xl-6 oj-flex-item demo-coldrop-A"><h4>Pending Decisions & Actions</h4>
+<div id="dashboard-container">	
+	<div class="oj-flex oj-flex-items-pad alignscreen">  
+
+		<div id='chart-container' class="oj-sm-12 oj-md-12 oj-lg-12 oj-xl-12 oj-flex-item">
+		  	<div id="lineChart" data-bind="ojComponent: {
+		        component: 'ojChart', 
+		        type: 'line',
+		        series: seriesValues, 
+		        groups: groupValues, 
+		        animationOnDisplay: 'auto',
+		        animationOnDataChange: 'auto',
+		        orientation: 'vertical',
+		        hoverBehavior: 'dim',
+		        stack: 'on',
+		        hideAndShowBehavior:'withRescale',
+		        xAxis: {tickLabel: {converter: ko.toJS(xAxisConverter)}},
+		        yAxis: {tickLabel: {converter: ko.toJS(yAxisConverter)}}
+		        }" style="width:100%;height:250px;float:left;">
+    		</div>
+		</div>	
+	</div>
+	<div class="oj-flex oj-flex-items-pad alignscreen"> 
+  		<div class="oj-sm-12 oj-md-7 oj-lg-6 oj-xl-6 oj-flex-item demo-coldrop-A"><h4>Pending Decisions & Actions</h4>
 		  	<!-- Display Pending Decisions Data -->
 			<ul id="listview" aria-label="list using collection" style="height:100%" 
-		       data-bind="ojComponent: {component: 'ojListView', data: pendingdecisions, item: {template: 'pendingdecision_template'}, selectionMode: 'single', rootAttributes: {style: 'width:60%;height:35%;overflow-x:hidden'}, scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}}">
+		       data-bind="ojComponent: {component: 'ojListView', data: pendingdecisions, item: {template: 'pendingdecision_template'}, selectionMode: 'single', rootAttributes: {style: 'width:100%;height:35%;overflow-x:hidden'}, scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}}">
 			</ul>
-
 			<script type="text/html" id="pendingdecision_template">
 			    <li>
 			        <div class="oj-flex" style="flex-wrap: nowrap">
@@ -25,7 +44,7 @@
 			<!-- Display Activities Data -->
 			<h4>Activities</h4>
 			<ul id="listview" aria-label="list using collection" style="height:100%" 
-		       data-bind="ojComponent: {component: 'ojListView', data: activities, item: {template: 'activity_template'}, selectionMode: 'single', rootAttributes: {style: 'width:60%;height:35%;overflow-x:hidden'}, scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}}">
+		       data-bind="ojComponent: {component: 'ojListView', data: activities, item: {template: 'activity_template'}, selectionMode: 'single', rootAttributes: {style: 'width:100%;height:35%;overflow-x:hidden'}, scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}}">
 			</ul>
 
 			<script type="text/html" id="activity_template">
@@ -45,12 +64,18 @@
 			</script>
   		</div>
 
-  		<div class="oj-sm-12 oj-lg-3 oj-xl-3 oj-flex-item demo-coldrop-B"><h4>B</h4>
-  			Content
+  		<div class="oj-sm-12 oj-md-3 oj-lg-3 oj-xl-3 oj-flex-item demo-coldrop-B">
+  			<div class="oj-panel oj-panel-alt1 oj-margin demo-mypanel">
+		      <h4 class="oj-header-border">Dream/Wish List</h4>
+
+		     <div class="demo-tweet" id="wish_template" data-bind="ojComponent: {component: 'ojListView', data: wish, item: {template: 'wish_template'}">
+                <span style="word-wrap: break-word" data-bind="text: wish"></span> 
+            </div> 
+		    </div>
   		</div>
 
 
-  		<div class="oj-sm-12 oj-lg-3 oj-xl-3 oj-flex-item demo-coldrop-C"><h4>C</h4>
+  		<div class="oj-sm-12 oj-md-2 oj-lg-3 oj-xl-3 oj-flex-item demo-coldrop-C"><h4>C</h4>
   			Content
   		</div>
 
