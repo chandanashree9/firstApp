@@ -1,0 +1,33 @@
+{
+	"activities":[
+		{
+			"theme": "Apple releasing new OS early",
+			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
+			"icon":"fa fa-bolt"
+			
+		}, 
+		{
+			"theme": "Autopayment for Carmax",
+			"content": "-350.00 deducted from Suntrust Checking 96xx for monthly payment for:  Honda Accord '14",
+			"icon":"fa fa-university"
+			
+		}, 
+		{
+			"theme": "Desire to purchase a House in 2018",
+			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
+			"icon":"fa fa-heart"
+			
+		}, 
+		{
+			"theme": "Conversation RE:  Desire to purchase new roof for house",
+			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
+			"icon":"fa fa-comments-o"
+			
+		}, 
+		{
+			"theme": "Household A - User Added",
+			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
+			"icon":"fa fa-cog"
+		}
+	]
+}

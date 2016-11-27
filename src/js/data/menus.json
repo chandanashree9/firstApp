@@ -24,7 +24,7 @@
             "name": "My World",
             "id":2,
             "menus": [
-                {   "name": "My Profile'"    },
+                {   "name": "My Profile"    },
                 {   "name": "My Household" , "menus":
                     [
                         {   "name": "Invitees"  }
@@ -69,6 +69,15 @@
                 {   "name": "Gift"  },
                 {   "name": "Distribute"    },
                 {   "name": "Transfer"  }
+            ]
+        },
+        {
+            "name": "Customer",
+            "id":5,
+            "icon" : "fa fa-user",
+            "menus": [
+                {   "name": "User/App Settings"    },
+                {   "name": "User Profile"  }
             ]
         }
     ]

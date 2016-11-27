@@ -7,39 +7,56 @@
 */
 .header{
 	background-color: #174B51;
-
+  height: 60px;
 }
+
 .appcolor{
 	color:#FFFFFF;
-
-	
 }
+
 #myLauncher{
 	padding:30px;
 	color:#FFFFFF;
-
 }
+
 .logo{
 	border-radius: 50%;
-	padding: 7px;
+  padding: 10%;
 	background-color:#FFFFFF;
-	float: left;
+	text-align: center;
 }
-ul a{
- 
-  text-align: center;
-  display:inline-block;
-  vertical-align:top;
+
+div > a:visited, .menu-launcher {
+  color: #FFFFFF;
 }
+
 .align{
-	 padding: 0px;
+	padding: 0px;
   height: 24px;
   margin-top: 4px;
   margin-bottom: 4px;
   display: inline;
   top:30px;
-
 }
-.alignscreen{
-  border:1px solid;
+
+.demo-mypanel {
+  width:  95%;
+  height: 30%;
+  background-color: transparent;
+}
+
+.btntext{
+  border-radius: 10px;
+}
+
+.creditscore{
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  
+  background: #fff;
+  background-color: transparent;
+  border: 1px solid #666;
+  text-align:center;
 }

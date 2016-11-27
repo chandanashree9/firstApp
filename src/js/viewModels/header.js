@@ -9,28 +9,23 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','oj
             self.appName = ko.observable("Money Avatar");
 
             // Menu Controls
-            self.launch = function( model, event ) {
-                var menuId = "#myMenu"+model.id;
+            self.menulaunch = function( model, event ) {
+                var menuId = "#menu"+model.id;
                 $(menuId).ojMenu("open", event); 
             };
 
-            self.menuOpen = function( event ) {
-                var myLauncher = $("#myLauncher");
+            self.menuOpen = function( model, event ) {
                 var currentLauncher = $(event.target).ojMenu("getCurrentOpenOptions").launcher;
-
-                // This "which launcher?" check is relevant when a menu is shared among several launchers. 
-                // It is not needed in this demo, in which only one launcher can open the menu.
-                if ( myLauncher.is(currentLauncher) ) {
-                  myLauncher.addClass("bold");
-                }
+                if(currentLauncher)
+                    currentLauncher.addClass("bold");                
             };
 
             self.menuClose = function( event ) {
-                $("#myLauncher").removeClass("bold");
+                $("#menuLauncher").removeClass("bold");
             };
 
             self.menuItemSelect = function( event, ui ) {
-                self.selectedMenuItem(ui.item.children("a").text());
+                //self.selectedMenuItem(ui.item.children("a").text());
             };
 
             self.menulist = ko.observableArray([]);
