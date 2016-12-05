@@ -13,6 +13,34 @@
 			"stockid":"GOOGL.SW",
 			"status": "gain",
 			"percentage":"0.09"
+		},
+		{
+			"company":"Apple Inc.",
+			"amount":113.57,
+			"stockid":"AAPL",
+			"status": "loss",
+			"percentage":"0.01"
+		},
+		{
+			"company":"Alphabet",
+			"amount":783.00,
+			"stockid":"GOOGL.SW",
+			"status": "gain",
+			"percentage":"0.09"
+		},
+		{
+			"company":"Apple Inc.",
+			"amount":113.57,
+			"stockid":"AAPL",
+			"status": "loss",
+			"percentage":"0.01"
+		},
+		{
+			"company":"Alphabet",
+			"amount":783.00,
+			"stockid":"GOOGL.SW",
+			"status": "gain",
+			"percentage":"0.09"
 		}
 	]
 }

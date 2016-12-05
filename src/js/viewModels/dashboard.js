@@ -1,6 +1,7 @@
 'use strict';
 define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','ojs/ojknockout','ojs/ojmodule','ojs/ojlistview', 
-    'ojs/ojbutton','ojs/ojarraytabledatasource', 'ojs/ojchart', 'ojs/ojgauge', 'ojs/ojselectcombobox','ojs/ojInputText','ojs/ojdatetimepicker'],
+    'ojs/ojbutton','ojs/ojarraytabledatasource', 'ojs/ojchart', 'ojs/ojgauge', 'ojs/ojselectcombobox','ojs/ojInputText',
+    'ojs/ojdatetimepicker','ojs/ojselectcombobox'],
     function(oj, ko, $, service)
     {   
     	function DashboardViewModel() {
@@ -30,9 +31,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','oj
             // End - Activity Display Content
 
             // Start - Dream/Wish List Display Content
-            self.wishlist=ko.observableArray([]);
-            service.fetch('http://54.158.170.219/RESTEasy/rest/service/users/1234/wishes',header).then(function(response) {
-                self.wishlist(response);
+            self.wishlist=ko.observable();
+            service.fetch('js/data/wishlist.json',header).then(function(response) {
+                self.wishlist(new oj.ArrayTableDataSource(response['wishes']));
             });
             // End - Dream/Wish List Display Content
 
@@ -64,25 +65,45 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','oj
             });
             // End - Activity Display Content
 
-            // Start - Chart Data Display Content
+            //Start of Time view
+            self.timeviews = ko.observableArray([]);
+            service.fetch('js/data/chart_timeview.json',header).then(function(response){
+                self.timeviews(response["timeview"]);
+            });
+            self.selecttimeview = ko.observableArray([]);
+
+            self.launchTimeView = function(event, data) {
+                if(data && data.value) {
+                    switch(data.value[0]) {
+                        case 5:
+                            fetchChartData(service, 'js/data/chart5.json', header);
+                            break;
+                        case 10:
+                            fetchChartData(service, 'js/data/chart10.json', header);
+                            break;
+                        case 15:
+                            fetchChartData(service, 'js/data/chart15.json', header);
+                            break;
+                        case 20:
+                            fetchChartData(service, 'js/data/chart20.json', header);
+                            break;
+                        default:
+                            fetchChartData(service, 'js/data/chart1.json', header);
+                            break;
+                    }                    
+                }                
+            }
+            //End of Time view
+
+            // Start - Chart Data Display Contsent
             self.seriesValues = ko.observableArray();
             self.groupValues = ko.observableArray();
-
-            service.fetch('js/data/chart.json',header).then(function(response) {
-                var grp = response['group'];
-                self.groupValues(grp);
-                var data = [    
-                                { name:'Total Asset Value', items: response['total_asset'] },
-                                { name:'Desired Value', items: response['desired'] },
-                                { name:'Liquid Value', items: response['liquid'] }
-                            ];
-                self.seriesValues(data);
-            });
+            fetchChartData(service, 'js/data/chart1.json', header);
 
             var numberConverterFactory = oj.Validation.converterFactory('number');
             self.yAxisConverter = ko.observable(numberConverterFactory.createConverter({style: 'currency', currency: 'USD', 
                                                 decimalFormat:'short', maximumFractionDigits:0}));
-            // End - Chart Display Content
+            // End - Chart Display Contents
 
             // Converters
             var amountConverterFactory = oj.Validation.converterFactory(oj.ConverterFactory.CONVERTER_TYPE_NUMBER);
@@ -97,6 +118,20 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','oj
                 return dateConvertor.format(data);
             };
         }
+
+        function fetchChartData(service, chartlink, header){
+            service.fetch(chartlink,header).then(function(response) {
+                var grp = response['group'];
+                self.groupValues(grp);
+                var data = [    
+                                { name:'Total Asset Value', items: response['total_asset'] },
+                                { name:'Desired Value', items: response['desired'] },
+                                { name:'Liquid Value', items: response['liquid'] }
+                            ];
+                self.seriesValues(data);
+            });
+        }
+
         return DashboardViewModel;  	
     }
 );
