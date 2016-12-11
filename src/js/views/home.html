@@ -1,19 +1,17 @@
-<div id="dashboard-container">	
-	<div class="oj-flex oj-flex-items-pad ">
-      	<div class="oj-flex-item oj-sm-odd-cols-12 oj-md-odd-cols-2 oj-md-even-cols-4 oj-lg-5 oj-xl-5">
-      		<h3 class="oj-header">Hello again, Customer</h3>
-      	</div>
-      	<div class="oj-flex-item oj-sm-odd-cols-12 oj-md-odd-cols-2 oj-md-even-cols-4 oj-lg-4 oj-xl-4">
-      		<input id="text-input-converter" class="btntext" type="text" data-bind="ojComponent: {component: 'ojInputText'}" placeholder="What can I help you with today?"/>
-			<i class="fa fa-comments-o fa-2x"></i>
-      	</div>
-      	<div class="oj-flex-item oj-sm-odd-cols-12 oj-md-odd-cols-2 oj-md-even-cols-4 oj-lg-3 oj-xl-3">
-      	  <input id="date" data-bind="ojComponent: {component: 'ojInputDate'}"/>  
-      	</div>
+<div id="dashboard-container">
+<!--	<div style="display:none" id="modelessDialog1" title="Modeless Dialog"
+	       data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', modality: 'modeless'}">
+	    <div class="oj-dialog-body">
+	      This is an example of a modeless dialog. Interaction with other window areas and components is possible when a modeless dialog is displayed.
+	    </div>
+	    <div class="oj-dialog-footer">
+	        <button id="okButton" data-bind="ojComponent: {component: 'ojButton', label: 'OK'}"> </button>
+	    </div>
 	</div>
+  	<button id="buttonOpener" data-bind="ojComponent: {component: 'ojButton', label: 'Open Modeless Dialog', optionChange: handleOpen}"> </button>-->
 
 
-	<div class="oj-flex oj-flex-items-pad oj-padding oj-margin alignscreen">  
+	<div class="oj-flex oj-flex-items-pad oj-padding oj-margin alignscreen">
 		<div>
 			<h5>Planned Liquid to Desired Liquid Value</h5>
 			<select id="select" data-bind="ojComponent: {component: 'ojSelect', options: timeviews,
@@ -24,10 +22,10 @@
 		</div>
 		<div id='chart-container' class="oj-sm-12 oj-md-12 oj-lg-12 oj-xl-12 oj-flex-item">
 			<div id="lineChart" data-bind="ojComponent: {
-				component: 'ojChart', 
+				component: 'ojChart',
 				type: 'line',
-				series: seriesValues, 
-				groups: groupValues, 
+				series: seriesValues,
+				groups: groupValues,
 				animationOnDisplay: 'auto',
 				animationOnDataChange: 'auto',
 				orientation: 'vertical',
@@ -36,10 +34,10 @@
 				yAxis: {tickLabel: {converter: ko.toJS(yAxisConverter)}}
 				}" style="width:100%;height:250px;float:left;">
 			</div>
-		</div>	
+		</div>
 	</div>
 
-	<div class="oj-flex oj-flex-items-pad oj-padding oj-margin alignscreen"> 
+	<div class="oj-flex oj-flex-items-pad oj-padding oj-margin alignscreen">
 
 		<div class="oj-sm-12 oj-md-7 oj-lg-6 oj-xl-6 oj-flex-item">
 			<!-- Display Pending Decisions Content -->
@@ -49,38 +47,38 @@
 			</ul>
 			<script type="text/html" id="pendingdecision_template">
 				<li>
-					<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap">
+					<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap" data-bind="click: onEnterLoadDecision($data)">
 						<div class="oj-flex-item">
 							<i class="fa fa-university" aria-hidden="true"></i>
 						</div>
 						<div class="oj-flex-item">
 							<div class="oj-flex oj-flex-items-pad">
-								<div class="oj-flex-item">					
-									<strong data-bind="text: topic"></strong>	                    
+								<div class="oj-flex-item">
+									<strong data-bind="text: title"></strong>
 								</div>
 								<div class="oj-flex-item">
-									<span style="word-wrap: break-word" data-bind="text: decision"></span> 
+									<span style="word-wrap: break-word" data-bind="text: description"></span>
 								</div>
 								<div class="oj-flex-item oj-padding">
 									<span>
-								<!-- ko if: link.source -->    								
-									<a data-bind="attr: { href: link.source }, text: link.text"></a> 
+								<!-- ko if: link.source -->
+									<a data-bind="attr: { href: link.source }, text: link.text"></a>
 								<!-- /ko -->
 								<!-- ko ifnot: link.source -->
 									<span style="word-wrap: break-word" data-bind="text: link.text"></span>
 							    <!-- /ko -->
 							    	</span>
 							    	<i data-bind="css:link.icon" aria-hidden="true"></i>
-								</div> 
+								</div>
 							</div>
 						</div>
 					</div>
 				</li>
 			</script>
-			
+
 			<!-- Display Activities Content -->
 			<h4 class="oj-header-border">Activities</h4>
-			<ul id="activitiesistview" aria-label="list using collection" style="height:100%" 
+			<ul id="activitiesistview" aria-label="list using collection" style="height:100%"
 			data-bind="ojComponent: {component: 'ojListView', data: activities, item: {template: 'activities_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}, rootAttributes: {style: 'width:100%;height:300px;overflow-x:hidden;border-style:none'}}">
 			</ul>
 
@@ -92,12 +90,12 @@
 						</div>
 						<div class="oj-flex-item">
 							<div class="oj-flex oj-flex-items-pad">
-								<div class="oj-flex-item">					
-									<strong data-bind="text: theme"></strong>	                    
+								<div class="oj-flex-item">
+									<strong data-bind="text: theme"></strong>
 								</div>
 								<div class="oj-flex-item">
-									<span style="word-wrap: break-word" data-bind="text: content"></span> 
-								</div> 
+									<span style="word-wrap: break-word" data-bind="text: content"></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -150,7 +148,7 @@
 					<li>
 						<span data-bind="text: wish"></span>
 					</li>
-				</script>	
+				</script>
 			</div>
 			<div class="oj-panel oj-margin demo-mypanel">
 				<p class="oj-header-border">Calendar</p>
@@ -164,61 +162,61 @@
 			</ul>
 			<script type="text/html" id="moneylist_template">
 				<li>
-					<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">							
-						<div class="oj-flex-item">					
-							<span data-bind="text: accounttype"></span> : <span data-bind="text: bank"></span> - <span data-bind="text: accountnumber"></span>                    
+					<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+						<div class="oj-flex-item">
+							<span data-bind="text: accounttype"></span> : <span data-bind="text: bank"></span> - <span data-bind="text: accountnumber"></span>
 						</div>
 						<div class="oj-flex-item">
-							<span style="word-wrap: break-word" data-bind="text: formatAmount(amount)"></span> 
+							<span style="word-wrap: break-word" data-bind="text: formatAmount(amount)"></span>
 						</div>
 					</div>
 				</li>
-			</script>	
+			</script>
 
-			<h5 class="oj-header-border oj-padding">Portfolio</h5>			
+			<h5 class="oj-header-border oj-padding">Portfolio</h5>
 			<ul id="portfolioview" aria-label="list using collection"
 			data-bind="ojComponent: {component: 'ojListView', data: portfolio, item: {template: 'portfolio_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 4}, rootAttributes: {style: 'height:170px;overflow-x:hidden;border-style:none'}}">
 			</ul>
 			<script type="text/html" id="portfolio_template">
 				<li>
-					<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">							
-						<div class="oj-flex-item">					
-							<span data-bind="text: company"></span> (<span data-bind="text: stockid"></span>)                   
+					<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+						<div class="oj-flex-item">
+							<span data-bind="text: company"></span> (<span data-bind="text: stockid"></span>)
 						</div>
 						<div class="oj-flex-item">
 							<span style="word-wrap: break-word" data-bind="text: formatAmount(amount)"></span>&nbsp;&nbsp;
 							<!-- ko if : status == 'gain' -->
-								<span data-bind="text: '+' + percentage"></span> 
+								<span data-bind="text: '+' + percentage"></span>
 							<!-- /ko -->
 							<!-- ko if : status == 'loss' -->
-								<span data-bind="text: '-' + percentage"></span> 
-							<!-- /ko -->	
-							<i class="fa fa-line-chart" aria-hidden="true"></i>						 
+								<span data-bind="text: '-' + percentage"></span>
+							<!-- /ko -->
+							<i class="fa fa-line-chart" aria-hidden="true"></i>
 						</div>
 					</div>
 				</li>
 			</script>
-			
+
 			<h5 class="oj-header-border oj-padding">Activity</h5>
 			<ul id="myactivitylistview" aria-label="list using collection"
 			data-bind="ojComponent: {component: 'ojListView', data: activitylist, item: {template: 'activity_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 4}, rootAttributes: {style: 'height:160px;overflow-x:hidden;border-style:none'}}">
 			</ul>
 			<script type="text/html" id="activity_template">
 				<li>
-					<div class="oj-flex-column" style="flex-wrap: nowrap">							
-						<div class="oj-flex-item">	
+					<div class="oj-flex-column" style="flex-wrap: nowrap">
+						<div class="oj-flex-item">
 							<div class="oj-flex oj-sm-justify-content-space-between" style="font-size: 12px">
 								<div clas="oj-flex-item">
-									<span data-bind="text: activity"></span> 
+									<span data-bind="text: activity"></span>
 								</div>
 								<div clas="oj-flex-item">
 									<span class="" data-bind="text: formatDate(date)"></span>
 								</div>
-							</div>                 
+							</div>
 						</div>
 						<div class="oj-flex-item">
 							<span style="word-wrap: break-word" data-bind="text: formatAmount(amount)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-							<span class="oj-text-xs oj-text-secondary-color" data-bind="text: bank"> </span><span class="oj-text-xs oj-text-secondary-color" data-bind="text: accounttype"></span> - <span class="oj-text-xs oj-text-secondary-color"  data-bind="text: accountnumber"></span>					 
+							<span class="oj-text-xs oj-text-secondary-color" data-bind="text: bank"> </span><span class="oj-text-xs oj-text-secondary-color" data-bind="text: accounttype"></span> - <span class="oj-text-xs oj-text-secondary-color"  data-bind="text: accountnumber"></span>
 						</div>
 					</div>
 				</li>

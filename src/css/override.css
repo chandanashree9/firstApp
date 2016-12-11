@@ -12,6 +12,8 @@
 
 .appcolor{
 	color:#FFFFFF;
+  font-weight:thin;
+  font-size:20px;
 }
 
 #myLauncher{
@@ -47,6 +49,7 @@ div > a:visited, .menu-launcher {
 
 .btntext{
   border-radius: 10px;
+  width:170%;
 }
 
 .creditscore{
@@ -59,4 +62,36 @@ div > a:visited, .menu-launcher {
   background-color: transparent;
   border: 1px solid #666;
   text-align:center;
+}
+.decisionpanel{
+  background-color:#FAFAFA;
+  color:#4A5C66;
+}
+.btnstyle{
+  width:100px;
+  height:40px;
+  border-radius: 25px;
+  background-color: #FFFFFF;
+  color:grey;
+  border-style: 1px solid grey;
+  border-width:thin;
+
+}
+.layout{
+  border:1px solid;
+}
+.btnalternative{
+  width:170px;
+  height:40px;
+  background-color: #5CB69F;
+  border-radius: 25px;
+  font-size: small;
+  color:#FFFFFF;
+  border-style: none;
+}
+.oj-navigationlist-item-label{
+  color:#5DBBB1;
+}
+.decisionheader{
+  color:#4A5C66;
 }

@@ -9,7 +9,7 @@
         </div>            
       </div>
 
-      <div data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
+      <div data-bind="css: $root.smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
         <div class="oj-flex-bar-middle">
           <div class="oj-flex-bar-start">
             <div>
@@ -18,7 +18,7 @@
           </div>
           <!-- ko foreach: menulist, as: 'menus' -->
             <!-- To handle menu item selection, use a select listener as shown, not a click listener. -->
-            <div class = "oj-flex-bar-middle oj-sm-12 oj-md-4 oj-lg-2 oj-xl-2">
+            <div class="oj-sm-12 oj-md-4 oj-lg-2 oj-xl-2 oj-flex oj-sm-flex-items-initial oj-sm-justify-content-center">
               <!-- ko if: $data.icon -->
                 <i data-bind="css: $data.icon" aria-hidden="true" style='color:#FFFFFF'></i>&nbsp;&nbsp;
               <!-- /ko -->

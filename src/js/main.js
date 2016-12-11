@@ -46,19 +46,46 @@ requirejs.config(
 * by the modules themselves), we are listing them explicitly to get the references to the 'oj' and 'ko'
 * objects in the callback
 */
-require(['ojs/ojcore', 'knockout', 'ojs/ojknockout','ojs/ojmodule'],
-  function (oj, ko) { // this callback gets executed when all required modules are loaded
+require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout','ojs/ojmodule','ojs/ojrouter'],
+  function (oj, ko, $) { // this callback gets executed when all required modules are loaded
+
+    var router = oj.Router.rootInstance;
+    router.configure({
+      'home': {value:'home', isDefault: true},
+      'decision': {value:'decision',
+          exit: function () {
+              var childRouter = router.currentState().value;
+              childRouter.dispose();
+          },
+          enter: function () {
+              var childRouter = router.createChildRouter('decision','home');
+              router.currentState().value = childRouter;
+          }
+      }
+    });
 
     function MainViewModel() {
+      var self = this;
+      self.router = router;
       // Media queries for repsonsive layouts
       var smQuery = oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY);
       self.smScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(smQuery);
       var mdQuery = oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.MD_UP);
-      self.mdScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(mdQuery);        
+      self.mdScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(mdQuery);  
+      
+      self.dynamicConfig = ko.pureComputed(function () {                  
+        return router.moduleConfig;
+      });
     };
 
-    $(function() {
-      ko.applyBindings(new MainViewModel(), document.getElementById('globalBody'));
-    });
+    oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
+    oj.Router.sync().then(
+        function() {
+          ko.applyBindings(new MainViewModel(), document.getElementById('globalBody'));
+          $('#globalBody').show();
+        },
+        function (error) {
+          oj.Logger.error('Error in root start: ' + error.message);
+      });
 
 });

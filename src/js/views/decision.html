@@ -1,0 +1,122 @@
+<div id="decision-container">	
+  <div class="oj-flex-column oj-flex-items-pad oj-padding">
+    <div class="oj-flex-item">
+      <div class="oj-flex-bar">
+        <div class="oj-flex-bar-start">
+          <div><h2 class="decisionheader">Decisions</h2></div>
+        </div>
+        <div class="oj-flex-bar-end">
+          <div>
+            <button class="oj-button-primary oj-button-xl btnstyle">Get Advice</button>
+            <button class="oj-button-primary oj-button-xl btnstyle oj-padding">Conversions</button>
+          </div>
+        </div>
+      </div>
+      <hr style="border:2px dashed grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
+    </div>
+    <div class="oj-flex-item decisionpanel">
+      <div class="oj-flex-column" style="flex-wrap: nowrap">                                          
+        <div class="oj-flex-item oj-padding">
+          <label>Decision Title:</label>                         
+          <span data-bind="text: title" style="color:#999999"></span> 
+        </div>  
+        <div class="oj-flex-item oj-padding">
+          <label>Decision Description:</label>    
+          <span data-bind="text: description" style="color:#999999"></span>                    
+        </div>
+        <div class="oj-flex-item oj-padding">
+          <label>Decision due by:</label>
+          <span class="" data-bind="text: duedate" style="color:red;font-weight: bold"></span>                   
+        </div>
+      </div>
+    </div>
+    <div class="oj-flex-item">
+      <div class="oj-flex-column oj-flex-items-pad oj-padding">
+        <div class="oj-flex-item">
+          <h3 class="oj-header-border">Alternatives</h3>
+        </div>
+        <div class="oj-flex-items">
+          <div class="oj-flex oj-flex-items-pad">
+            <div class="oj-flex-item oj-sm-flex-initial" data-bind="ojComponent:{
+                          component:'ojNavigationList',
+                          drillMode: 'none',
+                          selection: selectedAlternatives,
+                          data : alternatives,
+                          item: { template: 'alternatives_template' }
+                          }">
+            </div>
+            <script type="text/html" id="alternatives_template">
+              <li data-bind="attr: {id: id}">
+                <a href="#" data-bind="text: name, click: loadDesireImpact(id)"></a>
+                <i data-bind="css:icon" aria-hidden="true"></i>
+                <label data-bind="text: point"></label>
+              </li>
+            </script>
+            <div class="oj-flex-item">
+              <div class="oj-flex-column oj-flex-items-pad">
+                <div class="oj-flex-item">
+                  <h3 class="oj-header">Desire Impact</h3>
+                  <hr style="border:2px dashed grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
+                </div>                
+                <div class="oj-flex-item">
+                  <div data-bind="ifnot: selectedAlternatives" >
+                    <h3>Please select an Alternative</h3>
+                  </div>
+                  <div class="oj-flex-column oj-flex-items-pad" data-bind="if: selectedAlternatives" >
+                    <div class="oj-flex-item">
+                      <span data-bind="text: subscription._latestValue.name" style="color:#2AAD9F"></span>
+                      <i data-bind="css: subscription._latestValue.icon" aria-hidden="true" style="color:#2AAD9F"></i>
+                      <label data-bind="text: subscription._latestValue.point" style="color:#2AAD9F"></label>
+                    </div>
+                    <div class="oj-flex-item">
+                      <div class="oj-flex-bar">
+                        <div class="oj-flex-bar-start">
+                          <span>Cashflow Impact:</span>
+                          <span data-bind="text: subscription._latestValue.cashflowstatus" style="color:#2AAD9F"></span>
+                        </div>
+                        <div class="oj-flex-bar-middle">
+                          <span>Portfolio Impact: </span>
+                          <span data-bind="text: subscription._latestValue.profoliostatus" style="color:#2AAD9F"></span>
+                        </div>
+                        <div class="oj-flex-bar-end">
+                          <button class="oj-button-primary oj-button-xl btnalternative">Select this Alternative</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr style="border:2px dashed grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
+                </div>
+                <div class="oj-flex-item" data-bind="if: selectedAlternatives">
+                
+                </div>
+                <div class="oj-flex-item" data-bind="if: selectedAlternatives">
+                  <div id="tabs" data-bind="ojComponent:{component: 'ojTabs', rootAttributes: {style:'oj-padding'}}">
+                    <!-- tab bar -->
+                    <ul>
+                      <!-- ko foreach: subscription._latestValue.tabs -->
+                        <li data-bind="attr: {id: id}" style="border:1px solid grey;border-top-right-radius:10px;border-top-left-radius:10px;width:100px; text-align:center">
+                          <span data-bind="text: label" style="color:#000000"></span>
+                        </li>
+                      <!-- /ko -->
+                    </ul>
+                    <!-- tab contents -->
+                    <!-- ko foreach: subscription._latestValue.tabs -->
+                      <div data-bind="attr: {id: id +'-content'}" style="border: 1px solid grey; height:300px;">
+                        <div data-bind="ojModule: {name: 'decision-tabs/'+id +'-content', params: $data }">
+                        </div>
+                      </div>
+                     <!-- /ko -->
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

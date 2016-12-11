@@ -1,0 +1,29 @@
+{
+	"decision": 
+	{
+		"id":1,
+		"title": "Auto renewal for Amazon Prime",
+		"description": "Your Tuition payment will be auto deducted in 2 days:  $1,000.00, from your Suntrust Checking Account 96xx.  Currently you have $54.37 in this account.  In 1 day there will be a direct deposit of $5200.00. ",
+		"duedate":"2016-12-06",
+		"alternatives":[
+			{
+				"id":1,
+				"name":"Cancel subscription",
+				"icon":"fa fa-arrow-up",
+				"point":3.0
+			},
+			{
+				"id":2,
+				"name":"Continue subscription",
+				"icon":"fa fa-arrow-down",
+				"point":0.0
+			},
+			{
+				"id":3,
+				"name":"Negative Impact Option",
+				"icon":"fa fa-arrow-right",
+				"point":0.0
+			}
+		]
+	}	
+}

@@ -1,0 +1,187 @@
+{
+   "id":1,
+   "name":"Cancel subscription",
+   "icon":"fa fa-arrow-up",
+   "point":3.0,
+   "cashflowstatus":"Status Quo",
+   "profoliostatus":"---",
+   "impacts":[
+      {
+         "type":"Entertainment",
+         "description":"Holiday Concert",
+         "startdate":"2016-01-01",
+         "enddate":"2017-01-01",
+         "magnitude":"hi",
+         "priority":"medium",
+         "status":"Completed",
+         "expense":{
+            "type":"Type 1",
+            "amount":100.0,
+            "date":"2016-02-01"
+         }
+      },
+      {
+         "type":"House Expense",
+         "description":"Replace kitchen counters",
+         "startdate":"2017-01-01",
+         "enddate":"2018-01-01",
+         "magnitude":"hi",
+         "priority":"low",
+         "status":"Pending",
+         "expense":{
+            "type":"Type 2",
+            "amount":300.0,
+            "date":"2017-02-01"
+         }
+      },
+      {
+         "type":"Work Expense",
+         "description":"Upgrade PC",
+         "startdate":"2016-01-01",
+         "enddate":"2018-01-01",
+         "magnitude":"hi",
+         "priority":"high",
+         "status":"Initiated",
+         "expense":{
+            "type":"Type 1",
+            "amount":1000.0,
+            "date":"2017-05-01"
+         }
+      },
+      {
+         "type":"Family Expense",
+         "description":"Car for Jill",
+         "startdate":"2018-01-01",
+         "enddate":"2019-01-01",
+         "magnitude":"hi",
+         "priority":"high",
+         "status":"Initiated",
+         "expense":{
+            "type":"Type 1",
+            "amount":400.0,
+            "date":"2018-03-01"
+         }
+      },
+      {
+         "type":"Vacation",
+         "description":"Christmas Cruise '20",
+         "startdate":"2015-01-01",
+         "enddate":"2017-01-01",
+         "magnitude":"hi",
+         "priority":"high",
+         "status":"Initiated",
+         "expense":{
+            "type":"Type 1",
+            "amount":800.0,
+            "date":"2017-08-01"
+         }
+      }
+   ],
+   "tabs":[
+      {
+         "id":"activities",
+         "label":"Activities",
+         "data":[
+            {
+               "vendor":"Amazon",
+               "email":"abc@amazon.com",
+               "phone":"888-555-1211"
+            },
+            {
+               "vendor":"Money Market",
+               "email":"xyz@moneymarket.com",
+               "phone":"999-555-1211"
+            }
+         ]
+      },
+      {
+         "id":"budgets",
+         "label":"Budgets",
+         "data":[
+            {
+               "type":"Entertainment",
+               "predecision":325.0,
+               "postdecision":325.0,
+               "delta":100.0,
+               "activities":[
+                  {
+                     "name":"Amazon Prime",
+                     "predecision":100.0,
+                     "postdecision":0.0,
+                     "delta":100.0,
+                     "date":"2017-12-06"
+                  },
+                  {
+                     "name":"Sony",
+                     "predecision":50.0,
+                     "postdecision":10.0,
+                     "delta":40.0,
+                     "date":"2017-10-16"
+                  }
+               ]
+            },
+            {
+               "type":"Savings",
+               "predecision":2500.0,
+               "postdecision":2600.0,
+               "delta":100.0,
+               "activities":[
+                  {
+                     "name":"Money Market",
+                     "predecision":1800.0,
+                     "postdecision":1900.0,
+                     "delta":100.0,
+                     "date":"2017-12-06"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "id":"portfolio",
+         "label":"Portfolio",
+         "data":[
+            {
+               "name":"Money Market",
+               "predecision":1800.0,
+               "postdecision":1900.0,
+               "delta":100.0
+            },
+            {
+               "name":"Amazon Prime",
+               "predecision":150.0,
+               "postdecision":160.0,
+               "delta":10.0
+            }
+         ]
+      },
+      {
+         "id":"info",
+         "label":"Info",
+         "data":{
+            "tab":[
+               {
+                  "name":"videos",
+                  "data":[]
+               },
+               {
+                  "name":"courses",
+                  "data":[]
+               },
+               {
+                  "name":"links",
+                  "data":[]
+               },
+               {
+                  "name":"articles",
+                  "data":[]
+               },
+               {
+                  "name":"amazonprime",
+                  "data":[]
+               }
+            ]
+         }
+      }
+   ]
+}
