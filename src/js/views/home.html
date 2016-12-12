@@ -47,7 +47,7 @@
 			</ul>
 			<script type="text/html" id="pendingdecision_template">
 				<li>
-					<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap" data-bind="click: onEnterLoadDecision($data)">
+					<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap" data-bind="click: function(){$root.router.go('decision')}, event:{keypress:onEnterLoadDecision}">
 						<div class="oj-flex-item">
 							<i class="fa fa-university" aria-hidden="true"></i>
 						</div>

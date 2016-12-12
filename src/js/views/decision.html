@@ -86,9 +86,37 @@
                   </div>
                   <hr style="border:2px dashed grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
                 </div>
+
                 <div class="oj-flex-item" data-bind="if: selectedAlternatives">
-                
+                   <div class="oj-flex">
+                    <div class="oj-panel oj-panel-alt1" style="width: 100%; height: 350px">
+                       <div id="gantt" aria-label="Project Gantt" 
+                          data-bind="ojComponent: {
+                            component: 'ojGantt',
+                            axisPosition: 'bottom',
+                            start: projectStartDate,
+                            end: projectEndDate,
+                            gridlines: {
+                              horizontal: 'visible',
+                              vertical:'hidden'
+                            },
+                            majorAxis: {
+                              scale: 'years'                             
+                            },
+                            minorAxis: {
+                              scale: 'quarters'
+                            },
+                            rowAxis: {
+                              rendered: 'on'
+                            },
+                            selectionMode: 'single',
+                            rows: getImapctChart(subscription._latestValue)
+                          }" style="width:100%;height:300px">
+                      </div> 
+                    </div>
+                  </div>
                 </div>
+
                 <div class="oj-flex-item" data-bind="if: selectedAlternatives">
                   <div id="tabs" data-bind="ojComponent:{component: 'ojTabs', rootAttributes: {style:'oj-padding'}}">
                     <!-- tab bar -->

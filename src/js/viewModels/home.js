@@ -112,10 +112,12 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
                 return dateconvertor.formatToMMDDYYYY(data);
             };
 
-            self.onEnterLoadDecision = function (data) {
-                //history.pushState(null, '', '?root=decision&id='+data.userid); 
-                oj.Router.rootInstance.go('decision/'+data.userid);
-               // oj.Router.sync();
+            self.onEnterLoadDecision = function (data, event) {
+                history.pushState(null, '', '?root=decision&id='+data.userid); 
+                //oj.Router.rootInstance.go('decision/'+data.userid);
+                oj.Router.sync();
+
+                return true;
             };
         }
 

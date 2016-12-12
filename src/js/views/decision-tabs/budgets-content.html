@@ -1,3 +1,86 @@
-<div>
-Budgets
+<div id="budget-container">
+	<div class="oj-flex-column oj-flex-items-pad">
+		<div class="oj-flex-item">
+			<h5>Budget Items</h5>
+		</div>
+		<div class="oj-flex-item">
+			<ul id="budgetlistview" aria-label="list using collection" style="height:100%"
+			data-bind="ojComponent: {component: 'ojListView', data: budgetlist, item: {template: 'budget_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}, rootAttributes: {style: 'width:100%;height:300px;overflow-x:hidden;border-style:none'}}">
+			</ul>
+		</div>
+	</div>
+
+		
+	<script type="text/html" id="budget_template">
+		<li>
+			<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+				<div class="oj-flex-item">
+					<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap">
+						<div class="oj-flex-item">
+						</div>
+						<div class="oj-flex-item">
+							<span>Date</span>
+						</div>
+						<div class="oj-flex-item">
+							<span>Pre Decision</span>
+						</div>
+						<div class="oj-flex-item">
+							<span>Post Decision</span>
+						</div>
+						<div class="oj-flex-item">
+							<span>Delta</span>
+						</div>
+					</div>
+				</div>
+				<hr style="border:1px solid grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
+				<div class="oj-flex-item">
+					<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap">
+						<div class="oj-flex-item">
+							<strong style="word-wrap: break-word" data-bind="text: type"></strong>
+						</div>
+						<div class="oj-flex-item">
+							
+						</div>
+						<div class="oj-flex-item">
+							<span style="word-wrap: break-word" data-bind="text: predecision"></span>
+						</div>
+						<div class="oj-flex-item">
+							<span style="word-wrap: break-word" data-bind="text: postdecision"></span>
+						</div>
+						<div class="oj-flex-item">
+							<span style="word-wrap: break-word" data-bind="text: delta"></span>
+						</div>
+					</div>
+				</div>
+				<hr style="border:1px dashed grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
+				<div class="oj-flex-item">
+					<ul id="budgetActivitiesview" aria-label="list using collection" style="height:100%"
+					data-bind="ojComponent: {component: 'ojListView', data: getBudgetActivities($data), item: {template: 'budget_acivity_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}, rootAttributes: {style: 'width:100%;height:100px;overflow-x:hidden;border-style:none'}}">
+					</ul>
+				</div>
+			</div>
+		</li>
+	</script>
+
+	<script type="text/html" id="budget_acivity_template">
+		<li>
+			<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap">
+				<div class="oj-flex-item">
+					<span style="word-wrap: break-word" data-bind="text: name"></span>
+				</div>
+				<div class="oj-flex-item">
+					<span style="word-wrap: break-word" data-bind="text: date"></span>
+				</div>
+				<div class="oj-flex-item">
+					<span style="word-wrap: break-word" data-bind="text: predecision"></span>
+				</div>
+				<div class="oj-flex-item">
+					<span style="word-wrap: break-word" data-bind="text: postdecision"></span>
+				</div>
+				<div class="oj-flex-item">
+					<span style="word-wrap: break-word" data-bind="text: delta"></span>
+				</div>
+			</div>
+		</li>
+	</script>
 </div>
