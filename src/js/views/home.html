@@ -103,56 +103,29 @@
 			</script>
 		</div>
 
-		<div class="oj-sm-12 oj-md-3 oj-lg-3 oj-xl-3 oj-flex-item">
-			<div class="oj-panel oj-margin demo-mypanel">
-				<p class="oj-header-border">Plan Score</p>
-				<div class="oj-flex-item">
-					<div class="oj-flex oj-flex-items-pad">
-						<div class="oj-flex-item">
-							<span><i class="fa fa-long-arrow-up" aria-hidden="true"></i> Plan Movement</span><br>
-							<strong>Score : +B &nbsp;<i class="fa fa-smile-o" aria-hidden="true"></i></strong>
+		<div class="oj-sm-12 oj-md-3 oj-lg-3 oj-xl-3 oj-flex-item" style="border-right: 1px solid grey">
+			<h5 class="oj-header-border oj-padding">Calendar</h5>
+			<ul id="calendarlistview" aria-label="list using collection"
+			data-bind="ojComponent: {component: 'ojListView', data: calendarlist, item: {template: 'calendarlist_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 5}, rootAttributes: {style: 'height:320px;overflow-x:hidden;border-style:none'}}">
+			</ul>
+			<script type="text/html" id="calendarlist_template">
+				<li>
+					<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+						<div class="oj-flex-item" data-bind="style: { color: color }">
+							<span data-bind="text: type"></span> : <span data-bind="text: description"></span>
+						</div>
+						<div class="oj-flex-item" data-bind="if: alternative">
+							<span style="word-wrap: break-word" data-bind="text: alternative"></span>
 						</div>
 						<div class="oj-flex-item">
-							<div class="oj-flex-column">
-								<div class="oj-flex-item">
-									<span>Desired Initiated</span><br>
-									<strong>5</strong>
-								</div>
-								<div class="oj-flex-item">
-									<span>Decision Made</span><br>
-									<strong>1</strong>
-								</div>
-							</div>
+							<span style="word-wrap: break-word" data-bind="text: formatToLongDateTime(datetime)"></span>
+						</div>
+						<div class="oj-flex-item">
+							<span style="word-wrap: break-word" data-bind="text: details"></span>
 						</div>
 					</div>
-					<div class="oj-flex-item oj-margin oj-sm-align-items-center oj-md-align-items-center oj-lg-align-items-center">
-						<div class="oj-flex">
-							<div class="oj-flex-item">
-								<span>Credit Score</span><i class="fa fa-long-arrow-up" aria-hidden="true"></i><br>
-								<span class="oj-text-xs oj-text-secondary-color" data-bind="text: '(09/21/2016)'"></span>
-							</div>
-							<div class="oj-flex-item">
-								<div class="creditscore">
-									690
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="oj-panel oj-margin demo-mypanel">
-				<h5 class="oj-header-border">Dream/Wish List</h5>
-				<ul id="wishlistview" aria-label="list using collection" data-bind="ojComponent: {component: 'ojListView', data: wishlist, item: {template: 'wishlist_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}, rootAttributes: {style: 'height:120px;overflow-x:hidden;border-style:none'}}">
-				</ul>
-				<script type="text/html" id="wishlist_template">
-					<li>
-						<span data-bind="text: wish"></span>
-					</li>
-				</script>
-			</div>
-			<div class="oj-panel oj-margin demo-mypanel">
-				<p class="oj-header-border">Calendar</p>
-			</div>
+				</li>
+			</script>
 		</div>
 
 		<div class="oj-sm-12 oj-md-2 oj-lg-3 oj-xl-3 oj-flex-item">
@@ -197,28 +170,13 @@
 				</li>
 			</script>
 
-			<h5 class="oj-header-border oj-padding">Activity</h5>
+			<h5 class="oj-header-border oj-padding">Wish List</h5>
 			<ul id="myactivitylistview" aria-label="list using collection"
-			data-bind="ojComponent: {component: 'ojListView', data: activitylist, item: {template: 'activity_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 4}, rootAttributes: {style: 'height:160px;overflow-x:hidden;border-style:none'}}">
+			data-bind="ojComponent: {component: 'ojListView', data: wishlist, item: {template: 'wishlist_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 4}, rootAttributes: {style: 'height:160px;overflow-x:hidden;border-style:none'}}">
 			</ul>
-			<script type="text/html" id="activity_template">
+			<script type="text/html" id="wishlist_template">
 				<li>
-					<div class="oj-flex-column" style="flex-wrap: nowrap">
-						<div class="oj-flex-item">
-							<div class="oj-flex oj-sm-justify-content-space-between" style="font-size: 12px">
-								<div clas="oj-flex-item">
-									<span data-bind="text: activity"></span>
-								</div>
-								<div clas="oj-flex-item">
-									<span class="" data-bind="text: formatDate(date)"></span>
-								</div>
-							</div>
-						</div>
-						<div class="oj-flex-item">
-							<span style="word-wrap: break-word" data-bind="text: formatAmount(amount)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-							<span class="oj-text-xs oj-text-secondary-color" data-bind="text: bank"> </span><span class="oj-text-xs oj-text-secondary-color" data-bind="text: accounttype"></span> - <span class="oj-text-xs oj-text-secondary-color"  data-bind="text: accountnumber"></span>
-						</div>
-					</div>
+					<span data-bind="text: wish"></span>
 				</li>
 			</script>
 		</div>

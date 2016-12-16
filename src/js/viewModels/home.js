@@ -38,10 +38,14 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
             // End - Dream/Wish List Display Content
 
             // Start - Calendar Display Content
-            self.calendarlist=ko.observableArray([]);
-            service.fetch('http://54.158.170.219/RESTEasy/rest/service/users/1234/calendars',header).then(function(response) {
-                self.calendarlist(response);
+            self.calendarlist=ko.observable();
+            service.fetch('js/data/home/calendar.json',header).then(function(response) {
+                self.calendarlist(new oj.ArrayTableDataSource(response['calendar']));
             });
+
+            self.formatToLongDateTime = function(data){
+                return dateconvertor.formatToLongDateTime(data);
+            }
             // End - Calendar Display Content
 
             // Start - My Money Display Content

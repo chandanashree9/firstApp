@@ -1,62 +1,38 @@
 {
-	"activities":[
-		{
-			"theme": "Apple releasing new OS early",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
-			"icon":"fa fa-bolt"
-			
-		}, 
-		{
-			"theme": "Autopayment for Carmax",
-			"content": "-350.00 deducted from Suntrust Checking 96xx for monthly payment for:  Honda Accord '14",
-			"icon":"fa fa-university"
-			
-		}, 
-		{
-			"theme": "Desire to purchase a House in 2018",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
-			"icon":"fa fa-heart"
-			
-		}, 
-		{
-			"theme": "Conversation RE:  Desire to purchase new roof for house",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
-			"icon":"fa fa-comments-o"
-			
-		}, 
-		{
-			"theme": "Household A - User Added",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
-			"icon":"fa fa-cog"
-		},
-		{
-			"theme": "Apple releasing new OS early",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
-			"icon":"fa fa-bolt"
-			
-		}, 
-		{
-			"theme": "Autopayment for Carmax",
-			"content": "-350.00 deducted from Suntrust Checking 96xx for monthly payment for:  Honda Accord '14",
-			"icon":"fa fa-university"
-			
-		}, 
-		{
-			"theme": "Desire to purchase a House in 2018",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
-			"icon":"fa fa-heart"
-			
-		}, 
-		{
-			"theme": "Conversation RE:  Desire to purchase new roof for house",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
-			"icon":"fa fa-comments-o"
-			
-		}, 
-		{
-			"theme": "Household A - User Added",
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in mi lectus. Curabitur urna tortor, sagittis id dignissim quis, gravida",
-			"icon":"fa fa-cog"
-		}
-	]
+	"calendar": [{
+		"type": "Decision",
+		"description": "Auto renewal for Amazon Prime",
+		"alternative": "Cancel Subscription",
+		"datetime": "2016-12-15T11:00:00+01:00",
+		"details": "Contact Amazon",
+		"color":"red"
+	}, {
+		"type": "Event",
+		"description": "Wifes birthday Lunch",
+		"alternative":"",
+		"datetime": "2016-12-15T12:30:00+01:00",
+		"details": "Buy present",
+		"color":"blue"
+	}, {
+		"type": "Video Call Appointment",
+		"description": "Advisor",
+		"alternative":"",
+		"datetime": "2016-12-15T14:30:00+01:00",
+		"details": "Buy present",
+		"color":"green"
+	}, {
+		"type": "Event",
+		"description": "Jill's soccer game",
+		"alternative":"",
+		"datetime": "2016-12-15T14:30:00+01:00",
+		"details": "Contact Amazon",
+		"color":"pink"
+	}, {
+		"type": "Appointment",
+		"description": "Money Avatar",
+		"alternative":"",
+		"datetime": "2016-12-15T16:30:00+01:00",
+		"details": "Meet with Avatar",
+		"color":"orange"
+	}]
 }
