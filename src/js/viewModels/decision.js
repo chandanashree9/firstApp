@@ -2,7 +2,7 @@
 define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','viewModels/convertors/date',
     'ojs/ojknockout','ojs/ojmodule', 'ojs/ojlistview', 'ojs/ojbutton','ojs/ojarraytabledatasource', 
     'ojs/ojInputText','ojs/ojdatetimepicker','ojs/ojmodel','ojs/ojnavigationlist','ojs/ojtabs','ojs/ojconveyorbelt',
-    'promise','ojs/ojgantt'],
+    'ojs/ojtable','ojs/ojtimeutils', 'ojs/ojtimeaxis'],
     function(oj, ko, $, service, dateconvertor)
     {   
     	function DecisionViewModel() {
@@ -20,9 +20,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
                 self.alternatives(new oj.ArrayTableDataSource(decisionObj.alternatives));
             });
 
-            self.projectStartDate = new Date("Jan 1, 2015").getTime();
-            self.projectEndDate = new Date("Dec 31, 2020").getTime();
-
             self.selectedAlternatives = ko.observable(false);
             self.subscription = ko.observable(false);
 
@@ -32,9 +29,71 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
                });
             }
 
+            self.projectStartDate = new Date("Jan 1, 2015").getTime();
+            self.projectEndDate = new Date("Dec 31, 2020").getTime();
+
             self.getImapctChart = function(data){
-                return data.impacts;
-            }  
+                return new oj.ArrayTableDataSource(data.impacts,{idAttribute: 'id'});
+            } 
+
+            self.timeAxisWidth = ko.observable(0);      
+            var dir = document.documentElement.getAttribute("dir");
+            if (dir) {
+                dir = dir.toLowerCase();
+            }
+            self.isRTL = (dir === 'rtl');
+
+            self.monitorAxisWidth = function() {
+                var timeAxis = $('#timeAxis');
+                // After initial render, monitor time axis width
+                self.timeAxisWidth(timeAxis.width());
+
+                // monitor subsequent time axis width change due to window resize
+                $(window).on('resize', function() {
+                    self.timeAxisWidth(timeAxis.width());
+                });
+            };
+
+            self.getPosition = function(taskStart) {
+                return oj.TimeUtils.getPosition(taskStart, self.projectStartDate, self.projectEndDate, self.timeAxisWidth());
+            };
+
+            self.getLength = function(taskStart, taskEnd) {
+                return oj.TimeUtils.getLength(taskStart, taskEnd, self.projectStartDate, self.projectEndDate, self.timeAxisWidth());
+            };
+
+            self.getAriaLabel = function(rowData) {
+                var taskStartTime = new Date(rowData['start']);
+                var taskEndTime = new Date(rowData['end']);
+
+                var taskStart = 'Start date ' + taskStartTime.toDateString() + '. ';
+                var taskEnd = 'End date ' + taskEndTime.toDateString() + '. ';
+                var duration = 'Duration ' + (taskEndTime.getTime() - taskStartTime.getTime()) / (1000*60*60*24) + ' days. ';
+                return taskStart + taskEnd + duration;
+            };
+
+            self.imactDetails = ko.observable(false);
+            self.impactDetailDesc = ko.observable();
+            self.impactDetailMagnitude = ko.observable();
+            self.impactDetailPriority = ko.observable();
+            self.impactDetailExpenseType = ko.observable();
+            self.impactDetailExpenseValue = ko.observable();
+            self.impactDetailStatus = ko.observable();
+
+            self.displayDetails=function(event,data){
+                if (data['option'] == 'currentRow' && data['value'] != null)
+                {
+                    self.imactDetails(true);
+                    var rowIndex = data['value']['rowIndex'];
+                    var obj = self.subscription._latestValue.impacts[rowIndex];
+                    self.impactDetailDesc(obj.description);
+                    self.impactDetailMagnitude(obj.magnitude);
+                    self.impactDetailPriority(obj.priority);
+                    self.impactDetailExpenseType(obj.expense.type);
+                    self.impactDetailExpenseValue(obj.expense.date + ' & ' + obj.expense.amount);
+                    self.impactDetailStatus(obj.status);
+                }
+            } 
     	}
     	return DecisionViewModel;
     }

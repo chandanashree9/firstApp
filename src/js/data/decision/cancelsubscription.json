@@ -7,15 +7,11 @@
    "profoliostatus":"---",
    "impacts":[
       {
-         "id":"r1",
-         "label":"Entertainment : Holiday Concert",
-         "tasks":[
-            {
-               "id":"task1",
-               "start":1451624400000,
-               "end":1483246800000
-            }
-         ],
+         "id":"Entertainment",
+         "name":"Holiday Concert",
+         "start":1451624400000,
+         "end":1483246800000,
+         "progress":1483246800000,
          "type":"Entertainment",
          "description":"Holiday Concert",
          "magnitude":"hi",
@@ -28,15 +24,11 @@
          }
       },
       {
-         "id":"r2",
-         "label":"House Expense : Replace kitchen counters",
-         "tasks":[
-            {
-               "id":"task1",
-               "start":1483246800000,
-               "end":1514782800000
-            }
-         ],
+         "id":"House Expense",
+         "name":"Replace kitchen counters",
+         "start":1483246800000,
+         "end":1514782800000,
+         "progress":1514782800000,
          "type":"House Expense",
          "description":"Replace kitchen counters",
          "startdate":"2017-01-01",
@@ -51,15 +43,11 @@
          }
       },
       {
-         "id":"r3",
-         "label":"Work Expense : Upgrade PC",
-         "tasks":[
-            {
-               "id":"task1",
-               "start":1483246800000,
-               "end":1546405200000
-            }
-         ],
+         "id":"Work Expense",
+         "name":"Upgrade PC",
+         "start":1483246800000,
+         "end":1546405200000,
+         "progress":1546405200000,
          "type":"Work Expense",
          "description":"Upgrade PC",
          "startdate":"2016-01-01",
@@ -74,15 +62,11 @@
          }
       },
       {
-         "id":"r4",
-         "label":"Family Expense : Car for Jill",
-         "tasks":[
-            {
-               "id":"task1",
-               "start":1546405200000,
-               "end":1577941200000
-            }
-         ],
+         "id":"Family Expense",
+         "name":"Car for Jill",
+         "start":1546405200000,
+         "end":1577941200000,
+         "progress":1577941200000,
          "type":"Family Expense",
          "description":"Car for Jill",
          "startdate":"2018-01-01",
@@ -97,15 +81,11 @@
          }
       },
       {
-          "id":"r5",
-         "label":"Vacation:Christmas Cruise 20",
-         "tasks":[
-            {
-               "id":"task1",
-               "start":1483333200000,
-               "end":1577941200000
-            }
-         ],
+         "id":"Vacation",
+         "name":"Christmas Cruise 20",
+         "start":1483333200000,
+         "end":1577941200000,
+         "progress":1577941200000,
          "type":"Vacation",
          "description":"Christmas Cruise 20",
          "startdate":"2015-01-01",

@@ -88,33 +88,31 @@
                 </div>
 
                 <div class="oj-flex-item" data-bind="if: selectedAlternatives">
-                   <div class="oj-flex">
-                    <div class="oj-panel oj-panel-alt1" style="width: 100%; height: 350px">
-                       <div id="gantt" aria-label="Project Gantt" 
-                          data-bind="ojComponent: {
-                            component: 'ojGantt',
-                            axisPosition: 'bottom',
-                            start: projectStartDate,
-                            end: projectEndDate,
-                            gridlines: {
-                              horizontal: 'visible',
-                              vertical:'hidden'
-                            },
-                            majorAxis: {
-                              scale: 'years'                             
-                            },
-                            minorAxis: {
-                              scale: 'quarters'
-                            },
-                            rowAxis: {
-                              rendered: 'on'
-                            },
-                            selectionMode: 'single',
-                            rows: getImapctChart(subscription._latestValue)
-                          }" style="width:100%;height:300px">
-                      </div> 
+                    <div class="oj-panel oj-panel-alt1" style="height: 350px">
+                      <div class="oj-flex-column oj-flex-items-pad">
+                        <div class="oj-flex-item">
+                          <table id="table" summary="Task List" aria-label="Task List"
+                              data-bind="ojComponent: {component: 'ojTable',
+                                data: getImapctChart(subscription._latestValue),
+                                ready: monitorAxisWidth,
+                                columns: [
+                                  {headerText: '', field: 'id', style:'width:20%'},
+                                  {headerText: '', field: 'name', style:'width:20%'},
+                                  {headerTemplate: 'timeaxisTmpl', template: 'taskbarTmpl', style:'width:70%'}],
+                                  selectionMode: {row: 'single', column: 'single'},
+                                  columnsDefault: {sortable: 'none'},
+                                  optionChange:displayDetails
+                                  }">
+                          </table>
+                        </div>
+                        <div class="oj-flex-item">
+                          <div data-bind="if: imactDetails">
+                            <h4>Details</h4>
+                            <label>Description:</label><span data-bind="text:impactDetailDesc"></span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
                 </div>
 
                 <div class="oj-flex-item" data-bind="if: selectedAlternatives">
@@ -129,7 +127,7 @@
                     </ul>
                     <!-- tab contents -->
                     <!-- ko foreach: subscription._latestValue.tabs -->
-                      <div data-bind="attr: {id: id +'-content'}" style="border: 1px solid grey; height:300px;">
+                      <div data-bind="attr: {id: id +'-content'}" style="border: 1px solid grey;">
                         <div data-bind="ojModule: {name: 'decision-tabs/'+id +'-content', params: $data }">
                         </div>
                       </div>
@@ -146,5 +144,36 @@
 </div>
 
 
+<!-- template for column header -->
+<script type="text/html" id="timeaxisTmpl">
+  <th id="timeAxis" class="timeaxis-container">
+    <div data-bind="ojComponent: {component: 'ojTimeAxis',
+            scale: 'years', 
+            start: projectStartDate, 
+            end: projectEndDate}" 
+            style="height:38px" aria-hidden="true">
+    </div>
+  </th>
+</script>
 
+<!-- template for the chart bar column -->
+<script type="text/html" id="taskbarTmpl">
+  <td class="demo-chart-row-container">
+    <div class="demo-chart-task" role="group"
+          data-bind="style: { left: isRTL ? 0 : getPosition($data.start) + 'px', 
+          right: isRTL ? getPosition($data.start) + 'px' : 0}">
+      <div class="demo-task-item demo-task-bar" role="img"
+            data-bind="style: { width: getLength($data.start, $data.end) + 'px' },
+            attr: { 'aria-label': getAriaLabel($data) }">
+      </div>
+      <div class="demo-task-item demo-progress-bar" role="img"
+              data-bind="style: { width: getLength($data.start, $data.progress) + 'px' }">
+      </div>
+      <div class="demo-task-item demo-task-label" 
+          data-bind="style: { left: isRTL ? 0 : getLength($data.start, $data.end) + 'px' ,
+          right: isRTL ? getLength($data.start, $data.end) + 'px' : 0 }">
+      </div>
+    </div>
+  </td>
+</script>
 
