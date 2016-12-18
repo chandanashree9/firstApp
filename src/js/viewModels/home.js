@@ -105,6 +105,7 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
             fetchChartData(service, 'js/data/home/chart/chart1.json', header);
 
             self.yAxisConverter = ko.observable(numberconvertor.currencyConvertorformat());
+            self.xAxisConverter = ko.observable(dateconvertor.convertorMMMYY());
             // End - Chart Display Contents
 
             // Converters

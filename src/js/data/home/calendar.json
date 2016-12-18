@@ -5,34 +5,34 @@
 		"alternative": "Cancel Subscription",
 		"datetime": "2016-12-15T11:00:00+01:00",
 		"details": "Contact Amazon",
-		"color":"red"
+		"color":"#299FD6"
 	}, {
 		"type": "Event",
 		"description": "Wifes birthday Lunch",
 		"alternative":"",
 		"datetime": "2016-12-15T12:30:00+01:00",
 		"details": "Buy present",
-		"color":"blue"
+		"color":"#E9267E"
 	}, {
 		"type": "Video Call Appointment",
 		"description": "Advisor",
 		"alternative":"",
 		"datetime": "2016-12-15T14:30:00+01:00",
 		"details": "Buy present",
-		"color":"green"
+		"color":"#2CCDFD"
 	}, {
 		"type": "Event",
 		"description": "Jill's soccer game",
 		"alternative":"",
 		"datetime": "2016-12-15T14:30:00+01:00",
 		"details": "Contact Amazon",
-		"color":"pink"
+		"color":"#E9267E"
 	}, {
 		"type": "Appointment",
 		"description": "Money Avatar",
 		"alternative":"",
 		"datetime": "2016-12-15T16:30:00+01:00",
 		"details": "Meet with Avatar",
-		"color":"orange"
+		"color":"#5CB69F"
 	}]
 }

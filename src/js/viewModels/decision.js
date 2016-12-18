@@ -1,9 +1,9 @@
 'use strict';
-define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','viewModels/convertors/date',
+define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','viewModels/convertors/date','viewModels/convertors/number',
     'ojs/ojknockout','ojs/ojmodule', 'ojs/ojlistview', 'ojs/ojbutton','ojs/ojarraytabledatasource', 
     'ojs/ojInputText','ojs/ojdatetimepicker','ojs/ojmodel','ojs/ojnavigationlist','ojs/ojtabs','ojs/ojconveyorbelt',
     'ojs/ojtable','ojs/ojtimeutils', 'ojs/ojtimeaxis'],
-    function(oj, ko, $, service, dateconvertor)
+    function(oj, ko, $, service, dateconvertor, numberconvertor)
     {   
     	function DecisionViewModel() {
     		self.title=ko.observable();
@@ -34,7 +34,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
 
             self.getImapctChart = function(data){
                 return new oj.ArrayTableDataSource(data.impacts,{idAttribute: 'id'});
-            } 
+            }
+
+            self.formatRoundoffToOnedecimal = function(data){
+            return numberconvertor.formatRoundoffToOnedecimal(data);
+            };
+
 
             self.timeAxisWidth = ko.observable(0);      
             var dir = document.documentElement.getAttribute("dir");

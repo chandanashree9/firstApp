@@ -1,14 +1,40 @@
-<div id="dashboard-section">
+<!--<div id="dashboard-section">
   <div class="oj-flex oj-flex-items-pad ">
         <div class="oj-flex-item oj-sm-odd-cols-12 oj-md-odd-cols-2 oj-md-even-cols-4 oj-lg-5 oj-xl-5">
           <h3 class="oj-header">Hello again, Customer</h3>
         </div>
         <div class="oj-flex-item oj-sm-odd-cols-12 oj-md-odd-cols-2 oj-md-even-cols-4 oj-lg-4 oj-xl-4">
           <input id="text-input-converter" class="btntext" type="text" data-bind="ojComponent: {component: 'ojInputText'}" placeholder="What can I help you with today?"/>
-      <i class="fa fa-comments-o fa-2x"></i>
+          <i class="fa fa-comments-o fa-2x"></i>
         </div>
         <div class="oj-flex-item oj-sm-odd-cols-12 oj-md-odd-cols-2 oj-md-even-cols-4 oj-lg-3 oj-xl-3">
           <input id="date" data-bind="ojComponent: {component: 'ojInputDate'}"/>
         </div>
+  </div>
+</div>-->
+<div class="demo-flex-display">
+  <div class="oj-flex">
+    <div class="oj-flex-item oj-sm-odd-cols-12 oj-md-odd-cols-2 oj-md-even-cols-4 oj-lg-5 oj-xl-5">
+       <h3 class="oj-header" style="color:#999999">Hello again, Customer</h3>
+    </div>
+    <div class="oj-flex-item">
+      <input id="text-input-converter" class="btntext" type="text" data-bind="ojComponent: {component: 'ojInputText'}" placeholder="What can I help you with today?"/>
+    </div>
+    <div class="oj-flex-item">
+      <div id="popup1" data-bind="ojComponent:{component: 'ojPopup'}">
+        <span>Hello Customer.</span><br>
+        <span>What can I help you with today?</span>
+    </div>
+      <button id="btnGo" 
+          data-bind="ojComponent: {component: 'ojButton', 
+                      display: 'icons', 
+                      icons: {start:'fa fa-comments-o fa-2x'}},
+                     click: function()
+                     {
+                       $('#popup1').ojPopup('open', '#btnGo');
+                     }">
+      </button>
+     <input id="date" data-bind="ojComponent: {component: 'ojInputDate'}"/>
+    </div>
   </div>
 </div>

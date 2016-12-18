@@ -9,17 +9,31 @@
 	    </div>
 	</div>
   	<button id="buttonOpener" data-bind="ojComponent: {component: 'ojButton', label: 'Open Modeless Dialog', optionChange: handleOpen}"> </button>-->
-
+  	<div class="oj-flex oj-sm-flex-items-initial">
+      <div class="oj-flex-item oj-padding">
+      	<strong style="font-weight:200;font-size: 20px">Your Plan</strong>
+      </div>
+      <div class="oj-flex oj-panel demo-panel-customizations oj-padding" style="font-size:20px;color:#5CB69F">
+      	<i class="fa fa-long-arrow-up" aria-hidden="true"><strong>Score : +B &nbsp;</strong></i>
+	</div>
+      <div class="oj-flex-item oj-padding">
+      		<span>Credit Score</span><i class="fa fa-long-arrow-up" aria-hidden="true"></i><br>
+      		<span class="oj-text-xs oj-text-secondary-color" data-bind="text: '(09/21/2016)'"></span>
+		</div>
+		<div class="creditscore">
+			690
+		</div>
+    </div>
 
 	<div class="oj-flex oj-flex-items-pad oj-padding oj-margin alignscreen">
-		<div>
+		
 			<h5>Planned Liquid to Desired Liquid Value</h5>
-			<select id="select" data-bind="ojComponent: {component: 'ojSelect', options: timeviews,
-                   value: selecttimeview,placeholder:'Select Time View',
-                   optionChange: launchTimeView,
-                   rootAttributes: {style:'max-width:20em'}}">
-  			</select>
-		</div>
+			<div class="oj-flex-bar-end">
+				<select id="select" data-bind="ojComponent: {component: 'ojSelect', options: timeviews,
+	                   value: selecttimeview,placeholder:'Select Time View',
+	                   optionChange: launchTimeView}">
+	  			</select>
+  			</div>
 		<div id='chart-container' class="oj-sm-12 oj-md-12 oj-lg-12 oj-xl-12 oj-flex-item">
 			<div id="lineChart" data-bind="ojComponent: {
 				component: 'ojChart',
@@ -30,7 +44,9 @@
 				animationOnDataChange: 'auto',
 				orientation: 'vertical',
 				hoverBehavior: 'dim',
+				legend: {position: 'top'},
 				hideAndShowBehavior:'withRescale',
+				xAxis: {tickLabel: {converter: ko.toJS(xAxisConverter)}},
 				yAxis: {tickLabel: {converter: ko.toJS(yAxisConverter)}}
 				}" style="width:100%;height:250px;float:left;">
 			</div>
@@ -103,8 +119,8 @@
 			</script>
 		</div>
 
-		<div class="oj-sm-12 oj-md-3 oj-lg-3 oj-xl-3 oj-flex-item" style="border-right: 1px solid grey">
-			<h5 class="oj-header-border oj-padding">Calendar</h5>
+		<div class="oj-sm-12 oj-md-3 oj-lg-3 oj-xl-3 oj-flex-item" style="border-right: 1px solid #D8D8D8">
+			<h5 class="oj-header-border">Calendar</h5>
 			<ul id="calendarlistview" aria-label="list using collection"
 			data-bind="ojComponent: {component: 'ojListView', data: calendarlist, item: {template: 'calendarlist_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 5}, rootAttributes: {style: 'height:320px;overflow-x:hidden;border-style:none'}}">
 			</ul>
@@ -129,7 +145,7 @@
 		</div>
 
 		<div class="oj-sm-12 oj-md-2 oj-lg-3 oj-xl-3 oj-flex-item">
-			<h5 class="oj-header-border oj-padding">My Money</h5>
+			<h5 class="oj-header-border">My Money</h5>
 			<ul id="mymoneylistview" aria-label="list using collection"
 			data-bind="ojComponent: {component: 'ojListView', data: moneylist, item: {template: 'moneylist_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}, rootAttributes: {style: 'height:120px;overflow-x:hidden;border-style:none'}}">
 			</ul>

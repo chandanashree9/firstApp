@@ -9,11 +9,9 @@ define(['ojs/ojcore','ojs/ojvalidation'],
             return converterFactory.createConverter(option).format(data);
         }
 
-        function longDateTime(data) {     
-            console.log(data);       
+        function longDateTime(data) { 
             var option = {formatStyle: 'datetime', isoStrFormat: 'auto',  pattern:'MMMM dd,yyyy. h:mm a'};
             var result = converterFactory.createConverter(option).format(data);
-            console.log(result);
             return result;
         }
 
@@ -22,10 +20,16 @@ define(['ojs/ojcore','ojs/ojvalidation'],
             return converterFactory.createConverter(option).format(data);
         }
 
+        function mmmyyconverter() {            
+            var option = {pattern: 'MMM yy'};
+            return converterFactory.createConverter(option);
+        }
+
         return {
             formatToMMDDYYYY:mmddyyyy,
             formatToLongDateTime:longDateTime,
-            formatToMedium:medium
+            formatToMedium:medium,
+            convertorMMMYY:mmmyyconverter
         };
     }
 );

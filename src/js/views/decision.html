@@ -42,14 +42,19 @@
                           drillMode: 'none',
                           selection: selectedAlternatives,
                           data : alternatives,
-                          item: { template: 'alternatives_template' }
+                          item: { template: 'alternatives_template' },
+                          rootAttributes: { style: 'color:none'}
                           }">
             </div>
             <script type="text/html" id="alternatives_template">
-              <li data-bind="attr: {id: id}">
-                <a href="#" data-bind="text: name, click: loadDesireImpact(id)"></a>
-                <i data-bind="css:icon" aria-hidden="true"></i>
-                <label data-bind="text: point"></label>
+              <li data-bind="attr: {id: id}, style: { color : color }">
+                <span data-bind="text: name, click: loadDesireImpact(id)"></span>
+                  <div class="oj-flex" style="padding:10px">
+                    <i data-bind="css:icon" aria-hidden="true"></i>
+                  </div>
+                  <div class="oj-flex" style="padding:10px">
+                    <span data-bind="text: formatRoundoffToOnedecimal(point)"></span>
+                  </div>
               </li>
             </script>
             <div class="oj-flex-item">
@@ -66,7 +71,7 @@
                     <div class="oj-flex-item">
                       <span data-bind="text: subscription._latestValue.name" style="color:#2AAD9F"></span>
                       <i data-bind="css: subscription._latestValue.icon" aria-hidden="true" style="color:#2AAD9F"></i>
-                      <label data-bind="text: subscription._latestValue.point" style="color:#2AAD9F"></label>
+                      <label data-bind="text: formatRoundoffToOnedecimal(subscription._latestValue.point)" style="color:#2AAD9F"></label>
                     </div>
                     <div class="oj-flex-item">
                       <div class="oj-flex-bar">
@@ -88,7 +93,9 @@
                 </div>
 
                 <div class="oj-flex-item" data-bind="if: selectedAlternatives">
-                    <div class="oj-panel oj-panel-alt1" style="height: 350px">
+                    <div class="oj-panel">
+                     <h4>Impact Chart</h4>
+                     <hr style="border:2px dashed grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;">
                       <div class="oj-flex-column oj-flex-items-pad">
                         <div class="oj-flex-item">
                           <table id="table" summary="Task List" aria-label="Task List"
@@ -108,14 +115,33 @@
                         <div class="oj-flex-item">
                           <div data-bind="if: imactDetails">
                             <h4>Details</h4>
-                            <label>Description:</label><span data-bind="text:impactDetailDesc"></span>
+                            <div class="oj-panel">
+                                <label>Description:</label>
+                                 <input id="description" data-bind="ojComponent: {component: 'ojInputText', value: impactDetailDesc}"/> 
+                                <div class="oj-flex-item oj-padding">
+                                  <label>Magnitude:</label>
+                                  <input id="magnitude" data-bind="ojComponent: {component: 'ojInputText', value: impactDetailMagnitude}"/> 
+                                </div>
+                                <div class="oj-flex-item oj-padding">
+                                  <label>Priority:</label><span data-bind="text:impactDetailPriority"></span>
+                                </div>
+                                <div class="oj-flex-item oj-padding">
+                                  <label>Expense Type:</label><span data-bind="text:impactDetailExpenseType"></span>
+                                </div>
+                                <div class="oj-flex-item oj-padding">
+                                  <label>Expense Date & Values:</label><span data-bind="text:impactDetailExpenseValue"></span>
+                                </div>
+                                <div class="oj-flex-item oj-padding">
+                                  <label>Status:</label><span data-bind="text:impactDetailStatus"></span>
+                                </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                 </div>
 
-                <div class="oj-flex-item" data-bind="if: selectedAlternatives">
+                <div class="oj-flex-item oj-padding" data-bind="if: selectedAlternatives">
                   <div id="tabs" data-bind="ojComponent:{component: 'ojTabs', rootAttributes: {style:'oj-padding'}}">
                     <!-- tab bar -->
                     <ul>
