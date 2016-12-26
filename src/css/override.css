@@ -28,7 +28,7 @@
 	text-align: center;
 }
 
-div > a:visited, .menu-launcher {
+div.menu-launch > a:visited, .menu-launcher {
   color: #FFFFFF;
 }
 
@@ -97,4 +97,8 @@ div > a:visited, .menu-launcher {
 }
 .demo-panel-customizations{
   width:250px;
+}
+.financialplanpanel{
+  height:90%;
+  width:80%;
 }

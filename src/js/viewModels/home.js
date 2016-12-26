@@ -4,42 +4,52 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
     'ojs/ojdatetimepicker','ojs/ojselectcombobox', 'ojs/ojdialog'],
     function(oj, ko, service, dateconvertor, numberconvertor)
     {   
+        var header = {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With",
+            "Access-Control-Allow-Methods":"GET, PUT, POST"
+        };
+
+        var decision_url = 'js/data/home/decisions.json';
+        var activities_url = 'js/data/home/activities.json';
+        var wishlist_url = 'js/data/home/wishlist.json';
+        var calendar_url = 'js/data/home/calendar.json';
+        var mymoney_url = 'js/data/home/mymoney.json';
+        var portfolio_url = 'js/data/home/portfolio.json';
+        var money_activity_url = 'js/data/home/money_activity.json';
+
+        var chart_timeview_url = 'js/data/home/chart/chart_timeview.json';
+        var chart1_url = 'js/data/home/chart/chart1.json';
+        var chart5_url = 'js/data/home/chart/chart5.json';
+        var chart10_url = 'js/data/home/chart/chart10.json';
+        var chart15_url = 'js/data/home/chart/chart15.json';
+        var chart20_url = 'js/data/home/chart/chart20.json';        
+
     	function HomeViewModel() {
-            // Start - Pending Decisions & Actions Display Content
-    		  //self.pendingdecisionlist = ko.observableArray([]);    		
+            // Start - Pending Decisions & Actions Display Content		
             self.pendingdecisions = ko.observable();
-           	var header = {
-    			"Access-Control-Allow-Origin": "*",
-  				"Access-Control-Allow-Headers": "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With",
-  				"Access-Control-Allow-Methods":"GET, PUT, POST"
-    		};
-    		  // Retrieve Pending Decision
-            service.fetch('js/data/home/decisions.json',header).then(function(response) {
-                //self.pendingdecisionlist(response);
+            service.fetch(decision_url,header).then(function(response) {
                 self.pendingdecisions(new oj.ArrayTableDataSource(response['decisions']));
             }); 
             // End - Pending Decisions & Actions Display Content
 
             // Start - Activity Display Content
-                //self.activitylist = ko.observableArray([]);
             self.activities=ko.observable();
-                // Retrieve Activities
-            service.fetch('js/data/home/activities.json',header).then(function(response) {
-                //self.activitylist(response);
+            service.fetch(activities_url,header).then(function(response) {
                 self.activities(new oj.ArrayTableDataSource(response['activities']));
             });
             // End - Activity Display Content
 
             // Start - Dream/Wish List Display Content
             self.wishlist=ko.observable();
-            service.fetch('js/data/home/wishlist.json',header).then(function(response) {
+            service.fetch(wishlist_url,header).then(function(response) {
                 self.wishlist(new oj.ArrayTableDataSource(response['wishes']));
             });
             // End - Dream/Wish List Display Content
 
             // Start - Calendar Display Content
             self.calendarlist=ko.observable();
-            service.fetch('js/data/home/calendar.json',header).then(function(response) {
+            service.fetch(calendar_url,header).then(function(response) {
                 self.calendarlist(new oj.ArrayTableDataSource(response['calendar']));
             });
 
@@ -50,28 +60,28 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
 
             // Start - My Money Display Content
             self.moneylist=ko.observable();
-            service.fetch('js/data/home/mymoney.json',header).then(function(response) {
+            service.fetch(mymoney_url,header).then(function(response) {
                 self.moneylist(new oj.ArrayTableDataSource(response["money"]));
             });
             // End - My Money Display Content
 
             // Start - Portfolio Display Content
             self.portfolio=ko.observable();
-            service.fetch('js/data/home/portfolio.json',header).then(function(response) {
+            service.fetch(portfolio_url,header).then(function(response) {
                 self.portfolio(new oj.ArrayTableDataSource(response["portfolio"]));
             });
             // End - Portfolio Display Content
 
             // Start - Activity Display Content
             self.activitylist=ko.observable();
-            service.fetch('js/data/home/money_activity.json',header).then(function(response) {
+            service.fetch(money_activity_url,header).then(function(response) {
                 self.activitylist(new oj.ArrayTableDataSource(response["moneyactivity"]));
             });
             // End - Activity Display Content
 
             //Start of Time view
             self.timeviews = ko.observableArray([]);
-            service.fetch('js/data/home/chart/chart_timeview.json',header).then(function(response){
+            service.fetch(chart_timeview_url,header).then(function(response){
                 self.timeviews(response["timeview"]);
             });
             self.selecttimeview = ko.observableArray([]);
@@ -80,19 +90,19 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
                 if(data && data.value) {
                     switch(data.value[0]) {
                         case 5:
-                            fetchChartData(service, 'js/data/home/chart/chart5.json', header);
+                            fetchChartData(service, chart5_url, header);
                             break;
                         case 10:
-                            fetchChartData(service, 'js/data/home/chart/chart10.json', header);
+                            fetchChartData(service, chart10_url, header);
                             break;
                         case 15:
-                            fetchChartData(service, 'js/data/home/chart/chart15.json', header);
+                            fetchChartData(service, chart15_url, header);
                             break;
                         case 20:
-                            fetchChartData(service, 'js/data/home/chart/chart20.json', header);
+                            fetchChartData(service, chart20_url, header);
                             break;
                         default:
-                            fetchChartData(service, 'js/data/home/chart/chart1.json', header);
+                            fetchChartData(service, chart1_url, header);
                             break;
                     }                    
                 }                
@@ -102,21 +112,22 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
             // Start - Chart Data Display Contsent
             self.seriesValues = ko.observableArray();
             self.groupValues = ko.observableArray();
-            fetchChartData(service, 'js/data/home/chart/chart1.json', header);
+            fetchChartData(service, chart1_url, header);
 
-            self.yAxisConverter = ko.observable(numberconvertor.currencyConvertorformat());
-            self.xAxisConverter = ko.observable(dateconvertor.convertorMMMYY());
+            self.yAxisConverter = ko.observable(numberconvertor.currencyConverter());
+            self.xAxisConverter = ko.observable(dateconvertor.converterMMMYY());
             // End - Chart Display Contents
 
             // Converters
             self.formatAmount = function(data){
-                return numberconvertor.formatAmount(data);
+                return numberconvertor.roundoffToSeconddecimal(data);
             };
 
             self.formatDate = function(data){
                 return dateconvertor.formatToMMDDYYYY(data);
             };
 
+            // Click event
             self.onEnterLoadDecision = function (data, event) {
                 history.pushState(null, '', '?root=decision&id='+data.userid); 
                 //oj.Router.rootInstance.go('decision/'+data.userid);

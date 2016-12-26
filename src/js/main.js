@@ -49,19 +49,21 @@ requirejs.config(
 require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout','ojs/ojmodule','ojs/ojrouter'],
   function (oj, ko, $) { // this callback gets executed when all required modules are loaded
 
+    // Router Instance and Configuration
     var router = oj.Router.rootInstance;
     router.configure({
       'home': {value:'home', isDefault: true},
       'decision': {value:'decision',
           exit: function () {
-              var childRouter = router.currentState().value;
-              childRouter.dispose();
+            var childRouter = router.currentState().value;
+            childRouter.dispose();
           },
           enter: function () {
-              var childRouter = router.createChildRouter('decision','home');
-              router.currentState().value = childRouter;
+            var childRouter = router.createChildRouter('decision','home');
+            router.currentState().value = childRouter;
           }
-      }
+      },
+      'financialplan': {value:'financialplan'}
     });
 
     function MainViewModel() {
@@ -80,12 +82,11 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout','ojs/ojmodule','oj
 
     oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
     oj.Router.sync().then(
-        function() {
-          ko.applyBindings(new MainViewModel(), document.getElementById('globalBody'));
-          $('#globalBody').show();
-        },
-        function (error) {
-          oj.Logger.error('Error in root start: ' + error.message);
-      });
-
+      function() {
+        ko.applyBindings(new MainViewModel(), document.getElementById('globalBody'));
+        $('#globalBody').show();
+      },
+      function (error) {
+        oj.Logger.error('Error in root start: ' + error.message);
+    });
 });

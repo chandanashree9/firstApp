@@ -1,0 +1,139 @@
+<div id="financialplanview-container" class="oj-flex-column">
+    <div class="oj-flex-item">
+        <div class="oj-flex">
+            <div class="oj-flex-item">
+                <h2 class="financialplan">Financial Plan View</h2>
+            </div>
+             <div class="oj-flex-bar-end">
+                <button id= "button" class="btnstyle" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Get Advice' }"></button>
+                <button id= "button" class="btnstyle oj-padding" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Conversations'}"></button>
+            </div>
+        </div>
+    </div>
+    <div class="oj-flex-item">
+        <div class="oj-flex">
+            <div class="oj-flex-item oj-sm-12 oj-md-4 oj-lg-3 oj-xl-3" style="border-right:1px solid grey;">
+                <div class="oj-flex-column oj-flex-items-pad">
+                    <div class="oj-flex-item oj-padding">
+                        <button id= "desirebtn" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Desires' }"></button>
+                        <button id= "wishesbtn" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Wishes' }"></button>
+                        <button id= "actionsbtn" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Actions' }"></button>
+                    </div>
+                     <div class="oj-flex-item oj-padding">
+                        <div class="oj-flex">
+                            <div class="oj-flex-item">
+                                <!--<span><i class="fa fa-plus-circle" aria-hidden="true"></i>Add a Desire</span>-->
+                                <div style="display:none" id="popup2"
+                                    data-bind="ojComponent:{component: 'ojPopup',modality: 'modal', rootAttributes: { style: 'width: 40vw; height: 45vh; border-radius:10px; background-color:#ffffff'}}">
+                                    <span>Add a Desire</span>
+                                </div>
+                                <i class="fa fa-plus-circle oj-padding" aria-hidden="true" style="color:#9B9B9B"></i> 
+                                <a href="#" id="btnfinancial" data-bind="click:addDesire">Add a Desire</a>                            
+                            </div>
+                            <div class="oj-flex-item oj-padding">
+                                <span>View Options</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="oj-flex-item oj-padding">
+                        <!-- ko foreach: impactdesires -->
+                        <div data-bind="attr: {'id':id }, ojComponent: {component: 'ojCollapsible', expand: optionChangeHandler}">
+                            <span class="oj-header-border" data-bind="text: description"></span>
+                            <div class="oj-panel">
+                                <div class="oj-flex-column">
+                                    <div class="oj-flex-item">
+                                        <label>Description:</label><span data-bind="text:description"></span>
+                                    </div>
+                                    <div class="oj-flex-item">
+                                        <label>Magnitude:</label><span data-bind="text:magnitude"></span> 
+                                    </div>
+                                     <div class="oj-flex-item">
+                                        <label>Priority:</label><span data-bind="text:priority"></span>
+                                    </div>
+                                    <div class="oj-flex-item">
+                                        <label>Expense Type:</label><span data-bind="text:expense.type"></span>
+                                    </div>
+                                    <div class="oj-flex-item">
+                                        <label>Expense Date & Values:</label><span data-bind="text:expense.date"></span><span data-bind="text:expense.amount"></span>
+                                    </div>
+                                    <div class="oj-flex-item">
+                                        <label>Status:</label><span data-bind="text:status"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+            <div class="oj-flex-item oj-sm-12 oj-md-8 oj-lg-9 oj-xl-9 oj-padding">
+                <div class="oj-flex-column oj-flex-items-pad">
+                    <div class="oj-flex-item">
+                        <div class="oj-flex">
+                            <div class="oj-flex-item oj-sm-12 oj-md-4 oj-lg-3 oj-xl-3">
+                                <div class="oj-panel financialplanpanel">
+                                    <div class="oj-flex-column" style="text-align: center;">
+                                        <div class="oj-flex-item oj-padding">
+                                            <h3>Score: +B</h3>
+                                        </div>
+                                        <div class="oj-flex-item oj-padding">
+                                            <span>Desired Initiated</span><br>
+                                             <strong>5</strong>
+                                        </div>
+                                        <div class="oj-flex-item">
+                                            <span>Decision Made</span><br>
+                                            <strong>1</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="oj-flex-item oj-sm-12 oj-md-8 oj-lg-9 oj-xl-9">
+                                <div id="lineChart" data-bind="ojComponent: {
+                                    component: 'ojChart',
+                                    type: 'line',
+                                    series: seriesValues,
+                                    groups: groupValues,
+                                    animationOnDisplay: 'auto',
+                                    animationOnDataChange: 'auto',
+                                    orientation: 'vertical',
+                                    hoverBehavior: 'dim',
+                                    legend: {position: 'top'},
+                                    hideAndShowBehavior:'withRescale',
+                                    xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'red'}},
+                                    yAxis: {tickLabel: {converter: ko.toJS(yAxisConverter)}}
+                                    }" style="width:100%;height:250px;float:left;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oj-flex-item">
+                        <div class="oj-flex-column oj-flex-items-pad">
+                            <div class="oj-flex-item oj-header-border">
+                                <span>Plan View</span>
+                            </div>
+                            <div class="oj-flex-item">
+                                <div id="eventDrops" data-bind="ojComponent: {
+                                    component: 'ojChart', 
+                                    type: 'line',
+                                    series: planviews,
+                                    selectionMode: 'single',
+                                    timeAxisType: 'mixedFrequency',
+                                    legend: {rendered: 'off'},
+                                    yAxis: {min: -0.5, max: 5.5, majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName}},
+                                    styleDefaults: {lineType: 'none', dataItemGaps: '0%', markerShape: 'circle', markerSize: 7},
+                                    valueFormats: [{type: 'series', tooltipLabel: 'Event'}, {type: 'value', tooltipDisplay: 'off'}]
+                                }"
+                                style="width:100%;height:250px">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+      

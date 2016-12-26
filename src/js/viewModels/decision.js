@@ -5,6 +5,16 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
     'ojs/ojtable','ojs/ojtimeutils', 'ojs/ojtimeaxis'],
     function(oj, ko, $, service, dateconvertor, numberconvertor)
     {   
+        var header = {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With",
+            "Access-Control-Allow-Methods":"GET, PUT, POST"
+        };
+
+        var decision_url = 'js/data/decision/decision.json';
+        var cancelsubscription = 'js/data/decision/cancelsubscription.json';
+        var impactdesires = 'js/data/decision/impactdesires.json';
+
     	function DecisionViewModel() {
     		self.title=ko.observable();
             self.description=ko.observable();
@@ -12,7 +22,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
             self.alternatives=ko.observable();
             var decisionObj = {};
 
-            service.fetch('js/data/decision/decision1.json',{}).then(function(response) {
+            service.fetch(decision_url,header).then(function(response) {
                 decisionObj =response["decision"];
                 self.title(decisionObj.title);
                 self.description(decisionObj.description);
@@ -22,24 +32,33 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
 
             self.selectedAlternatives = ko.observable(false);
             self.subscription = ko.observable(false);
+            self.projectStartDate = ko.observable(0);
+            self.projectEndDate = ko.observable(0);
+            self.desires = ko.observable(false);
 
-            self.loadDesireImpact = function(data){
-                service.fetch('js/data/decision/cancelsubscription.json',{}).then(function(response) {
-                    self.subscription(response);
-               });
-            }
+            self.loadDesireImpact = function(data, event){
+                if(data == 1) {
+                    service.fetch(cancelsubscription, header).then(function(response) {
+                        self.subscription(response);
+                    });
 
-            self.projectStartDate = new Date("Jan 1, 2015").getTime();
-            self.projectEndDate = new Date("Dec 31, 2020").getTime();
-
-            self.getImapctChart = function(data){
-                return new oj.ArrayTableDataSource(data.impacts,{idAttribute: 'id'});
+                    service.fetch(impactdesires, header).then(function(response) {
+                        self.projectStartDate(response['startdate']);
+                        self.projectEndDate(response['enddate']);
+                        self.desires(new oj.ArrayTableDataSource(response['desires'],{idAttribute: 'id'}));
+                    });
+                }
             }
 
             self.formatRoundoffToOnedecimal = function(data){
-            return numberconvertor.formatRoundoffToOnedecimal(data);
+                return numberconvertor.roundoffToFirstdecimal(data);
             };
 
+            self.displayDesiresChartlabel = function(event){
+               if(event.row){
+                    return "<ul><li>"+event.row.type +" : "+event.row.description+"</li></ul>";
+               }                
+            }
 
             self.timeAxisWidth = ko.observable(0);      
             var dir = document.documentElement.getAttribute("dir");
@@ -60,11 +79,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
             };
 
             self.getPosition = function(taskStart) {
-                return oj.TimeUtils.getPosition(taskStart, self.projectStartDate, self.projectEndDate, self.timeAxisWidth());
+                return oj.TimeUtils.getPosition(taskStart, self.projectStartDate(), self.projectEndDate(), self.timeAxisWidth());
             };
 
             self.getLength = function(taskStart, taskEnd) {
-                return oj.TimeUtils.getLength(taskStart, taskEnd, self.projectStartDate, self.projectEndDate, self.timeAxisWidth());
+                return oj.TimeUtils.getLength(taskStart, taskEnd, self.projectStartDate(), self.projectEndDate(), self.timeAxisWidth());
             };
 
             self.getAriaLabel = function(rowData) {
@@ -90,7 +109,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
                 {
                     self.imactDetails(true);
                     var rowIndex = data['value']['rowIndex'];
-                    var obj = self.subscription._latestValue.impacts[rowIndex];
+                    var obj = self.desires._latestValue.data[rowIndex];
                     self.impactDetailDesc(obj.description);
                     self.impactDetailMagnitude(obj.magnitude);
                     self.impactDetailPriority(obj.priority);

@@ -1,0 +1,99 @@
+{
+   "startdate":1451019600000,
+   "enddate":1578632400000,
+   "desires":[
+      {
+         "id":"d1",
+         "start":1451624400000,
+         "end":1483246800000,
+         "progress":1483246800000,
+         "type":"Entertainment",
+         "description":"Holiday Concert",
+         "magnitude":30.00,
+         "priority":"medium",
+         "status":"Completed",
+         "expense":{
+            "type":"Type 1",
+            "amount":100.0,
+            "date":"2016-02-01"
+         },
+         "color":"red"
+      },
+      {
+         "id":"d2",
+         "start":1483246800000,
+         "end":1514782800000,
+         "progress":1514782800000,
+         "type":"House Expense",
+         "description":"Replace kitchen counters",
+         "startdate":"2017-01-01",
+         "enddate":"2018-01-01",
+         "magnitude":45.50,
+         "priority":"low",
+         "status":"Pending",
+         "expense":{
+            "type":"Type 2",
+            "amount":300.0,
+            "date":"2017-02-01"
+         },
+         "color":"green"
+      },
+      {
+         "id":"d3",
+         "start":1483246800000,
+         "end":1546405200000,
+         "progress":1546405200000,
+         "type":"Work Expense",
+         "description":"Upgrade PC",
+         "startdate":"2016-01-01",
+         "enddate":"2018-01-01",
+         "magnitude":60.05,
+         "priority":"high",
+         "status":"Initiated",
+         "expense":{
+            "type":"Type 1",
+            "amount":1000.0,
+            "date":"2017-05-01"
+         },
+         "color":"pink"
+      },
+      {
+         "id":"d4",
+         "start":1546405200000,
+         "end":1577941200000,
+         "progress":1577941200000,
+         "type":"Family Expense",
+         "description":"Car for Jill",
+         "startdate":"2018-01-01",
+         "enddate":"2019-01-01",
+         "magnitude":150.15,
+         "priority":"high",
+         "status":"Initiated",
+         "expense":{
+            "type":"Type 1",
+            "amount":400.0,
+            "date":"2018-03-01"
+         },
+         "color":"violet"
+      },
+      {
+         "id":"d5",
+         "start":1483333200000,
+         "end":1577941200000,
+         "progress":1577941200000,
+         "type":"Vacation",
+         "description":"Christmas Cruise 20",
+         "startdate":"2015-01-01",
+         "enddate":"2017-01-01",
+         "magnitude":201.10,
+         "priority":"high",
+         "status":"Initiated",
+         "expense":{
+            "type":"Type 1",
+            "amount":800.0,
+            "date":"2017-08-01"
+         },
+         "color":"orange"
+      }
+   ]
+}

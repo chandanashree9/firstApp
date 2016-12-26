@@ -48,7 +48,7 @@
             </div>
             <script type="text/html" id="alternatives_template">
               <li data-bind="attr: {id: id}, style: { color : color }">
-                <span data-bind="text: name, click: loadDesireImpact(id)"></span>
+                <span data-bind="text: name, click: loadDesireImpact(id, event)"></span>
                   <div class="oj-flex" style="padding:10px">
                     <i data-bind="css:icon" aria-hidden="true"></i>
                   </div>
@@ -100,14 +100,13 @@
                         <div class="oj-flex-item">
                           <table id="table" summary="Task List" aria-label="Task List"
                               data-bind="ojComponent: {component: 'ojTable',
-                                data: getImapctChart(subscription._latestValue),
+                                data: desires,
                                 ready: monitorAxisWidth,
                                 columns: [
-                                  {headerText: '', field: 'id', style:'width:20%'},
-                                  {headerText: '', field: 'name', style:'width:20%'},
-                                  {headerTemplate: 'timeaxisTmpl', template: 'taskbarTmpl', style:'width:70%'}],
+                                  {renderer: displayDesiresChartlabel, style:'width:40%'},
+                                  {headerTemplate: 'timeaxisTmpl', template: 'taskbarTmpl'}],
                                   selectionMode: {row: 'single', column: 'single'},
-                                  columnsDefault: {sortable: 'none'},
+                                  columnsDefault: {sortable: 'none'}, 
                                   optionChange:displayDetails
                                   }">
                           </table>
@@ -193,7 +192,7 @@
             attr: { 'aria-label': getAriaLabel($data) }">
       </div>
       <div class="demo-task-item demo-progress-bar" role="img"
-              data-bind="style: { width: getLength($data.start, $data.progress) + 'px' }">
+              data-bind="style: { 'background-color': $data.color, width: getLength($data.start, $data.progress) + 'px' }">
       </div>
       <div class="demo-task-item demo-task-label" 
           data-bind="style: { left: isRTL ? 0 : getLength($data.start, $data.end) + 'px' ,
