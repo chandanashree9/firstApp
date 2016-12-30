@@ -38,26 +38,26 @@
                      <div class="oj-flex-item oj-padding">
                         <!-- ko foreach: impactdesires -->
                         <div data-bind="attr: {'id':id }, ojComponent: {component: 'ojCollapsible', expand: optionChangeHandler}">
-                            <span class="oj-header-border" data-bind="text: description"></span>
+                            <span class="oj-header-border" data-bind="text: title"></span>
                             <div class="oj-panel">
                                 <div class="oj-flex-column">
                                     <div class="oj-flex-item">
                                         <label>Description:</label><span data-bind="text:description"></span>
                                     </div>
                                     <div class="oj-flex-item">
-                                        <label>Magnitude:</label><span data-bind="text:magnitude"></span> 
+                                        <label>Magnitude:</label><span data-bind="text:target_value"></span> 
                                     </div>
                                      <div class="oj-flex-item">
-                                        <label>Priority:</label><span data-bind="text:priority"></span>
+                                        <label>Priority:</label><span data-bind="text:desire_priority"></span>
                                     </div>
                                     <div class="oj-flex-item">
-                                        <label>Expense Type:</label><span data-bind="text:expense.type"></span>
+                                        <label>Expense Type:</label><span data-bind="text:expenseType"></span>
                                     </div>
                                     <div class="oj-flex-item">
-                                        <label>Expense Date & Values:</label><span data-bind="text:expense.date"></span><span data-bind="text:expense.amount"></span>
+                                        <label>Expense Date & Values:</label><span data-bind="text:expense_Date"></span><span data-bind="text:expense_value"></span>
                                     </div>
                                     <div class="oj-flex-item">
-                                        <label>Status:</label><span data-bind="text:status"></span>
+                                        <label>Status:</label><span data-bind="text:active_status"></span>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,8 @@
                                     hoverBehavior: 'dim',
                                     legend: {position: 'top'},
                                     hideAndShowBehavior:'withRescale',
-                                    xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'red'}},
+                                    dataCursor: 'on', dataCursorBehavior: 'snap', dataCursorPosition: dataCursorPositionValue,
+                                    xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'grey', lineStyle:'dashed', rendered:'on'}},
                                     yAxis: {tickLabel: {converter: ko.toJS(yAxisConverter)}}
                                     }" style="width:100%;height:250px;float:left;">
                                 </div>
@@ -119,12 +120,31 @@
                                     selectionMode: 'single',
                                     timeAxisType: 'mixedFrequency',
                                     legend: {rendered: 'off'},
-                                    yAxis: {min: -0.5, max: 5.5, majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName}},
-                                    styleDefaults: {lineType: 'none', dataItemGaps: '0%', markerShape: 'circle', markerSize: 7},
+                                    dataCursor: 'on', dataCursorBehavior: 'snap', dataCursorPosition: dataCursorPositionValue,
+                                    yAxis: {majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName}},
+                                     xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'grey', lineStyle:'dashed', rendered:'on'}},
+                                    styleDefaults: {lineType: 'none', dataItemGaps: '0%', markerShape: 'circle'},
                                     valueFormats: [{type: 'series', tooltipLabel: 'Event'}, {type: 'value', tooltipDisplay: 'off'}]
                                 }"
-                                style="width:100%;height:250px">
+                                    style="width:100%;">
+                                </div>
                             </div>
+                            <div class="oj-flex-item">
+                                <table id="table" 
+                                    data-bind="ojComponent: {component: 'ojTable', 
+                                        data: accountbalance, 
+                                        columns: [{
+                                           field: 'type', 
+                                           style: 'width: 30%'},
+                                           { field: 'balance1', 
+                                           style: 'width: 25%'},
+                                           { field: 'balance2', 
+                                           style: 'width: 25%'},
+                                           { field: 'balance3', 
+                                           style: 'width: 20%'}],
+                                        columnsDefault: {sortable: 'none'}, 
+                                        rootAttributes: {'style':'width: 100%; height:100%;'},horizontalGridVisible:'disabled'}">
+                                </table>
                             </div>
                         </div>
                     </div>
