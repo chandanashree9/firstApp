@@ -31,7 +31,11 @@
                                 <a href="#" id="btnfinancial" data-bind="click:addDesire">Add a Desire</a>                            
                             </div>
                             <div class="oj-flex-item oj-padding">
-                                <span>View Options</span>
+                                <select id="select" data-bind="ojComponent: {component: 'ojSelect',placeholder:'View Options',optionChange: launchImpactDesires}">
+                                  <!-- ko foreach: desireViewList -->
+                                    <option data-bind="value:value, text:label"></option>
+                                  <!-- /ko -->
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -130,21 +134,23 @@
                                 </div>
                             </div>
                             <div class="oj-flex-item">
-                                <table id="table" 
-                                    data-bind="ojComponent: {component: 'ojTable', 
-                                        data: accountbalance, 
-                                        columns: [{
-                                           field: 'type', 
-                                           style: 'width: 30%'},
-                                           { field: 'balance1', 
-                                           style: 'width: 25%'},
-                                           { field: 'balance2', 
-                                           style: 'width: 25%'},
-                                           { field: 'balance3', 
-                                           style: 'width: 20%'}],
-                                        columnsDefault: {sortable: 'none'}, 
-                                        rootAttributes: {'style':'width: 100%; height:100%;'},horizontalGridVisible:'disabled'}">
-                                </table>
+                                <div data-bind="ojComponent: {component: 'ojCollapsible'}">
+                                    <span data-bind="text: accountbalance"></span>                                 
+                                    <table>
+                                        <tr>
+                                           <td></td>
+                                        </tr>
+                                        <!-- ko foreach: accounts -->
+                                            <tr>
+                                                <td data-bind="text: type"></td>
+                                                <!-- ko foreach: balance -->
+                                                    <td data-bind="text: $data"></td>
+                                                <!-- /ko -->
+                                            </tr>
+                                        <!-- /ko --> 
+                                    </table>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

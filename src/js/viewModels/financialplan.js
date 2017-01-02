@@ -1,9 +1,9 @@
 'use strict';
 
-define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','viewModels/convertors/number',
-    'ojs/ojknockout','ojs/ojmodule', 'ojs/ojbutton', 'ojs/ojcollapsible', 'ojs/ojchart','ojs/ojpopup',
-    'promise', 'ojs/ojtable', 'ojs/ojarraytabledatasource'],
-function(oj, ko, $, service, numberconvertor) {   
+define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','viewModels/convertors/number', 
+    'viewModels/service/financialService','ojs/ojknockout','ojs/ojmodule', 'ojs/ojbutton', 'ojs/ojcollapsible', 'ojs/ojchart','ojs/ojpopup',
+    'promise','ojs/ojselectcombobox'],
+function(oj, ko, $, service, numberconvertor, financialservice) {   
 
     var header = {
         "Access-Control-Allow-Origin": "*",
@@ -19,6 +19,16 @@ function(oj, ko, $, service, numberconvertor) {
         	console.log(event.currentTarget.id);
         	return true;
 		}
+
+        // Start - ViewOptions 
+        self.desireViewList = ko.observableArray([
+          {value: 'ascpriority', label: 'Ascending Priority'},
+          {value: 'descpriority', label: 'Descending Priority'},
+          {value: 'asctimeline', label: 'Ascending Timeline'},
+          {value: 'desctimeline', label: 'Descending Timeline'},
+          {value: 'ascprobability', label: 'Ascending Probability'}
+        ]);
+        //End
 
         // Start - Impacts Desires
         self.planviews = ko.observableArray([]);
@@ -37,6 +47,30 @@ function(oj, ko, $, service, numberconvertor) {
             var planviewlist = computePlanView(desireslist,selecteddesireId, planViewNames);
             self.planviews(planviewlist);
         });
+
+        self.launchImpactDesires = function(event,data){
+            if(data && data.value) {
+                var result = [];
+                switch(data.value[0]) {
+                    case "ascpriority":
+                        result = self.impactdesires._latestValue.sort(financialservice.priorityAsc); 
+                        break;
+                    case "descpriority":
+                        result = self.impactdesires._latestValue.sort(financialservice.priorityDesc);
+                        break;
+                    case "asctimeline":
+                        result = self.impactdesires._latestValue.sort(financialservice.timelineAsc);
+                        break;
+                    case "desctimeline":
+                        result = self.impactdesires._latestValue.sort(financialservice.timelineDesc);
+                        break;
+                    default:
+                        result = self.impactdesires._latestValue.sort(financialservice.priorityDesc);
+                        break;
+                } 
+                self.impactdesires(result);
+            }                
+        }
         // End - Impacts Desires
 
         // Start - Chart Data Display Contsent
@@ -62,8 +96,26 @@ function(oj, ko, $, service, numberconvertor) {
         }
 
         self.accountbalance = ko.observable();
+        self.accounts = ko.observableArray();
         service.fetch(balance_url,header).then(function(response) {
-            self.accountbalance(new oj.ArrayTableDataSource(response));
+            var accountlist = response;
+            var acctbal = {};
+            if(accountlist && accountlist.length > 0) {
+                var b = [];                
+                for(var i =0; i < accountlist.length; i++) {
+                    var account = accountlist[i];
+                    var cnt = 0;
+                    if(account.balance) {
+                        account.balance.forEach(function(data) {
+                            b[cnt] = (b[cnt]) ? b[cnt] + data : data;
+                            cnt++;
+                        });
+                    }
+                }
+                acctbal = {"type":"Account Balances","balance" : b };
+            }
+            self.accountbalance(acctbal);
+            self.accounts(response);
         });
 
         // Model window

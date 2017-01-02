@@ -1,30 +1,14 @@
 [
 	{
-		"type": "Account Balances",
-		"balance1": 14000.0,
-		"balance2": 6000.0, 
-		"balance3": 10000.0, 
-		"balance4": 20000.0
-	},
-	{
 		"type": "Bank Account X",
-		"balance1": 10000.0,
-		"balance2": 2000.0, 
-		"balance3": 6000.0, 
-		"balance4": 15000.0
+		"balance": [10000.0, 2000.0, 6000.0, 15000.0]
 	}, 
 	{
 		"type": "Putnam 401 K",
-		"balance1": 3000.0,
-		"balance2": 1000.0, 
-		"balance3": 2000.0, 
-		"balance4": 4000.0
+		"balance": [3000.0, 1000.0, 2000.0, 4000.0]
 	}, 
 	{
 		"type": "Visa",
-		"balance1": 1000.0,
-		"balance2": 3000.0, 
-		"balance3": 2000.0, 
-		"balance4": 10000.0
+		"balance": [1000.0, 3000.0, 2000.0, 10000.0]
 	}
 ]
