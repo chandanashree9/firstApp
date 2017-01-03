@@ -42,7 +42,7 @@
                      <div class="oj-flex-item oj-padding">
                         <!-- ko foreach: impactdesires -->
                         <div data-bind="attr: {'id':id }, ojComponent: {component: 'ojCollapsible', expand: optionChangeHandler}">
-                            <span class="oj-header-border" data-bind="text: title"></span>
+                            <span class="oj-header-border" data-bind="text: title, style: {color:probabilityColor(probability)}"></span>
                             <div class="oj-panel">
                                 <div class="oj-flex-column">
                                     <div class="oj-flex-item">
@@ -125,8 +125,8 @@
                                     timeAxisType: 'mixedFrequency',
                                     legend: {rendered: 'off'},
                                     dataCursor: 'on', dataCursorBehavior: 'snap', dataCursorPosition: dataCursorPositionValue,
-                                    yAxis: {majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName}},
-                                     xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'grey', lineStyle:'dashed', rendered:'on'}},
+                                    yAxis: {majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName,style:{color: probabilityColor($data)}}},
+                                    xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'grey', lineStyle:'dashed', rendered:'on'}},
                                     styleDefaults: {lineType: 'none', dataItemGaps: '0%', markerShape: 'circle'},
                                     valueFormats: [{type: 'series', tooltipLabel: 'Event'}, {type: 'value', tooltipDisplay: 'off'}]
                                 }"
@@ -134,23 +134,28 @@
                                 </div>
                             </div>
                             <div class="oj-flex-item">
-                                <div data-bind="ojComponent: {component: 'ojCollapsible'}">
-                                    <span data-bind="text: accountbalance"></span>                                 
-                                    <table>
-                                        <tr>
-                                           <td></td>
-                                        </tr>
-                                        <!-- ko foreach: accounts -->
-                                            <tr>
-                                                <td data-bind="text: type"></td>
-                                                <!-- ko foreach: balance -->
-                                                    <td data-bind="text: $data"></td>
-                                                <!-- /ko -->
-                                            </tr>
-                                        <!-- /ko --> 
-                                    </table>
-                                    </p>
-                                </div>
+                                <table id="accountbalance-table" summary="Task List" aria-label="Tasks Table"
+                                    data-bind="ojComponent: {
+                                        component: 'ojTable', 
+                                        data: accountbalance, 
+                                        rowTemplate: 'bal_row_template', 
+                                        columns: balanceColumn,
+                                        rootAttributes: {style:'width:100%'},
+                                        verticalGridVisible:'enabled'
+                                    }">
+                                </table>
+                            </div>
+                            <div class="oj-flex-item">
+                                <table id="budget-table" summary="Task List" aria-label="Tasks Table"
+                                    data-bind="ojComponent: {
+                                        component: 'ojTable', 
+                                        data: budgets, 
+                                        rowTemplate: 'bal_row_template', 
+                                        columns: budgetColumn,
+                                        rootAttributes: {style:'width:100%'},
+                                        verticalGridVisible:'enabled'
+                                    }">
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -160,6 +165,25 @@
     </div>
 </div>
 
+<script type="text/html" id="bal_row_template">
+    <tr>
+        <td style="width:30%">
+            <div data-bind="ojComponent: {component: 'ojRowExpander', context: $rowContext}"></div>
+            <span data-bind="text: type"></span>
+        </td>
+        <td colspan='4' style="width:70%">
+            <table id='account-data' style="width:100%">
+                <tr>
+                    <!-- ko foreach: $data.balance -->
+                        <td style="width:25%">
+                            <span data-bind="text: currencyformater($data)"></span>
+                        </td>
+                    <!-- /ko -->
+                </tr>
+            </table>
+        </td>
+    </tr>
+</script>
 
 
       

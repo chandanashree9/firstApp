@@ -10,6 +10,11 @@ define(['ojs/ojcore','ojs/ojvalidation'],
             return converterFactory.createConverter(option);
         }
 
+        function currencyformater(data){
+            var option = {style: 'currency', currency: 'USD', decimalFormat:'short', maximumFractionDigits:2};
+            return converterFactory.createConverter(option).format(data); 
+        }
+
         function roundoffToSeconddecimal(data) {
             var option = { maximumFractionDigits : 2, minimumFractionDigits : 2,  minimumIntegerDigits : 2, style : "decimal", useGrouping : true };
             return converterFactory.createConverter(option).format(data);            
@@ -22,6 +27,7 @@ define(['ojs/ojcore','ojs/ojvalidation'],
 
     return {
         currencyConverter:currencyConverter,
+        currencyformater:currencyformater,
         roundoffToSeconddecimal:roundoffToSeconddecimal,        
         roundoffToFirstdecimal:roundoffToFirstdecimal
     };

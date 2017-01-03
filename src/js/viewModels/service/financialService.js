@@ -54,11 +54,21 @@ function(){
         }
         return 0;
     } 
+
+    function probabilityAsc(obj1,obj2){
+        if(obj1.probability < obj2.probability){
+            return -1;
+        }else if (obj1.probability > obj2.probability) {
+            return 1;
+        }
+        return 0;
+    }
     
 	return {
 		priorityDesc : priorityDesc,
 		priorityAsc : priorityAsc,
 		timelineAsc : timelineAsc,
-    	timelineDesc : timelineDesc 
+    	timelineDesc : timelineDesc,
+        probabilityAsc : probabilityAsc
     };
 });

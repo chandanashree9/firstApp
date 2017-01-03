@@ -2,7 +2,7 @@
 
 define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','viewModels/convertors/number', 
     'viewModels/service/financialService','ojs/ojknockout','ojs/ojmodule', 'ojs/ojbutton', 'ojs/ojcollapsible', 'ojs/ojchart','ojs/ojpopup',
-    'promise','ojs/ojselectcombobox'],
+    'promise','ojs/ojselectcombobox','ojs/ojtable', 'ojs/ojrowexpander', 'ojs/ojflattenedtreedatagriddatasource', 'ojs/ojjsontreedatasource'],
 function(oj, ko, $, service, numberconvertor, financialservice) {   
 
     var header = {
@@ -13,6 +13,7 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
     var planview_url = 'js/data/financial/planview.json';
     var chart1 = 'js/data/home/chart/chart5.json';
     var balance_url = 'js/data/financial/accountbalance.json';
+    var budget_url = 'js/data/financial/budget.json';
 
 	function FinancialViewModel() {
 	    self.buttonClick = function(data, event){
@@ -40,7 +41,7 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
 
         self.impactdesires=ko.observableArray([]);
         service.fetch(planview_url,header).then(function(response) {
-            desireslist = response.sort(prioritySort);
+            desireslist = response.sort(financialservice.priorityDesc);
             self.impactdesires(desireslist);
 
             selecteddesireId = desireslist[0].id;
@@ -63,6 +64,9 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
                         break;
                     case "desctimeline":
                         result = self.impactdesires._latestValue.sort(financialservice.timelineDesc);
+                        break;
+                    case "ascprobability":
+                        result = self.impactdesires._latestValue.sort(financialservice.probabilityAsc);
                         break;
                     default:
                         result = self.impactdesires._latestValue.sort(financialservice.priorityDesc);
@@ -95,15 +99,19 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
             self.planviews(planviewlist);
         }
 
+        // Start - Account balance 
         self.accountbalance = ko.observable();
-        self.accounts = ko.observableArray();
+        self.balanceColumn = ko.observableArray([]);
         service.fetch(balance_url,header).then(function(response) {
-            var accountlist = response;
-            var acctbal = {};
-            if(accountlist && accountlist.length > 0) {
-                var b = [];                
-                for(var i =0; i < accountlist.length; i++) {
-                    var account = accountlist[i];
+            var accountlist = [];
+            var accounts = [];
+            var balcolumns = [];
+            var options = [];
+            if(response && response.length > 0) {
+                var b = [];  
+                balcolumns.push({'headerText': '', 'headerStyle': 'display:none'});              
+                for(var i =0; i < response.length; i++) {
+                    var account = response[i];
                     var cnt = 0;
                     if(account.balance) {
                         account.balance.forEach(function(data) {
@@ -111,12 +119,42 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
                             cnt++;
                         });
                     }
+                    balcolumns.push({'headerText': '', 'headerStyle': 'display:none'}); 
+                    accounts.push({'attr':account});
                 }
-                acctbal = {"type":"Account Balances","balance" : b };
+                accountlist.unshift({'attr':{'id':"acctbal",'type':"Account Balances",'balance' : b}, 'children': accounts});                
             }
-            self.accountbalance(acctbal);
-            self.accounts(response);
+
+            self.balanceColumn(balcolumns);
+            self.accountbalance(new oj.FlattenedTreeTableDataSource(
+                    new oj.FlattenedTreeDataSource(
+                        new oj.JsonTreeDataSource(accountlist), options)));
         });
+        // End - Account balance
+
+         // Start - Budget 
+        self.budgets = ko.observable();
+        self.budgetColumn = ko.observableArray([]);
+        service.fetch(budget_url,header).then(function(response) {
+            var budgetlist = [];
+            var budget = [];
+            var budgetcolumns = [];
+            var options = [];
+            if(response && response.length > 0) {
+                budgetcolumns.push({'headerText': '', 'headerStyle': 'display:none'});              
+                for(var i =0; i < response.length; i++) {
+                    budgetcolumns.push({'headerText': '', 'headerStyle': 'display:none'}); 
+                    budget.push({'attr':response[i]});
+                }
+                budgetlist.unshift({'attr':{'id':"budget",'type':"Budget"}, 'children': budget});                
+            }
+
+            self.budgetColumn(budgetcolumns);
+            self.budgets(new oj.FlattenedTreeTableDataSource(
+                    new oj.FlattenedTreeDataSource(
+                        new oj.JsonTreeDataSource(budgetlist), options)));
+        });
+        // End - Budget
 
         // Model window
         self.addDesire =function() {
@@ -124,9 +162,13 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
         };
 
         // Converters
-        self.formatAmount = function(data){
-            return numberconvertor.formatAmount(data);
+        self.currencyformater = function(data){
+            return numberconvertor.currencyformater(data);
         };
+
+        self.probabilityColor = function(d){
+            return computeProbabilityColor(d);
+        }
 	}
 
     function fetchChartData(service, chartlink, header){
@@ -140,15 +182,6 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
             ];
             self.seriesValues(data);
         });
-    }
-
-    function prioritySort(obj1, obj2) {
-        if (obj2.desire_priority < obj1.desire_priority) {
-           return -1;
-        }else if (obj2.desire_priority > obj1.desire_priority) {
-            return 1;
-        }        
-        return 0;
     }
 
     function computePlanView(desireslist, selectedDesireId, planViewNames){
@@ -206,6 +239,18 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
             }                
         }
         return planviewlist;
+    }
+
+    function computeProbabilityColor(data){
+        if(data >= 80 && data <= 100){
+            return 'green';
+        }else if(data >= 65 && data <= 79 ){
+            return 'blue';
+        }else if(data >= 50 && data <= 64){
+            return 'orange';
+        }else{
+            return 'red';
+        }
     }
 
     return FinancialViewModel;

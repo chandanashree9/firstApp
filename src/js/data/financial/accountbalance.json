@@ -1,13 +1,16 @@
 [
 	{
+		"id":"acctbal1",
 		"type": "Bank Account X",
 		"balance": [10000.0, 2000.0, 6000.0, 15000.0]
 	}, 
 	{
+		"id":"acctbal2",
 		"type": "Putnam 401 K",
 		"balance": [3000.0, 1000.0, 2000.0, 4000.0]
 	}, 
 	{
+		"id":"acctbal3",
 		"type": "Visa",
 		"balance": [1000.0, 3000.0, 2000.0, 10000.0]
 	}
