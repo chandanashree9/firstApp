@@ -1,0 +1,26 @@
+[  
+   {  
+      "date":"12/27/16",
+      "name":"Entertainment",
+      "description":"description",
+      "bank-description":"description",
+      "tags":"movie",
+      "amount":20.00
+   },
+   {  
+      "date":"12/26/16",
+      "name":"JimGrossIncome",
+      "description":"description",
+      "bank-description":"description",
+      "tags":"movie",
+      "amount":20.00
+   },
+   {  
+      "date":"12/24/16",
+      "name":"Sally-GrossIncome",
+      "description":"description",
+      "bank-description":"description",
+      "tags":"sallysIncome",
+      "amount":7000.00
+   }
+]

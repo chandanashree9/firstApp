@@ -63,7 +63,8 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout','ojs/ojmodule','oj
             router.currentState().value = childRouter;
           }
       },
-      'financialplan': {value:'financialplan'}
+      'financialplan': {value:'financialplan'},
+      'budget': {value:'budget'}
     });
 
     function MainViewModel() {

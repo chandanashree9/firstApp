@@ -1,0 +1,14 @@
+[
+	{
+		"type": "Visa",
+		"accountnumber":"2342",
+		"limit":2000.0,
+		"used":500.0
+	},
+	{
+		"type": "Mastercard",
+		"accountnumber":"1945",
+		"limit":5000.0,
+		"used":700.0
+	}
+]

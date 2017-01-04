@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Suntrust Bank",
+		"type":"Checking",
+		"accountnumber":"0776",
+		"amount":5000.0
+	},
+	{
+		"name": "BB&T",
+		"type":"Savings",
+		"accountnumber":"4422",
+		"amount":8000.0
+	}
+]

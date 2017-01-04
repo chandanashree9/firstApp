@@ -1,0 +1,184 @@
+<div id="budget-container" class="oj-flex-column">
+	<div class="oj-flex-item">
+		<div class="oj-flex">
+			<div class="oj-flex-item">
+				<h2 class="budget">Budget</h2>
+			</div>
+			<div class="oj-flex-item">
+				<h5>Financial Plan Version:</h5>
+			</div>
+			<div class="oj-flex-bar-end">
+				<h5 style="color:red;font-size: small">December 2016</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<h5 style="color:red;font-size: small">Month / year</h5>
+			</div>
+		</div>
+	</div>
+	<hr/>
+	<div class="oj-flex-item">
+		<div class="oj-flex">
+			<div class="oj-flex-item oj-sm-12 oj-md-4 oj-lg-3 oj-xl-3" style="border-right:1px solid grey;width:10%">
+				<div class="oj-flex-column oj-flex-items-pad">
+					<div class="oj-flex-item oj-padding">
+						<div style="display:none" id="popup2"
+							data-bind="ojComponent:{component: 'ojPopup',modality: 'modal', rootAttributes: { style: 'width: 40vw; height: 45vh; border-radius:10px; background-color:#ffffff'}}">
+							<span>Add an Account</span>
+						</div>
+						<i class="fa fa-plus-circle oj-padding" aria-hidden="true" style="color:#9B9B9B"></i> 
+						<a href="#" id="btnfinancial" data-bind="click:addbudget">Add an Account</a>                            
+					</div>
+					<div class="oj-flex-item oj-padding">
+						<h5 class="oj-header-border">Bank</h5>
+						<ul id="bankaccount-listview" aria-label="list using collection"
+							data-bind="ojComponent: {
+								component: 'ojListView', 
+								data: bankaccounts, 
+								item: {template: 'bankaccount_template'}, 
+								selectionMode: 'single', 
+								scrollPolicy: 'loadMoreOnScroll', 
+								scrollPolicyOptions: {fetchSize: 2}, 
+								rootAttributes: {style: 'height:120px;overflow-x:hidden;border-style:none'}}">
+						</ul>
+						
+						<h5 class="oj-header-border">Credit Card&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:small">Limit/Used</span></h5>
+						<ul id="creditcard-listview" aria-label="list using collection"
+							data-bind="ojComponent: {
+								component: 'ojListView', 
+								data: creditcard, 
+								item: {template: 'creditcard_template'}, 
+								selectionMode: 'single', 
+								scrollPolicy: 'loadMoreOnScroll', 
+								scrollPolicyOptions: {fetchSize: 2}, 
+								rootAttributes: {style: 'height:120px;overflow-x:hidden;border-style:none'}}">
+						</ul>
+					</div>
+					<div class="oj-flex-item">
+						<button class="btnbanking" data-bind="ojComponent: { component: 'ojButton',label: 'Banking'}"></button>
+					</div>
+				</div>
+			</div>
+			<div class="oj-flex-item oj-padding">
+				<div class="oj-flex-column oj-flex-items-pad">
+					<div class="oj-flex-item">
+						<div class="oj-flex-column oj-flex-items-pad">
+							<div class="oj-flex-item">
+								<h3>Overview</h3> <h5>December 2016</h5>
+							</div>
+							<div class="oj-flex-item">
+								<div class="oj-flex oj-flex-items-pad">
+									<div class="oj-flex-item">
+										<span>Cash Flow</span>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
+											<h5>- 200.00</h5>
+										</div>
+									</div>
+									<div class="oj-flex-item">
+										<span>Cash In</span>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
+											<h5>+ 500.00</h5>
+										</div>
+									</div>
+									<div class="oj-flex-item">
+										<span>Cash Out</span>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
+											<h5>- 700.00</h5>
+										</div>
+									</div>
+									<div class="oj-flex-item">
+										<span>Savings / Investment</span>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
+											<h5>+ 250.00</h5>
+										</div>
+									</div>
+									<div class="oj-flex-item">
+										<span>Spending</span>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
+											<h5>+ 450.00</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr/>
+					<div class="oj-flex-item">
+						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+							<h5 style="background-color:#34A0D4">Income</h5>
+						</div>
+						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+							<h5 style="background-color:#34A0D4">Save / Investments</h5>
+						</div>
+						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+							<h5 style="background-color:#34A0D4">Entertainment</h5>
+							<table id="budgetentires-table" summary="Budget Entries"
+							data-bind="ojComponent: {
+							component: 'ojTable', 
+							data: budgetentries, 
+							columnsDefault: {sortable: 'none'}, 
+							columns: [
+								{ headerText: 'Date', field: 'date'},
+								{ headerText: 'Budget Item', field: 'name'},
+								{ headerText: 'Description', field: 'description'},
+								{ headerText: 'Description(Bank)', field: 'bank-description'},
+								{ headerText: 'Tags', field: 'tags'},
+								{ headerText: 'Amount', field: 'amount'}],
+							rootAttributes: {style:'width:100%'}}">
+						</table>
+
+						</div>
+						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+							<h5 style="background-color:#34A0D4">Groceries</h5>
+						</div>
+						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+							<h5 style="background-color:#34A0D4">Travel</h5>
+						</div>
+					</div>
+					<hr/>
+					<div class="oj-flex-item">
+						<h3>Budget Entries</h3>
+						<table id="budgetentires-table" summary="Budget Entries"
+							data-bind="ojComponent: {
+							component: 'ojTable', 
+							data: budgetentries, 
+							columnsDefault: {sortable: 'none'}, 
+							columns: [
+								{ headerText: 'Date', field: 'date'},
+								{ headerText: 'Budget Item', field: 'name'},
+								{ headerText: 'Description', field: 'description'},
+								{ headerText: 'Description(Bank)', field: 'bank-description'},
+								{ headerText: 'Tags', field: 'tags'},
+								{ headerText: 'Amount', field: 'amount'}],
+							rootAttributes: {style:'width:100%'}}">
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/html" id="bankaccount_template">
+	<li>
+		<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+			<div class="oj-flex-item">
+				<span data-bind="text: name"></span>
+			</div>
+			<div class="oj-flex-item">
+				<span data-bind="text: type"></span> - <span data-bind="text: accountnumber"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="word-wrap: break-word" data-bind="text: currencyFormatter(amount)"></span>
+			</div>
+		</div>
+	</li>
+</script>
+
+<script type="text/html" id="creditcard_template">
+	<li>
+		<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+			<div class="oj-flex-item">
+				<span data-bind="text: type"></span>
+			</div>
+			<div class="oj-flex-item">
+				<span data-bind="text: accountnumber"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span data-bind="text: currencyFormatter(limit)"></span> / <span style="word-wrap: break-word" data-bind="text: currencyFormatter(used)"></span>
+			</div>
+		</div>
+	</li>
+</script>
