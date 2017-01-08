@@ -1,84 +1,205 @@
-{
-    "main-menus":[
-        {
-            "name": "My Plan",
-            "id":1,
-            "menus": [
-                {   "name": "Desires"    },
-                {   "name": "Decisions" },
-                {   "name": "Budget"  },
-                {   "name": "Assets"    },
-                {   "name": "Transactions"    },
-                {   "name": "Life", 
-                    "menus": [
-                        {   "name": "Health"  },
-                        {   "name": "Education"    },
-                        {   "name": "Work"    },
-                        {   "name": "Career"    },
-                        {   "name": "Personal Growth"    }
-                    ]
-                }
+[  
+   {  
+      "name":"My Plan",
+      "id":1,
+      "menus":[  
+         {  
+            "name":"Desires",
+            "value":""
+         },
+         {  
+            "name":"Decisions",
+            "value":"decision"
+         },
+         {  
+            "name":"Budget",
+            "menus":[  
+               {  
+                  "name":"Budget",
+                  "value":"budget"
+               },
+               {  
+                  "name":"Budget Tracking",
+                  "value":"budgettracking"
+               }
             ]
-        },
-        {
-            "name": "My World",
-            "id":2,
-            "menus": [
-                {   "name": "My Profile"    },
-                {   "name": "My Household" , "menus":
-                    [
-                        {   "name": "Invitees"  }
-                    ]
-                },
-                {   "name": "My Banking"  },
-                {   "name": "Bill Pay"    },
-                {   "name": "My Calendar"    },
-                {   "name": "My Advisors"    },
-                {   "name": "My Documents"    },
-                {   "name": "My Workrooms", "menus":
-                    [
-                        {   "name": "Estate Planner"  },
-                        {   "name": "Wealth Manager"    },
-                        {   "name": "Accountant"    },
-                        {   "name": "Financial Advice"    }
-                    ]
-                }
+         },
+         {  
+            "name":"Assets",
+            "value":""
+         },
+         {  
+            "name":"Transactions",
+            "value":""
+         },
+         {  
+            "name":"Life",
+            "menus":[  
+               {  
+                  "name":"Health",
+                  "value":""
+               },
+               {  
+                  "name":"Education",
+                  "value":""
+               },
+               {  
+                  "name":"Work",
+                  "value":""
+               },
+               {  
+                  "name":"Career",
+                  "value":""
+               },
+               {  
+                  "name":"Personal Growth",
+                  "value":""
+               }
             ]
-        },
-        {
-            "name": "Advisors",
-            "id":3,
-            "menus": [
-                {   "name": "Find an Advisor"    },
-                {   "name": "Invite Advisor"  }
+         }
+      ]
+   },
+   {  
+      "name":"My World",
+      "id":2,
+      "menus":[  
+         {  
+            "name":"My Profile",
+            "value":""
+         },
+         {  
+            "name":"My Household",
+            "menus":[  
+               {  
+                  "name":"Invitees",
+                  "value":""
+               }
             ]
-        },
-        {
-            "name": "knowledge Resources",
-            "id":4,
-            "menus": [
-                {   "name": "Earn"    },
-                {   "name": "Pay"  },
-                {   "name": "Receive"    },
-                {   "name": "Save"  },
-                {   "name": "Protect"    },
-                {   "name": "Invest"  },
-                {   "name": "Spend"    },
-                {   "name": "Borrow"  },
-                {   "name": "Share"    },
-                {   "name": "Gift"  },
-                {   "name": "Distribute"    },
-                {   "name": "Transfer"  }
+         },
+         {  
+            "name":"My Banking",
+            "value":""
+         },
+         {  
+            "name":"Bill Pay",
+            "value":""
+         },
+         {  
+            "name":"My Calendar",
+            "value":""
+         },
+         {  
+            "name":"My Advisors",
+            "value":""
+         },
+         {  
+            "name":"My Documents",
+            "value":""
+         },
+         {  
+            "name":"My Workrooms",
+            "menus":[  
+               {  
+                  "name":"Estate Planner",
+                  "value":""
+               },
+               {  
+                  "name":"Wealth Manager",
+                  "value":""
+               },
+               {  
+                  "name":"Accountant",
+                  "value":""
+               },
+               {  
+                  "name":"Financial Advice",
+                  "value":""
+               }
             ]
-        },
-        {
-            "name": "Customer",
-            "id":5,
-            "icon" : "fa fa-user",
-            "menus": [
-                {   "name": "User/App Settings"    },
-                {   "name": "User Profile"  }
-            ]
-        }
-    ]
-}
+         }
+      ]
+   },
+   {  
+      "name":"Advisors",
+      "id":3,
+      "menus":[  
+         {  
+            "name":"Find an Advisor",
+            "value":""
+         },
+         {  
+            "name":"Invite Advisor",
+            "value":""
+         }
+      ]
+   },
+   {  
+      "name":"knowledge Resources",
+      "id":4,
+      "menus":[  
+         {  
+            "name":"Earn",
+            "value":""
+         },
+         {  
+            "name":"Pay",
+            "value":""
+         },
+         {  
+            "name":"Receive",
+            "value":""
+         },
+         {  
+            "name":"Save",
+            "value":""
+         },
+         {  
+            "name":"Protect",
+            "value":""
+         },
+         {  
+            "name":"Invest",
+            "value":""
+         },
+         {  
+            "name":"Spend",
+            "value":""
+         },
+         {  
+            "name":"Borrow",
+            "value":""
+         },
+         {  
+            "name":"Share",
+            "value":""
+         },
+         {  
+            "name":"Gift",
+            "value":""
+         },
+         {  
+            "name":"Distribute",
+            "value":""
+         },
+         {  
+            "name":"Transfer",
+            "value":""
+         }
+      ]
+   },
+   {  
+      "name":"Customer",
+      "id":5,
+      "icon":"fa fa-user",
+      "menus":[  
+         {  
+            "name":"User/App Settings",
+            "value":""
+         },
+         {  
+            "name":"User Profile",
+            "value":""
+         }
+      ]
+   }
+]

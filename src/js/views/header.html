@@ -37,7 +37,12 @@
           <!-- /ko -->
           <script type="text/html" id="menuItemTemplate">
             <li>
-              <a href="#" data-bind="text: name"></a>
+              <!-- ko if:$data.hasOwnProperty("value") --> 
+                <a data-bind="text: name, attr: {'val':value}"></a>
+              <!-- /ko -->
+              <!-- ko ifnot:$data.hasOwnProperty("value") -->
+                <a data-bind="text: name"></a>
+              <!-- /ko -->
               <!-- ko if: submenu.menus -->
                 <ul data-bind="template: {name: 'menuItemTemplate', foreach: submenu.menus, as: 'submenu'}">
                 </ul>

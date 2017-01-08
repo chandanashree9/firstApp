@@ -68,31 +68,31 @@
 									<div class="oj-flex-item">
 										<span>Cash Flow</span>
 										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
-											<h5>- 200.00</h5>
+											<h5 style="color: #FFFFFF">-200.00</h5>
 										</div>
 									</div>
 									<div class="oj-flex-item">
 										<span>Cash In</span>
-										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
-											<h5>+ 500.00</h5>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#5DB59F;color:#FFFFFF">
+											<h5 style="color: #FFFFFF">+500.00</h5>
 										</div>
 									</div>
 									<div class="oj-flex-item">
 										<span>Cash Out</span>
-										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
-											<h5>- 700.00</h5>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#D71921;color:#FFFFFF">
+											<h5 style="color: #FFFFFF">-700.00</h5>
 										</div>
 									</div>
 									<div class="oj-flex-item">
 										<span>Savings / Investment</span>
-										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
-											<h5>+ 250.00</h5>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#367366;color:#FFFFFF">
+											<h5 style="color: #FFFFFF">+250.00</h5>
 										</div>
 									</div>
 									<div class="oj-flex-item">
 										<span>Spending</span>
-										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#FC9827;color:#FFFFFF">
-											<h5>+ 450.00</h5>
+										<div class="oj-panel" style="width:170px;height: 150px;padding:50px;background-color:#A9151B;color:#FFFFFF">
+											<h5 style="color: #FFFFFF">+450.00</h5>
 										</div>
 									</div>
 								</div>
@@ -102,34 +102,54 @@
 					<hr/>
 					<div class="oj-flex-item">
 						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
-							<h5 style="background-color:#34A0D4">Income</h5>
+							<div class="oj-flex-bar" style="background-color:#319568">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Income</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$10,000</span></div></div>
+                            </div>
 						</div>
 						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
-							<h5 style="background-color:#34A0D4">Save / Investments</h5>
+							<div class="oj-flex-bar" style="background-color:#206C4D">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Save / Investments</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$25,000</span></div></div>
+                            </div>
 						</div>
 						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
-							<h5 style="background-color:#34A0D4">Entertainment</h5>
-							<table id="budgetentires-table" summary="Budget Entries"
-							data-bind="ojComponent: {
-							component: 'ojTable', 
-							data: budgetentries, 
-							columnsDefault: {sortable: 'none'}, 
-							columns: [
-								{ headerText: 'Date', field: 'date'},
-								{ headerText: 'Budget Item', field: 'name'},
-								{ headerText: 'Description', field: 'description'},
-								{ headerText: 'Description(Bank)', field: 'bank-description'},
-								{ headerText: 'Tags', field: 'tags'},
-								{ headerText: 'Amount', field: 'amount'}],
-							rootAttributes: {style:'width:100%'}}">
+							<div class="oj-flex-bar" style="background-color:#34A0D4">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Entertainment</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$100</span></div></div>
+                            </div>
+							<table id="entertainment-table" summary="Entertainment Entries"
+								data-bind="ojComponent: {
+								component: 'ojTable', 
+								data: entertainmentlist, 
+								columnsDefault: {sortable: 'none'}, 
+								columns: [
+									{ headerText: 'Date', field: 'date', footerTemplate: 'entertainment_total_label'},
+									{ headerText: 'Budget Item', field: 'name'},
+									{ headerText: 'Description', field: 'description'},
+									{ headerText: 'Description(Bank)', field: 'bank-description'},
+									{ headerText: 'Tags', field: 'tags'},
+									{ headerText: 'Amount', field: 'amount', footerTemplate: 'entertainment_total'}],
+								rootAttributes: {style:'width:100%'},
+								rowTemplate: 'entertainment_row_tmpl',
+								selectionMode: {'row': 'multiple'},
+								dnd: {drop: {'rows': {dataTypes: ['application/ojtablerows+json'],
+                                drop: handleDropRows}}}
+								}">
 						</table>
 
 						</div>
 						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
-							<h5 style="background-color:#34A0D4">Groceries</h5>
+							<div class="oj-flex-bar" style="background-color:#64B49F">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Groceries</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$700</span></div></div>
+                            </div>
 						</div>
 						<div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
-							<h5 style="background-color:#34A0D4">Travel</h5>
+							<div class="oj-flex-bar" style="background-color:#9375F7">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Travel</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$500</span></div></div>
+                            </div>
 						</div>
 					</div>
 					<hr/>
@@ -144,10 +164,14 @@
 								{ headerText: 'Date', field: 'date'},
 								{ headerText: 'Budget Item', field: 'name'},
 								{ headerText: 'Description', field: 'description'},
-								{ headerText: 'Description(Bank)', field: 'bank-description'},
+								{ headerText: 'Description(Bank)', field: 'bank_description'},
 								{ headerText: 'Tags', field: 'tags'},
 								{ headerText: 'Amount', field: 'amount'}],
-							rootAttributes: {style:'width:100%'}}">
+							rootAttributes: {style:'width:100%'},
+							rowTemplate: 'budgetentries_row_tmpl',
+							selectionMode: {'row': 'multiple'},
+							dnd: {drag: {'rows': {dataTypes: ['application/ojtablerows+json']}}}
+							}">
 						</table>
 					</div>
 				</div>
@@ -155,6 +179,37 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/html" id="entertainment_total_label">
+     <td style="font-weight:bold;">
+       Total
+     </td>
+</script>
+<script type="text/html" id="entertainment_total">
+     <td id="table:entertainment_total" data-bind="text: entertainmentTotalFn($footerContext)" class="oj-helper-text-align-right">
+     </td>
+</script>
+
+<script type="text/html" id="entertainment_row_tmpl">
+  	<tr>
+      	<td data-bind="text: date"></td>
+      	<td data-bind="text: name"></td>
+      	<td data-bind="text: description"></td>
+      	<td data-bind="text: bank_description"></td>
+      	<td data-bind="text: tags"></td>
+      	<td data-bind="text: amount"></td>
+  	</tr>
+</script>
+<script type="text/html" id="budgetentries_row_tmpl">
+  	<tr>
+      	<td data-bind="text: date"></td>
+      	<td data-bind="text: name"></td>
+      	<td data-bind="text: description"></td>
+      	<td data-bind="text: bank_description"></td>
+      	<td data-bind="text: tags"></td>
+      	<td data-bind="text: amount"></td>
+  	</tr>
+</script>
 
 <script type="text/html" id="bankaccount_template">
 	<li>

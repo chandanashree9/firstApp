@@ -102,3 +102,38 @@ div.menu-launch > a:visited, .menu-launcher {
   height:90%;
   width:80%;
 }
+.container {
+  background: linear-gradient(
+    to right, 
+    #269FD6 80%, 
+    #1A729A 10% 
+  );
+}
+.container1 {
+  background: linear-gradient(
+    to right, 
+    #59B59F 70%, 
+    #387366 40% 
+  );
+}
+.container2 {
+  background: linear-gradient(
+    to right, 
+    #996CFB 60%, 
+    #6D4DB7 30% 
+  );
+}
+.container3 {
+  background: linear-gradient(
+    to right, 
+    #189ACA 40%, 
+    #0D6A8A 30% 
+  );
+}
+.container4 {
+  background: linear-gradient(
+    to right, 
+    #FD996B 70%, 
+    #D27F59 30% 
+  );
+}

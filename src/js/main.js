@@ -53,18 +53,10 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout','ojs/ojmodule','oj
     var router = oj.Router.rootInstance;
     router.configure({
       'home': {value:'home', isDefault: true},
-      'decision': {value:'decision',
-          exit: function () {
-            var childRouter = router.currentState().value;
-            childRouter.dispose();
-          },
-          enter: function () {
-            var childRouter = router.createChildRouter('decision','home');
-            router.currentState().value = childRouter;
-          }
-      },
+      'decision': {value:'decision'},
       'financialplan': {value:'financialplan'},
-      'budget': {value:'budget'}
+      'budget': {value:'budget'},
+      'budgettracking': { value:'budgettracking' }
     });
 
     function MainViewModel() {

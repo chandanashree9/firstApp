@@ -1,0 +1,352 @@
+<div id="budget-container" class="oj-flex-column">
+    <div class="oj-flex-item">
+        <div class="oj-flex">
+            <div class="oj-flex-item">
+                <h2 class="budget">Budget Tracking</h2>
+            </div>
+            <div class="oj-flex-bar-end">
+                <h5 style="color:#9F9F9F;font-size: small">View Options</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="oj-flex-item">
+        <div class="oj-flex">
+            <div class="oj-flex-item oj-sm-12 oj-md-4 oj-lg-3 oj-xl-3" style="border-right:1px solid grey;width:10%">
+                <div class="oj-flex-column oj-flex-items-pad">
+                    <div class="oj-flex-item oj-padding">
+                        <div style="display:none" id="popup2"
+                            data-bind="ojComponent:{component: 'ojPopup',modality: 'modal', rootAttributes: { style: 'width: 40vw; height: 45vh; border-radius:10px; background-color:#ffffff'}}">
+                            <span>Add an Account</span>
+                        </div>
+                        <i class="fa fa-plus-circle oj-padding" aria-hidden="true" style="color:#9B9B9B"></i> 
+                        <a href="#" id="btnfinancial" data-bind="click:addbudget">Add an Account</a>                            
+                    </div>
+                    <div class="oj-flex-item oj-padding">
+                        <h5 class="oj-header-border">Bank</h5>
+                        <ul id="bankaccount-listview" aria-label="list using collection"
+                            data-bind="ojComponent: {
+                                component: 'ojListView', 
+                                data: bankaccounts, 
+                                item: {template: 'bankaccount_template'}, 
+                                selectionMode: 'single', 
+                                scrollPolicy: 'loadMoreOnScroll', 
+                                scrollPolicyOptions: {fetchSize: 2}, 
+                                rootAttributes: {style: 'height:120px;overflow-x:hidden;border-style:none'}}">
+                        </ul>
+                        
+                        <h5 class="oj-header-border">Credit Card&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:small">Limit/Used</span></h5>
+                        <ul id="creditcard-listview" aria-label="list using collection"
+                            data-bind="ojComponent: {
+                                component: 'ojListView', 
+                                data: creditcard, 
+                                item: {template: 'creditcard_template'}, 
+                                selectionMode: 'single', 
+                                scrollPolicy: 'loadMoreOnScroll', 
+                                scrollPolicyOptions: {fetchSize: 2}, 
+                                rootAttributes: {style: 'height:120px;overflow-x:hidden;border-style:none'}}">
+                        </ul>
+                    </div>
+                    <div class="oj-flex-item">
+                        <button class="btnbanking1" data-bind="ojComponent: { component: 'ojButton',label: 'Banking'}"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="oj-flex-item oj-padding">
+                <div class="oj-flex-column oj-flex-items-pad">
+                    <div class="oj-flex-item">
+                        <div class="oj-flex-column oj-flex-items-pad">
+                            <div class="oj-flex-item">
+                                <h3>Overview</h3>
+                            </div>
+                            <div class="oj-flex-item">
+                                <div class="oj-flex oj-flex-items-pad">
+                                    <div class="oj-flex-item">
+                                        <span style="color:#3B7266">Cash Flow</span>
+                                        <div id="gauge1" data-bind="ojComponent: {component: 'ojDialGauge',
+                                             value: 100,
+                                             readOnly: false,
+                                             animationOnDisplay: 'auto',
+                                             indicator: 'needleAlta',
+                                             background: 'circleAlta',indicator :'needleAntique',
+                                             metricLabel: {rendered: 'off',
+                                             style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;'}
+                                            }"
+                                            style="width:150px;height:150px;border-style: 1px solid black">
+                                        </div>
+                                    </div>
+                                    <div class="oj-flex-item">
+                                        <span style="color:#3B7266">Cash In</span>
+                                        <div id="gauge1" data-bind="ojComponent: {component: 'ojDialGauge',
+                                             value:41,
+                                             readOnly: false,
+                                             animationOnDisplay: 'auto',
+                                             indicator: 'needleAlta',
+                                             background: 'circleAlta',indicator :'needleAntique',
+                                             metricLabel: {rendered: 'off',
+                                             style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;'}
+                                            }"
+                                            style="width:150px;height:150px;border-style: 1px solid black">
+                                        </div>
+                                    </div>
+                                    <div class="oj-flex-item">
+                                        <span style="color:#3B7266">Cash Out</span>
+                                        <div id="gauge1" data-bind="ojComponent: {component: 'ojDialGauge',
+                                             value: 41,
+                                             readOnly: false,
+                                             animationOnDisplay: 'auto',
+                                             indicator: 'needleAlta',
+                                             background: 'circleAlta',indicator :'needleAntique',
+                                             metricLabel: {rendered: 'off',
+                                             style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;'}
+                                            }"
+                                            style="width:150px;height:150px;border-style: 1px solid black">
+                                        </div>
+                                    </div>
+                                    <div class="oj-flex-item">
+                                        <span style="color:#3B7266">Save/Investment</span>
+                                        <div id="gauge1" data-bind="ojComponent: {component: 'ojDialGauge',
+                                             value: 41,
+                                             readOnly: false,
+                                             animationOnDisplay: 'auto',
+                                             indicator: 'needleAlta',
+                                             background: 'circleAlta',indicator :'needleAntique',
+                                             metricLabel: {rendered: 'off',
+                                             style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;'}
+                                            }"
+                                            style="width:150px;height:150px;border-style: 1px solid black">
+                                        </div>
+                                    </div>
+                                    <div class="oj-flex-item">
+                                        <span style="color:#3B7266">Spending</span>
+                                        <div id="gauge1" data-bind="ojComponent: {component: 'ojDialGauge',
+                                             value: 30,
+                                             readOnly: false,
+                                             animationOnDisplay: 'auto',
+                                             indicator: 'needleAlta',
+                                             background: 'circleAlta',indicator :'needleAntique',
+                                             metricLabel: {rendered: 'off',style:'background-color:red;color:red',
+                                             style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;background-color:#EDEDED;border-style: 1px solid black;'}
+                                            }"
+                                            style="width:150px;height:150px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="oj-flex-item">
+                        <div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+                            <div class="oj-flex-bar container" style="background-color:#34A0D4">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Entertainment</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$520</span></div></div>
+                            </div>
+                             <h5>Transactions<table id="budgettracking-table" 
+                                data-bind="ojComponent: {
+                                component: 'ojTable', 
+                                data: budgettracking, 
+                                columnsDefault: {sortable: 'none'}, 
+                                columns: [
+                                    { headerText: 'Date', field: 'date',footerTemplate: 'entertainment_total_label'},
+                                    { headerText: 'Budget Item', field: 'name'},
+                                    { headerText: 'Description', field: 'description'},
+                                    { headerText: 'Description(Bank)', field: 'bank_description'},
+                                    { headerText: 'Tags', field: 'tags'},
+                                    { headerText: 'Amount', field: 'amount',footerTemplate: 'entertainment_total', className:'oj-helper-text-align-left'}],
+                                rootAttributes: {style:'width:100%'},
+                                rowTemplate: 'entertainment_row_tmpl',
+                                selectionMode: {'row': 'multiple'},
+                                dnd: {drop: {'rows': {dataTypes: ['application/ojtablerows+json'],
+                                drop: handleDropRows}}}}">
+                        </table></h5>
+                        </div>
+                        <div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+                             <div class="oj-flex-bar container1" style="background-color:#64B49F">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Groceries</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$275</span></div></div>
+                            </div>
+                        </div>
+                        <div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+                             <div class="oj-flex-bar container2" style="background-color:#9375F7">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Travel</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$100</span></div></div>
+                            </div>
+                        </div>
+                        <div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+                             <div class="oj-flex-bar container3" style="background-color:#2B9BC8">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">Auto</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$75</span></div></div>
+                            </div>
+                        </div>
+                        <div id="c1" data-bind="ojComponent: {component: 'ojCollapsible'}">
+                            <div class="oj-flex-bar container4" style="background-color:#F99970">
+                                <div class="oj-flex-bar-start"><div><h5 style="color:#FFFFFF">School</h5></div></div>
+                                <div class="oj-flex-bar-end"><div><span style="color:#FFFFFF">$300</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="oj-flex-item">
+                    <div class="oj-flex-bar">
+                        <div class="oj-flex-bar-start">
+                            <div><h3>Budget Entries</h3></div>
+                        </div>
+                        <div class="oj-flex-bar-end">
+                            <!--<a data-bind="ojComponent:{ component:'ojButton', display:'icons',
+                                icons:{start:'fa fa-plus-circle'}}"></a>-->
+                              <div style="display:none;width:750px;height: 350px" id="budgetentry"
+                                   data-bind="ojComponent:{component: 'ojPopup',position:{'collision':'flip'}}">
+                                <span>Add Budget Entry</span>
+                                <div class="oj-flex oj-padding">
+                                    <select id="select" data-bind="ojComponent: {component: 'ojSelect',
+                                               value: val,
+                                               renderMode: isNative() ? 'native' : 'jet',
+                                               rootAttributes: {style:'max-width:20em'}}">
+                                        <option value="EN">Entertainment</option>
+                                        <option value="SA">Sales</option>
+                                        <option value="TR">Travle</option>
+                                        <option value="IN">Income</option>
+                                        <option value="SC">School</option>
+                                  </select>
+                                  <div class="oj-flex-item">
+                                        <input id="text-input" type="text" placeholder='Description' data-bind="ojComponent: {component: 'ojInputText'}"/>
+                                  </div>
+                                </div>
+                          
+                                <div class="oj-flex">
+                                <div class="oj-panel" style="width:350px;height:90px;">
+                                  <h5>Tags</h5>
+                                    <span class="oj-padding">
+                                        <input id="dinner" type="checkbox">
+                                        <label for="blueopt">Dinner</label>
+                                    </span>
+                                    <span class="oj-padding">
+                                        <input id="tag2" type="checkbox">
+                                        <label for="blueopt">Tag2</label>
+                                    </span>
+                                    <span class="oj-padding">
+                                        <input id="tag3" type="checkbox">
+                                        <label for="blueopt">Tag3</label>
+                                    </span>
+                                    <span class="oj-padding">
+                                        <input id="tag4" type="checkbox">
+                                        <label for="blueopt">Tag4</label>
+                                    </span>
+                                    </div>
+                                  
+                                </div>
+                                <div class="oj-flex-item oj-padding">
+                                    <input id="text-input" type="text" placeholder='Calendar Component' style="text-align:center;" data-bind="ojComponent: {component: 'ojInputText'}"/>
+                                    <input id="text-input" type="text" placeholder='Description' data-bind="ojComponent: {component: 'ojInputText'}"/>
+                                </div>
+                                <div class="oj-flex-item oj-padding">
+
+                                    <button id= "button"
+                                            data-bind="ojComponent: { component: 'ojButton', label: 'Cancel' }">
+                                    </button>
+                                    <button id= "button"
+                                            data-bind="ojComponent: { component: 'ojButton', label: 'Save' }">
+                                    </button>
+                                </div>
+
+                              </div>
+                              <a id="btnBudgetEntry" 
+                                data-bind="ojComponent: {component: 'ojButton', display: 'icons', 
+                                  icons: {start:'fa fa-plus-circle'}},
+                                           click: function()
+                                           {
+                                             $('#budgetentry').ojPopup('open', '#btnBudgetEntry');
+                                           }">
+                              </a>
+                            </div>
+                                <!--<i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>-->
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <table id="budgetentires-table" summary="Budget Entries"
+                            data-bind="ojComponent: {
+                            component: 'ojTable', 
+                            data: budgetentries, 
+                            columnsDefault: {sortable: 'none'}, 
+                            columns: [
+                                { headerText: 'Date', field: 'date'},
+                                { headerText: 'Budget Item', field: 'name'},
+                                { headerText: 'Description', field: 'description'},
+                                { headerText: 'Description(Bank)', field: 'bank_description'},
+                                { headerText: 'Tags', field: 'tags'},
+                                { headerText: 'Amount', field: 'amount'}],
+                            rootAttributes: {style:'width:100%'},
+                            rowTemplate: 'budgetentries_row_tmpl',
+                            selectionMode: {'row': 'multiple'},
+                            dnd: {drag: {'rows': {dataTypes: ['application/ojtablerows+json']}}}
+                            }">
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="bankaccount_template">
+    <li>
+        <div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+            <div class="oj-flex-item">
+                <span data-bind="text: name"></span>
+            </div>
+            <div class="oj-flex-item">
+                <span data-bind="text: type"></span> - <span data-bind="text: accountnumber"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="word-wrap: break-word" data-bind="text: currencyFormatter(amount)"></span>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script type="text/html" id="creditcard_template">
+    <li>
+        <div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+            <div class="oj-flex-item">
+                <span data-bind="text: type"></span>
+            </div>
+            <div class="oj-flex-item">
+                <span data-bind="text: accountnumber"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span data-bind="text: currencyFormatter(limit)"></span> / <span style="word-wrap: break-word" data-bind="text: currencyFormatter(used)"></span>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script type="text/html" id="entertainment_row_tmpl">
+    <tr>
+        <td data-bind="text: date"></td>
+        <td data-bind="text: name"></td>
+        <td data-bind="text: description"></td>
+        <td data-bind="text: bank_description"></td>
+        <td data-bind="text: tags"></td>
+        <td data-bind="text: amount"></td>
+    </tr>
+</script>
+<script type="text/html" id="budgetentries_row_tmpl">
+    <tr>
+        <td data-bind="text: date"></td>
+        <td data-bind="text: name"></td>
+        <td data-bind="text: description"></td>
+        <td data-bind="text: bank_description"></td>
+        <td data-bind="text: tags"></td>
+        <td data-bind="text: amount"></td>
+    </tr>
+</script>
+
+<script type="text/html" id="entertainment_total_label">
+     <td style="font-weight:bold;">
+       Total
+     </td>
+</script>
+<script type="text/html" id="entertainment_total">
+     <td id="table:entertainment_total" data-bind="text: entertainmentTotalFn($footerContext)" class="oj-helper-text-align-left">
+     </td>
+</script>
+
+

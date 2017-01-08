@@ -1,10 +1,10 @@
 'use strict';
 
 define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','ojs/ojknockout', 'ojs/ojmodule', 'ojs/ojmenu'],
-    function(oj, ko, $, service)
-    {   
+    function(oj, ko, $, service) {   
 
         function HeaderViewModel() {
+            var router = oj.Router.rootInstance;
             // Media queries for repsonsive layouts
             self.appName = ko.observable("Money Avatar");
 
@@ -25,14 +25,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','oj
             };
 
             self.menuItemSelect = function( event, ui ) {
-                //self.selectedMenuItem(ui.item.children("a").text());
+                router.go(ui.item.children('a').attr('val'));
             };
 
             self.menulist = ko.observableArray([]);
 
             // Retrieve Menu Data
             service.fetch('js/data/menus.json',{}).then(function(response) {
-                self.menulist(response['main-menus']);
+                self.menulist(response);
             });         
         };  
         return HeaderViewModel;     
