@@ -55,6 +55,10 @@ function(oj, ko, $, service, numberconvertor)
             }
         };
 
+        self.handleDragRows = function(event){
+            
+        }
+
         self.entertainmentTotalFn = function(context){
             var datasource = context.datasource;
 

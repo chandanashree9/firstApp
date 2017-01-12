@@ -67,16 +67,7 @@ function(oj, ko, $, service, numberconvertor)
             $('#popup1').ojpopup('open', '#btnadd');
         };
         //End - popup Budgetentyries
-        //start - AddBudgetEntry
-        /*function addBudgetEntry(){
-            $('#popup1').ojPopup('open', #btnaddBudget);
-        }*/
-        //End - AddBudgetEntry
-
-        //start - addEntertainmentAmount
-
-        //End - addEntertainmentAmount
-
+        
         // Start - CreditCard Accounts
         self.creditcard=ko.observable();
         service.fetch(creditcard_url,header).then(function(response) {
@@ -91,7 +82,6 @@ function(oj, ko, $, service, numberconvertor)
 
         });
         // End - Budget Entries
-
 
         self.entertainmentTotalFn = function(context){
             var datasource = context.datasource;
@@ -124,6 +114,47 @@ function(oj, ko, $, service, numberconvertor)
 
         self.currencyFormatter = function(d){
             return numberconvertor.currencyformater(d);
+        }
+
+        // Calculate Entertainment
+        var computeTotal = new computeBudgetTotal(300,250);
+        self.entertainmentAmount = computeTotal.diff;
+        self.entertainmentPercent = ko.observable(computeTotal.percentage);
+
+        // Calculate Groceries
+        computeTotal = new computeBudgetTotal(1000,600);
+        self.groceriesAmount = computeTotal.diff;
+        self.groceriesPercent = ko.observable(computeTotal.percentage);
+
+        // Calculate Travel
+        computeTotal = new computeBudgetTotal(200,40);
+        self.travelAmount = computeTotal.diff;
+        self.travelPercent = ko.observable(computeTotal.percentage);
+
+        // Calculate Auto
+        computeTotal = new computeBudgetTotal(400,250);
+        self.autoAmount = computeTotal.diff;
+        self.autoPercent = ko.observable(computeTotal.percentage);
+
+        // Calculate School
+        computeTotal = new computeBudgetTotal(3000,1400);
+        self.schoolAmount = computeTotal.diff;
+        self.schoolPercent = ko.observable(computeTotal.percentage);
+    }
+
+    function computeBudgetTotal(allocation,spent){
+        var diff = (allocation - spent);
+        var val = diff/allocation;
+        var percentage = 0;
+        if(val < 1){
+            percentage = (1 - val) * 100;
+        } else {
+            percentage = 100;
+        }
+
+        return {
+            diff:diff,
+            percentage:percentage
         }
     }
 

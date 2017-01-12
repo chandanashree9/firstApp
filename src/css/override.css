@@ -137,3 +137,22 @@ div.menu-launch > a:visited, .menu-launcher {
     #D27F59 30% 
   );
 }
+.oj-web-applayout-page{
+  background-color: #FFFFFF;
+}
+button#desirebtn:focus{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+ }
+ button#desirebtn:active{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+ }
+button#wishesbtn:focus{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+}
+button#actionsbtn:focus{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+}

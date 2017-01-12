@@ -170,7 +170,7 @@
 							rootAttributes: {style:'width:100%'},
 							rowTemplate: 'budgetentries_row_tmpl',
 							selectionMode: {'row': 'multiple'},
-							dnd: {drag: {'rows': {dataTypes: ['application/ojtablerows+json']}}}
+							dnd: {drag: {'rows': {dataTypes: ['application/ojtablerows+json'], dragEnd: handleDragRows}}}
 							}">
 						</table>
 					</div>
