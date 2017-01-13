@@ -3,7 +3,8 @@
       "date":"12/27/16",
       "name":"Entertainment",
       "description":"description",
-      "bank_description":"description",
+      "bank_description":"Suntrust Bank",
+      "bank_id":"SNTRUS",
       "tags":"movie",
       "amount":20.00
    },
@@ -11,7 +12,8 @@
       "date":"12/26/16",
       "name":"JimGrossIncome",
       "description":"description",
-      "bank_description":"description",
+      "bank_description":"BB&T",
+      "bank_id":"BB_T",
       "tags":"movie",
       "amount":20.00
    },
@@ -19,7 +21,8 @@
       "date":"12/24/16",
       "name":"Sally-GrossIncome",
       "description":"description",
-      "bank_description":"description",
+      "bank_description":"Suntrust Bank",
+      "bank_id":"SNTRUS",
       "tags":"sallysIncome",
       "amount":7000.00
    }

@@ -162,7 +162,7 @@
                         value: entertainmentPercent,
                         thresholds: [{color: '#32A0D4'}],
                         thresholdDisplay: 'onIndicator',
-                        metricLabel:{position:'insideIndicatorEdge', rendered:'on',text:entertainmentAmount},
+                        metricLabel:{position:'insideIndicatorEdge', rendered:'on',text:printEntertainmentText()},
                         plotArea:{color:'#237398',rendered:'on'},
                         title:{position:'start',text:'Entertainment',style:'font-size:medium'},
                         rootAttributes:{style:'height:50px;width:100%'}
@@ -369,7 +369,7 @@
 
 <script type="text/html" id="bankaccount_template">
   <li>
-    <div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+    <div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap" data-bind="click:loadBankAmount">
       <div class="oj-flex-item">
         <span data-bind="text: name"></span>
       </div>

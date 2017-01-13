@@ -118,7 +118,7 @@ function(oj, ko, $, service, numberconvertor)
 
         // Calculate Entertainment
         var computeTotal = new computeBudgetTotal(300,250);
-        self.entertainmentAmount = computeTotal.diff;
+        self.entertainmentAmount = ko.observable(computeTotal.diff);
         self.entertainmentPercent = ko.observable(computeTotal.percentage);
 
         // Calculate Groceries
@@ -140,6 +140,32 @@ function(oj, ko, $, service, numberconvertor)
         computeTotal = new computeBudgetTotal(3000,1400);
         self.schoolAmount = computeTotal.diff;
         self.schoolPercent = ko.observable(computeTotal.percentage);
+
+        self.entertainmentBankText = ko.observable();        
+        self.loadBankAmount = function(data,event){
+            var bankAmount = 0;
+            var bankname = '';
+            if(data.id) {
+                var list = self.budgettracking._latestValue.data;
+                for(var i=0; i<list.length;i++){
+                    var obj = list[i];
+                    if(obj.bank_id === data.id){
+                        bankAmount += obj.amount;
+                        bankname = obj.bank_description;
+                    }
+                }
+            }
+            self.entertainmentBankText(bankAmount + " ("+bankname+")");
+            printEntertainmentText();
+        }
+
+        self.printEntertainmentText = function(){
+            var val = self.entertainmentBankText._latestValue;
+            if(val) {
+               return self.entertainmentAmount._latestValue + val.data; 
+            }
+            return self.entertainmentAmount._latestValue ;
+        }
     }
 
     function computeBudgetTotal(allocation,spent){

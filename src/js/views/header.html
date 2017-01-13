@@ -13,7 +13,7 @@
         <div class="oj-flex-bar-middle">
           <div class="oj-flex-bar-start">
             <div>
-              <span class="appcolor" title="Application Name" data-bind="text: appName"></span>
+              <span class="appcolor" title="Application Name" data-bind="text: appName, click:function(){$root.router.go('home')}"></span>
             </div>
           </div>
           <!-- ko foreach: menulist, as: 'menus' -->

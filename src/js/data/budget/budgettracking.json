@@ -3,65 +3,36 @@
       "date":"12/20/16",
       "name":"Entertainment",
       "description":"description",
-      "bank_description":"description",
+      "bank_description":"Suntrust Bank",
+      "bank_id":"SNTRUS",
       "tags":"movie",
-      "amount":20.00
+      "amount":30.00
    },
    {  
       "date":"12/20/16",
       "name":"Entertainment",
       "description":"description",
-      "bank_description":"description",
+      "bank_description":"BB&T",
+      "bank_id":"BB_T",
       "tags":"movie",
-      "amount":20.00
+      "amount":10.00
    },
    {  
       "date":"12/19/16",
       "name":"Entertainment",
       "description":"description",
-      "bank_description":"description",
+      "bank_description":"Bank of America",
+      "bank_id":"BOA",
       "tags":"sallysIncome",
-      "amount":20.00
-   },
-   {  
-      "date":"12/19/16",
-      "name":"Entertainment",
-      "description":"description",
-      "bank_description":"description",
-      "tags":"sallysIncome",
-      "amount":20.00
+      "amount":50.00
    },
    {  
       "date":"12/18/16",
       "name":"Entertainment",
       "description":"description",
-      "bank_description":"description",
+      "bank_description":"Suntrust Bank",
+      "bank_id":"SNTRUS",
       "tags":"sallysIncome",
-      "amount":20.00
-   },
-   {  
-      "date":"12/18/16",
-      "name":"Entertainment",
-      "description":"description",
-      "bank_description":"description",
-      "tags":"sallysIncome",
-      "amount":20.00
-   },
-   {  
-      "date":"12/17/16",
-      "name":"Entertainment",
-      "description":"description",
-      "bank_description":"description",
-      "tags":"sallysIncome",
-      "amount":20.00
-   },
-   {  
-      "date":"12/16/16",
-      "name":"Entertainment",
-      "description":"description",
-      "bank_description":"description",
-      "tags":"sallysIncome",
-      "amount":20.00,
-      "total":160
+      "amount":40.00
    }
 ]
