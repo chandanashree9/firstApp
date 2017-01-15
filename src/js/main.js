@@ -62,12 +62,7 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout','ojs/ojmodule','oj
     function MainViewModel() {
       var self = this;
       self.router = router;
-      // Media queries for repsonsive layouts
-      var smQuery = oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY);
-      self.smScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(smQuery);
-      var mdQuery = oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.MD_UP);
-      self.mdScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(mdQuery);  
-      
+            
       self.dynamicConfig = ko.pureComputed(function () {                  
         return router.moduleConfig;
       });

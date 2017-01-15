@@ -1,0 +1,29 @@
+@import url("base.css");
+
+.header-section{
+	background-color: #174B51;
+}
+
+.header-label{
+	font-family: 'Source Sans Pro ExtraLight';
+  	font-size: 20pt;
+  	color:#FFFFFF;
+  	justify-content: center;
+  	text-align: center;
+  	align-content: center;
+  	vertical-align: center;
+}
+
+.header-menu-label{
+	font-family: 'Source Sans Pro';
+  	font-size: 13pt;
+  	color:#FFFFFF;
+}
+
+a.header-menu-label:hover {
+	color: #69E3C8;
+}
+
+a.header-menu-label:visited, a.header-menu-label:link {
+	color: #FFFFFF;
+}

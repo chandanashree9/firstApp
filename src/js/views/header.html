@@ -1,62 +1,67 @@
+<div id="menu-container" class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center header-section"> 
+  <!-- Offcanvas toggle button -->
+  <div class="oj-flex-bar-start oj-md-hide">
+    <button class="oj-button-lg" data-bind="click: toggleDrawer, ojComponent: {
+          component:'ojButton', 
+          label: 'Application Navigation',
+          chroming: 'half', 
+          display: 'icons', 
+          icons: {start: 'oj-web-applayout-offcanvas-icon'}
+        }">
+    </button>
+  </div>
 
-<div id="menu-container">
- <div class="oj-web-applayout-header header">
-    <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center"> 
-
-      <div class="oj-flex-bar-start">
-        <div class="logo">
-          <img src="images/logo.png"/>
-        </div>            
+  <div class="oj-flex-bar-start" data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-sm-align-items-baseline'"> 
+    <div class="oj-flex">
+      <div class="oj-flex-item">
+        <img src="images/logo.png" data-bind="click:function(){$root.router.go('home')}"/>
       </div>
-
-      <div data-bind="css: $root.smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
-        <div class="oj-flex-bar-middle">
-          <div class="oj-flex-bar-start">
-            <div>
-              <span class="appcolor" title="Application Name" data-bind="text: appName, click:function(){$root.router.go('home')}"></span>
-            </div>
-          </div>
-          <!-- ko foreach: menulist, as: 'menus' -->
-            <!-- To handle menu item selection, use a select listener as shown, not a click listener. -->
-            <div class="oj-sm-12 oj-md-4 oj-lg-2 oj-xl-2 oj-flex oj-sm-flex-items-initial oj-sm-justify-content-center menu-launch">
-              <!-- ko if: $data.icon -->
-                <i data-bind="css: $data.icon" aria-hidden="true" style='color:#FFFFFF'></i>&nbsp;&nbsp;
-              <!-- /ko -->
-              <a href="#" data-bind="attr: {'id': 'menuLauncher' + id}, click: menulaunch, text: name" class="menu-launcher"></a>
-              <ul style="display:none"
-                    data-bind="attr: {'id': 'menu' + id, 'aria-labelledby': 'myLauncher' + id}, ojComponent: {
-                    component: 'ojMenu', select: menuItemSelect, 
-                    open: menuOpen, close: menuClose, 
-                    openOptions: { launcher: '#menuLauncher'+id },
-                    rootAttributes : {style : 'background-color:#ffffff'}
-                    }">
-                <!-- ko template: {name: 'menuItemTemplate', foreach: $data.menus, as: 'submenu'} -->
-                <!-- /ko -->
-              </ul>
-            </div>
+      <div class="oj-flex-item oj-padding oj-sm-only-hide">
+        <span class="header-label" title="Application Name" data-bind="text: appName"></span>
+      </div> 
+    </div>         
+  </div>
+  <div class="oj-flex-bar-middle">
+    <div data-bind="css: smScreen() ? 'oj-sm-only-hide' : 'oj-flex-bar-middle oj-sm-align-items-baseline'"> 
+    <!-- ko foreach: menulist, as: 'menus' -->
+      <!-- To handle menu item selection, use a select listener as shown, not a click listener. -->
+      <div class="oj-sm-12 oj-md-4 oj-lg-2 oj-xl-2 oj-flex oj-sm-flex-items-initial oj-sm-justify-content-center header-menu-label">
+        <!-- ko if: $data.icon -->
+          <i data-bind="css: $data.icon" aria-hidden="true"></i>&nbsp;&nbsp;
+        <!-- /ko -->
+        <a href="#" data-bind="attr: {'id': 'menuLauncher' + id}, click: menulaunch, text: name" class="header-menu-label"></a>
+        <ul style="display:none" data-bind="attr: {'id': 'menu' + id, 'aria-labelledby': 'myLauncher' + id}, ojComponent: {
+              component: 'ojMenu', select: menuItemSelect, 
+              open: menuOpen, close: menuClose, 
+              openOptions: { launcher: '#menuLauncher'+id },
+              rootAttributes : {style : 'background-color:#FFFFFF'}
+            }">
+          <!-- ko template: {name: 'menuItemTemplate', foreach: $data.menus, as: 'submenu'} -->
           <!-- /ko -->
-          <script type="text/html" id="menuItemTemplate">
-            <li>
-              <!-- ko if:$data.hasOwnProperty("value") --> 
-                <a data-bind="text: name, attr: {'val':value}"></a>
-              <!-- /ko -->
-              <!-- ko ifnot:$data.hasOwnProperty("value") -->
-                <a data-bind="text: name"></a>
-              <!-- /ko -->
-              <!-- ko if: submenu.menus -->
-                <ul data-bind="template: {name: 'menuItemTemplate', foreach: submenu.menus, as: 'submenu'}">
-                </ul>
-              <!-- /ko -->
-            </li>
-          </script>
-        </div>
+        </ul>
       </div>
-
-      <div class="oj-flex-bar-end">
-        <i class="fa fa-sign-out" style='color:#FFFFFF' aria-hidden="true"></i>&nbsp;
-        <a href="#" data-bind="text:'Logout'" class="menu-launcher"></a>
-      </div>
+    <!-- /ko -->
+    </div>
+  </div>
+  <div class="oj-flex-bar-end">
+    <div class="oj-sm-only-hide"> 
+      <i class="fa fa-sign-out" style='color:#FFFFFF' aria-hidden="true"></i>&nbsp;
+      <a href="#" data-bind="text:'Logout'" class="header-menu-label"></a>
     </div>
   </div>
 </div>
 
+<script type="text/html" id="menuItemTemplate">
+  <li>
+    <!-- ko if:$data.hasOwnProperty("value") --> 
+      <a data-bind="text: name, attr: {'val':value}"></a>
+    <!-- /ko -->
+    <!-- ko ifnot:$data.hasOwnProperty("value") -->
+      <a data-bind="text: name"></a>
+    <!-- /ko -->
+    <!-- ko if: submenu.menus -->
+      <ul data-bind="template: {name: 'menuItemTemplate', foreach: submenu.menus, as: 'submenu'}">
+      </ul>
+    <!-- /ko -->
+  </li>
+</script>

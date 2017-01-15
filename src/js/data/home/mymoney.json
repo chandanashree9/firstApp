@@ -11,30 +11,6 @@
 			"amount":16900.87,
 			"accountnumber":"84XX",
 			"bank": "Suntrust"
-		},
-		{
-			"accounttype":"Checking",
-			"amount":1678.00,
-			"accountnumber":"96XX",
-			"bank": "Suntrust"
-		},
-		{
-			"accounttype":"Saving",
-			"amount":16900.87,
-			"accountnumber":"84XX",
-			"bank": "Suntrust"
-		},
-		{
-			"accounttype":"Checking",
-			"amount":1678.00,
-			"accountnumber":"96XX",
-			"bank": "Suntrust"
-		},
-		{
-			"accounttype":"Saving",
-			"amount":16900.87,
-			"accountnumber":"84XX",
-			"bank": "Suntrust"
 		}
 	]
 }

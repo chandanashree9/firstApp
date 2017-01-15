@@ -1,0 +1,92 @@
+@import url("fonts.css");
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+header, section, footer, aside, nav, article, figure, figcaption, hgroup{
+  display: block;
+}
+
+body {  
+  width: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;  
+}
+
+
+.demo-mypanel {
+  width:  95%;
+  height: 30%;
+  background-color: transparent;
+}
+
+.decisionpanel{
+  background-color:#FAFAFA;
+  color:#4A5C66;
+}
+.btnstyle{
+  width:100px;
+  height:40px;
+  border-radius: 25px;
+  background-color: #FFFFFF;
+  color:grey;
+  border-style: 1px solid grey;
+  border-width:thin;
+
+}
+.layout{
+  border:1px solid;
+}
+.btnalternative{
+  width:170px;
+  height:40px;
+  background-color: #5CB69F;
+  border-radius: 25px;
+  font-size: small;
+  color:#FFFFFF;
+  border-style: none;
+}
+.oj-navigationlist-item-label{
+  color:#5DBBB1;
+}
+.decisionheader{
+  color:#4A5C66;
+}
+
+.financialplanpanel{
+  height:90%;
+  width:80%;
+}
+.container {
+  background: linear-gradient(
+    to right, 
+    #269FD6 80%, 
+    #1A729A 10% 
+  );
+}
+.oj-web-applayout-page{
+  background-color: #FFFFFF;
+}
+button#desirebtn:focus{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+ }
+ button#desirebtn:active{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+ }
+button#wishesbtn:focus{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+}
+button#actionsbtn:focus{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+}

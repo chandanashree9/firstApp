@@ -1,0 +1,42 @@
+@font-face{
+  	font-family: 'Source Sans Pro Light';
+ 	src: local('Source Sans Pro Light'),
+ 		local('SourceSansPro-Light'),
+ 		url('fonts/source_sans_pro/SourceSansPro-Light.ttf');
+}
+@font-face{
+  	font-family: 'Source Sans Pro ExtraLight';
+ 	src: local('Source Sans Pro ExtraLight'),
+ 		local('SourceSansPro-ExtraLight'),
+ 		url('fonts/source_sans_pro/SourceSansPro-ExtraLight.ttf');
+}
+@font-face{
+  	font-family: 'Source Sans Pro';
+ 	src: local('Source Sans Pro'),
+ 		local('SourceSansPro-Regular'),
+ 		url('fonts/source_sans_pro/SourceSansPro-Regular.ttf');
+}
+@font-face{
+  	font-family: 'Source Sans Pro Bold';
+ 	src: local('Source Sans Pro Bold'),
+ 		local('SourceSansPro-Bold'),
+ 		url('fonts/source_sans_pro/SourceSansPro-Bold.ttf');
+}
+@font-face{
+  	font-family: 'Source Sans Pro Italic';
+ 	src: local('Source Sans Pro Italic'),
+ 		local('SourceSansPro-Italic'),
+ 		url('fonts/source_sans_pro/SourceSansPro-Italic.ttf');
+}
+@font-face{
+  	font-family: 'Source Sans Pro Semibold';
+ 	src: local('Source Sans Pro Semibold'),
+ 		local('SourceSansPro-Semibold'),
+ 		url('fonts/source_sans_pro/SourceSansPro-Semibold.ttf');
+}
+@font-face{
+  	font-family: 'Source Sans Pro ExtraLightItalic';
+ 	src: local('Source Sans Pro ExtraLightItalic'),
+ 		local('SourceSansPro-ExtraLightItalic'),
+ 		url('fonts/source_sans_pro/SourceSansPro-ExtraLightItalic.ttf');
+}

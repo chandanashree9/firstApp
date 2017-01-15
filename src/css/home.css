@@ -1,0 +1,77 @@
+@import url("base.css");
+
+.plan-score-label{
+  font-family: 'Source Sans Pro ExtraLight';
+  font-size: 28pt;
+  color:#333333;
+}
+
+.plan-score-description{
+  font-family: 'Source Sans Pro Light';
+  font-size: 28pt;
+  color:#54B79F;
+}
+
+.plan-score-box{
+  height:70pt;
+  background-color:#FFFFFF;
+  border:1px solid #CCCCCC;
+}
+
+.plan-creditscore-description{
+  font-family: 'Source Sans Pro Light';
+  font-size: 18pt;
+  color:#cccccc;
+}
+
+.plan-creditscore-points{
+  border-radius: 70%;
+  width: 50px;
+  padding: 15px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid #54B79F;
+  text-align:center;
+  color:#54B79F;
+}
+
+.planed-chart,.pending-decision,.activity-feed,.calendar-list{
+  font-family: 'Source Sans Pro Semibold';
+  font-size: 18pt;
+  color:#333333;
+}
+
+.pending-decision-description,.activity-feed-description{
+  font-family: 'Source Sans Pro';
+  font-size: 14pt;
+  color:#333333;
+}
+
+.calendar-list-description{
+  font-family: 'Source Sans Pro';
+  font-size: 14pt;
+}
+
+.calendar-list-content{
+  font-family: 'Source Sans Pro';
+  font-size: 14pt;
+  color:#333333;
+}
+
+.mymoney-label, .portfolio-label, .wishlist-label{
+  font-family: 'Source Sans Pro Semibold';
+  font-size: 16pt;
+  color:#333333;
+}
+
+.mymoney-description, .portfolio-description, .wishlist-description{
+  font-family: 'Source Sans Pro';
+  font-size: 14pt;
+  color:#666666;
+}
+
+.mymoney-content, .portfolio-content{
+  font-family: 'Source Sans Pro Semibold';
+  font-size: 16pt;
+  color:#999999;
+}
