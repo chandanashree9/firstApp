@@ -1,58 +1,71 @@
 [  
    {  
       "name":"My Plan",
-      "id":1,
+      "id":"my_plan",
       "menus":[  
          {  
             "name":"Desires",
-            "value":""
+            "id":"my_pan_desires",
+            "value":"desires"
          },
          {  
             "name":"Decisions",
+            "id":"my_plan_decisions",
             "value":"decision"
          },
          {  
             "name":"Budget",
+            "id":"my_plan_budget",
             "menus":[  
                {  
                   "name":"Budget",
+                  "id":"my_plan_budget_1",
                   "value":"budget"
                },
                {  
                   "name":"Budget Tracking",
+                  "id":"my_plan_budget_tracking",
                   "value":"budgettracking"
                }
             ]
          },
          {  
             "name":"Assets",
-            "value":""
+            "id":"my_plan_assets",
+            "value":"assets"
          },
          {  
             "name":"Transactions",
-            "value":""
+            "id":"my_plan_transactions",
+            "value":"transactions"
          },
          {  
             "name":"Life",
+            "id":"my_plan_life",
             "menus":[  
                {  
                   "name":"Health",
+                  "id":"my_plan_life_health",
                   "value":""
                },
                {  
                   "name":"Education",
+                  "id":"my_plan_life_eduction",
                   "value":""
                },
                {  
                   "name":"Work",
+                  "id":"my_plan_life_work",
                   "value":""
                },
                {  
                   "name":"Career",
+                  "id":"my_plan_life_career",
                   "value":""
                },
                {  
                   "name":"Personal Growth",
+                  "id":"my_plan_life_personal",
                   "value":""
                }
             ]
@@ -61,58 +74,71 @@
    },
    {  
       "name":"My World",
-      "id":2,
+      "id":"my_world",
       "menus":[  
          {  
             "name":"My Profile",
+            "id":"my_world_profile",
             "value":""
          },
          {  
             "name":"My Household",
+            "id":"my_world_household",
             "menus":[  
                {  
                   "name":"Invitees",
+                  "id":"my_world_household_invitees",
                   "value":""
                }
             ]
          },
          {  
             "name":"My Banking",
+            "id":"my_world_banking",
             "value":""
          },
          {  
             "name":"Bill Pay",
+            "id":"my_world_billpay",
             "value":""
          },
          {  
             "name":"My Calendar",
+            "id":"my_world_calendar",
             "value":""
          },
          {  
             "name":"My Advisors",
+            "id":"my_world_advisors",
             "value":""
          },
          {  
             "name":"My Documents",
+            "id":"my_world_documents",
             "value":""
          },
          {  
             "name":"My Workrooms",
+            "id":"my_world_workrooms",
             "menus":[  
                {  
                   "name":"Estate Planner",
+                  "id":"my_world_workrooms_estate",
                   "value":""
                },
                {  
                   "name":"Wealth Manager",
+                  "id":"my_world_workrooms_wealth",
                   "value":""
                },
                {  
                   "name":"Accountant",
+                  "id":"my_world_workrooms_accountant",
                   "value":""
                },
                {  
                   "name":"Financial Advice",
+                  "id":"my_world_workrooms_financial",
                   "value":""
                }
             ]
@@ -121,83 +147,99 @@
    },
    {  
       "name":"Advisors",
-      "id":3,
+      "id":"advisors",
       "menus":[  
          {  
             "name":"Find an Advisor",
+            "id":"advisors_find_an_advisor",
             "value":""
          },
          {  
             "name":"Invite Advisor",
+            "id":"advisors_invite",
             "value":""
          }
       ]
    },
    {  
       "name":"knowledge Resources",
-      "id":4,
+      "id":"knowledge_resource",
       "menus":[  
          {  
             "name":"Earn",
+            "id":"knowledge_resource_earn",
             "value":""
          },
          {  
             "name":"Pay",
+            "id":"knowledge_resource_pay",
             "value":""
          },
          {  
             "name":"Receive",
+            "id":"knowledge_resource_receive",
             "value":""
          },
          {  
             "name":"Save",
+            "id":"knowledge_resource_save",
             "value":""
          },
          {  
             "name":"Protect",
+            "id":"knowledge_resource_protect",
             "value":""
          },
          {  
             "name":"Invest",
+            "id":"knowledge_resource_invest",
             "value":""
          },
          {  
             "name":"Spend",
+            "id":"knowledge_resource_spend",
             "value":""
          },
          {  
             "name":"Borrow",
+            "id":"knowledge_resource_borrow",
             "value":""
          },
          {  
             "name":"Share",
+            "id":"knowledge_resource_share",
             "value":""
          },
          {  
             "name":"Gift",
+            "id":"knowledge_resource_gift",
             "value":""
          },
          {  
             "name":"Distribute",
+            "id":"knowledge_resource_distribute",
             "value":""
          },
          {  
             "name":"Transfer",
+            "id":"knowledge_resource_transfer",
             "value":""
          }
       ]
    },
    {  
       "name":"Customer",
-      "id":5,
+      "id":"customer",
       "icon":"fa fa-user",
       "menus":[  
          {  
             "name":"User/App Settings",
+            "id":"customer_user_app_setting",
             "value":""
          },
          {  
             "name":"User Profile",
+            "id":"customer_user_profile",
             "value":""
          }
       ]

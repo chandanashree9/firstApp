@@ -46,8 +46,9 @@ requirejs.config(
 * by the modules themselves), we are listing them explicitly to get the references to the 'oj' and 'ko'
 * objects in the callback
 */
-require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout','ojs/ojmodule','ojs/ojrouter'],
-  function (oj, ko, $) { // this callback gets executed when all required modules are loaded
+require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','ojs/ojknockout',
+  'ojs/ojmodule','ojs/ojrouter','ojs/ojnavigationlist', 'ojs/ojjsontreedatasource','ojs/ojoffcanvas'],
+  function (oj, ko, $, service) { // this callback gets executed when all required modules are loaded
 
     // Router Instance and Configuration
     var router = oj.Router.rootInstance;
@@ -59,14 +60,108 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout','ojs/ojmodule','oj
       'budgettracking': { value:'budgettracking' }
     });
 
-    function MainViewModel() {
-      var self = this;
+    function MainViewModel() {      
       self.router = router;
             
       self.dynamicConfig = ko.pureComputed(function () {                  
         return router.moduleConfig;
       });
+
+      self.menulist = ko.observableArray([]);
+      self.menuNavlist = ko.observable();
+
+      // Retrieve Menu Data
+      service.fetch('js/data/menus.json',{}).then(function(response) {
+          self.menulist(response);
+          if(response && response.length > 0){
+              var list = [];                    
+              for(var i=0; i< response.length;i++){
+                  var child = [];
+                  var d = response[i];
+                  var obj = {'id':d.id,'name':d.name,'value':d.value};
+                  getMenusList(child,d.menus);
+                  list.push({"attr": obj, 'children': child});
+              }
+              self.menuNavlist(new oj.JsonTreeDataSource(list));
+          }
+      });  
+
+      self.selectedMenuItem = ko.observable(false);
+      self.loadModulePage = function( data, event ) {
+        if(selectedMenuItem == true){
+          router.go(data);
+        }        
+      };
+
+      // Event handler for navigation list
+      self.handleNavigation = function (event, ui) {
+          if ('navItem' === event.target.id && event.originalEvent) {
+              // router takes care of changing the selection
+              event.preventDefault();
+
+              if ($('#navDrawer').length && $('#navDrawer').hasClass('oj-offcanvas-overlay')) {
+                  $('#toggleNavListButton').click();
+              }
+          }
+      };      
+      
+       // Toggle Drawers [Start]
+      self.offcanvasMap = {
+          "toggleNavListButton": {
+            "selector": "#navDrawer",
+            "displayMode": "overlay",
+            "modality": "modal",
+            "query": oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.LG_UP)
+          }
+      };
+      self.toggleDrawer = function (model, event) {
+          var drawer, launcherId = event.currentTarget.id;
+
+          drawer = self.offcanvasMap[launcherId];
+          drawer.launcherId = launcherId;
+
+          if (drawer === self._activeOffcanvas) {
+            return self.closeDrawer(drawer);
+          }
+          if (!self._activeOffcanvas) {
+            return self.openDrawer(drawer);
+          }
+          return self.closeDrawer(self._activeOffcanvas).then(function () {
+            return self.openDrawer(drawer);
+          });
+      };
+
+      self.openDrawer = function (drawer) {
+          self._activeOffcanvas = drawer;
+          return oj.OffcanvasUtils.open(drawer);
+      };
+
+      self.closeDrawer = function (drawer) {
+          return oj.OffcanvasUtils.close(drawer);
+      }; 
+
+      $("#navDrawer").on("ojclose", function () {
+          self._activeOffcanvas = null;
+      });
     };
+
+    function getMenusList(result,data){
+      if(data && data.length > 0) {
+        for(var i = 0; i < data.length; i++){
+            var d = data[i];
+            var obj = {'id':d.id,'name':d.name,'value':d.value};
+            var child = [];
+            if(d.hasOwnProperty("menus")) {
+                getMenusList(child,d.menus);
+            }
+            if(child.length > 0) {
+                result.push({"attr": obj, 'children': child});  
+            } else {
+                result.push({"attr": obj});
+            }
+        } 
+      }
+    } 
 
     oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
     oj.Router.sync().then(

@@ -4,7 +4,7 @@
 	     	<div class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-2 oj-xl-2">
 	      		<span class="plan-score-label">Your Plan</span>
 	      	</div>
-	      	<div class="oj-flex-items oj-sm-12 oj-md-6 oj-lg-2 oj-xl-2 oj-padding" data-bind="click: function(){$root.router.go('financialplan')}">
+	      	<div class="oj-flex-items oj-sm-12 oj-md-6 oj-lg-2 oj-xl-2 oj-padding" data-bind="click: function(){router.go('financialplan')}">
 	      		<div class="oj-flex oj-panel plan-score-box">
 	      			<div class="oj-flex-item">
 	      				<i class="fa fa-long-arrow-up fa-3x" style="color:#54B79F" aria-hidden="true"></i>
@@ -111,7 +111,7 @@
 						selectionMode: 'single',
 						scrollPolicy: 'loadMoreOnScroll', 
 						scrollPolicyOptions: {fetchSize: 3},
-						rootAttributes: {style: 'overflow-x:hidden;border-style:none;'}
+						rootAttributes: {style: 'overflow-x:hidden;border-style:none'}
 					}">
 				</ul>
 			</div>
@@ -169,7 +169,7 @@
 
 <script type="text/html" id="pendingdecision_template">
 	<li>
-		<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap" data-bind="click: function(){$root.router.go('decision')}, event:{keypress:onEnterLoadDecision}">
+		<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap" data-bind="click: function(){router.go('decision')}, event:{keypress:onEnterLoadDecision}">
 			<div class="oj-flex-item">
 				<i class="fa fa-university" aria-hidden="true"></i>
 			</div>

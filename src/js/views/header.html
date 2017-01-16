@@ -1,7 +1,7 @@
 <div id="menu-container" class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center header-section"> 
   <!-- Offcanvas toggle button -->
   <div class="oj-flex-bar-start oj-md-hide">
-    <button class="oj-button-lg" data-bind="click: toggleDrawer, ojComponent: {
+    <button id="toggleNavListButton" class="toggleNavListButton oj-button-lg oj-button oj-component oj-enabled oj-button-half-chrome oj-button-icon-only oj-component-initnode oj-default" data-bind="click: toggleDrawer, ojComponent: {
           component:'ojButton', 
           label: 'Application Navigation',
           chroming: 'half', 
@@ -14,7 +14,7 @@
   <div class="oj-flex-bar-start" data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-sm-align-items-baseline'"> 
     <div class="oj-flex">
       <div class="oj-flex-item">
-        <img src="images/logo.png" data-bind="click:function(){$root.router.go('home')}"/>
+        <img src="images/logo.png" data-bind="click:function(){router.go('home')}"/>
       </div>
       <div class="oj-flex-item oj-padding oj-sm-only-hide">
         <span class="header-label" title="Application Name" data-bind="text: appName"></span>

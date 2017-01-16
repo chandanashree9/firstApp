@@ -15,7 +15,7 @@
       <div class="oj-flex-item oj-sm-12 oj-md-4 oj-lg-3 oj-xl-3" style="border-right:1px solid grey;width:10%">
         <div class="oj-flex-column oj-flex-items-pad">
           <div class="oj-flex-item oj-padding">
-            <div style="display:none" id="popup2" data-bind="ojComponent:{component: 'ojPopup',modality: 'modal', rootAttributes: { style: 'width: 40vw; height: 45vh; border-radius:10px; background-color:#ffffff'}}">
+            <div style="display:none" id="popup2" data-bind="ojComponent:{component: 'ojPopup',modality: 'modal', rootAttributes: { style: 'height: 45vh; border-radius:10px; background-color:#ffffff'}}">
               <span>Add an Account</span>
             </div>
             <i class="fa fa-plus-circle oj-padding" aria-hidden="true" style="color:#9B9B9B"></i> 
@@ -316,7 +316,7 @@
   </div>
 </div>
 
-<div style="display:none;width:750px;height: 350px" id="budgetentry" data-bind="ojComponent:{component: 'ojPopup',position:{'collision':'flip'}}">
+<div style="display:none;height: 350px" id="budgetentry" data-bind="ojComponent:{component: 'ojPopup',position:{'collision':'flip'}}">
   <span>Add Budget Entry</span>
   <div class="oj-flex oj-padding">
     <select id="select" data-bind="ojComponent: {
@@ -335,7 +335,7 @@
     </div>
   </div>
   <div class="oj-flex">
-    <div class="oj-panel" style="width:350px;height:90px;">
+    <div class="oj-panel" style="height:90px;">
       <h5>Tags</h5>
       <span class="oj-padding">
         <input id="dinner" type="checkbox">
