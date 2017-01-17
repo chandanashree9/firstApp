@@ -16,6 +16,8 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
     var budget_url = 'js/data/financial/budget.json';
 
 	function FinancialViewModel() {
+        self.displaymenu(true);
+        
 	    self.buttonClick = function(data, event){
         	console.log(event.currentTarget.id);
         	return true;

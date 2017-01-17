@@ -27,11 +27,17 @@
 <html lang="en-us">
   <head>
     <title>Money Avatar</title>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
-
+    <style>
+      [data-bind*="ojComponent"]:not(.oj-component-initnode) {
+        visibility: hidden;
+      }
+    </style>
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta class="oj-mq-lg-up">
+    <meta class="oj-mq-sm-only">
+    <meta class="oj-mq-md-only">
     <!-- This is the main css file for the default Alta theme -->
     <!-- injector:theme -->
     <link rel="stylesheet" href="css/libs/oj/v2.2.0/alta/oj-alta-min.css" type="text/css"/>
@@ -45,26 +51,30 @@
     <link rel="stylesheet" href="css/header.css" type="text/css"/>
     <link rel="stylesheet" href="css/home_header.css" type="text/css"/>
     <link rel="stylesheet" href="css/home.css" type="text/css"/>
+    <link rel="stylesheet" href="css/logout.css" type="text/css"/>
     
     <link rel="stylesheet" href="css/decision_chart.css" type="text/css"/>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
   </head>
   <body>
-    <div id="globalBody" class="oj-offcanvas-outer-wrapper oj-offcanvas-page"> 
-      
-      <!-- off-canvas content -->
-      <div id="navDrawer" data-bind="template: {name: 'listNavigationDrawerTemplate'}" class="navDrawer oj-offcanvas-start oj-contrast-marker oj-web-applayout-offcanvas oj-offcanvas-open oj-offcanvas-overlay" data-oj-offcanvas-surrogate-id="navDrawer_surrogate">
-      </div>
+    <div id="page-container" class="page-container oj-web-applayout-page"> 
 
-      <div id="pageContent" class="oj-web-applayout-page">
-        <!-- Header Section-->
-        <header role="banner" class="oj-web-applayout-header" data-bind="ojModule: 'header'"></header> 
+      <!-- Header Section-->
+      <header role="banner" class="oj-flex-bar oj-web-applayout-header oj-sm-align-items-center" data-bind="ojModule: 'header'"></header> 
 
+      <div id="pageContent" class="oj-web-applayout-page oj-web-applayout-content">
         <!-- Content Body Section-->
-        <div id="content" class="oj-web-applayout-max-width oj-web-applayout-content oj-flex-column">
-          <div class="oj-flex-item" data-bind="ojModule: 'home_header'"></div>
-          <div class="oj-flex-item" data-bind="ojModule: dynamicConfig()"></div>
+        <div id="content" class="oj-offcanvas-outer-wrapper oj-sm-flex-direction-column oj-sm-flex-wrap-nowrap oj-flex oj-offcanvas-shift-start">
+          <div id="main-content-wrapper" class="oj-sm-flex-wrap-nowrap oj-flex-item">
+            <div id="main-content" class="oj-flex-column">
+              <div class="oj-flex-item" data-bind="ojModule: 'home_header'"></div>
+              <div class="oj-flex-item" data-bind="ojModule: dynamicConfig()"></div>
+            </div>
+          </div>
+          <!-- off-canvas content -->
+          <div id="navDrawer" data-bind="template: {name: 'listNavigationDrawerTemplate'}" class="navDrawer oj-offcanvas-start oj-contrast-marker oj-web-applayout-offcanvas" style="display: block;">
+          </div>
         </div>
         <!-- Footer Section-->
       </div>

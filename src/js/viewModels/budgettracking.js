@@ -16,6 +16,7 @@ function(oj, ko, $, service, numberconvertor)
     var budget_entires = 'js/data/budget/budgetentries.json';
 
 	function BudgetViewModel() {
+        self.displaymenu(true);
 		// Model window
         self.addbudget=function() {
             $('#popup2').ojPopup('open', '#btnfinancial');

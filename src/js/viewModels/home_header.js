@@ -2,10 +2,10 @@
 define(['ojs/ojcore', 'knockout', 'ojs/ojknockout','ojs/ojmodule','ojs/ojInputText','ojs/ojdatetimepicker'],
     function(oj, ko)
     {   
-    	function HomeHeaderSectionViewModel() {
-
+    	function HomeHeaderViewModel() {
+    		self.displaymenu(true);
         }
 
-        return HomeHeaderSectionViewModel;  	
+        return HomeHeaderViewModel;  	
     }
 );

@@ -8,8 +8,7 @@
  * Example of Require.js boostrap javascript
  */
 
-requirejs.config(
-{
+requirejs.config({
   baseUrl: 'js',
 
   // Path mappings for the logical module names
@@ -57,7 +56,8 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
       'decision': {value:'decision'},
       'financialplan': {value:'financialplan'},
       'budget': {value:'budget'},
-      'budgettracking': { value:'budgettracking' }
+      'budgettracking': { value:'budgettracking' },
+      'logout': { value:'logout' }
     });
 
     function MainViewModel() {      
@@ -67,6 +67,16 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
         return router.moduleConfig;
       });
 
+      // Media Queries for repsonsive header and navigation
+      // Create small screen media query to update nav list orientation and button menu display
+      var smQuery = oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY);
+      self.smScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(smQuery);
+    
+      // Close the drawer for medium and up screen sizes
+      var mdQuery = oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.MD_UP);
+      self.mdScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(mdQuery);
+
+      // Navigation Menu display
       self.menulist = ko.observableArray([]);
       self.menuNavlist = ko.observable();
 
@@ -107,42 +117,68 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
       
        // Toggle Drawers [Start]
       self.offcanvasMap = {
-          "toggleNavListButton": {
-            "selector": "#navDrawer",
-            "displayMode": "overlay",
-            "modality": "modal",
-            "query": oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.LG_UP)
-          }
+        "toggleNavListButton": {
+          "selector": "#navDrawer",
+          "displayMode": "overlay",
+          "modality": "modal",
+          "query": oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.LG_UP)
+        }
       };
       self.toggleDrawer = function (model, event) {
-          var drawer, launcherId = event.currentTarget.id;
+        var drawer, launcherId = event.currentTarget.id;
 
-          drawer = self.offcanvasMap[launcherId];
-          drawer.launcherId = launcherId;
+        drawer = self.offcanvasMap[launcherId];
+        drawer.launcherId = launcherId;
 
-          if (drawer === self._activeOffcanvas) {
-            return self.closeDrawer(drawer);
-          }
-          if (!self._activeOffcanvas) {
-            return self.openDrawer(drawer);
-          }
-          return self.closeDrawer(self._activeOffcanvas).then(function () {
-            return self.openDrawer(drawer);
-          });
+        if (drawer === self._activeOffcanvas) {
+          return self.closeDrawer(drawer);
+        }
+        if (!self._activeOffcanvas) {
+          return self.openDrawer(drawer);
+        }
+        return self.closeDrawer(self._activeOffcanvas).then(function () {
+          return self.openDrawer(drawer);
+        });
       };
 
       self.openDrawer = function (drawer) {
-          self._activeOffcanvas = drawer;
-          return oj.OffcanvasUtils.open(drawer);
+        self._activeOffcanvas = drawer;
+        return oj.OffcanvasUtils.open(drawer);
       };
 
       self.closeDrawer = function (drawer) {
-          return oj.OffcanvasUtils.close(drawer);
+        return oj.OffcanvasUtils.close(drawer);
       }; 
 
       $("#navDrawer").on("ojclose", function () {
-          self._activeOffcanvas = null;
+        self._activeOffcanvas = null;
       });
+
+      self.toggleDrawerStyles = function (query) {
+        var visible, drawer = $(self.offcanvasMap["toggleNavListButton"].selector);
+        if (!query) {
+          query = window.matchMedia(self.offcanvasMap["toggleNavListButton"].query);
+        }
+        visible = query.matches; // !isGalleryPage && query.matches;
+        if (visible) {
+          $("#main-content").before($("#content .navDrawer"));
+          if (self.togglePinnedNavListButtonSetValue().length > 0) {
+            $("#navDrawer").show();
+          } else {
+            $("#navDrawer").hide();
+          }
+        } else {
+          $("#navDrawer").show();
+          $("#main-content-wrapper").before($("#main-content-wrapper .navDrawer"));
+        }
+        drawer.toggleClass('oj-contrast-marker', !visible);
+        drawer.toggleClass('oj-web-applayout-offcanvas', !visible);
+        drawer.toggleClass("oj-offcanvas-start", !visible);
+
+        // toggle light background when visible
+        drawer.toggleClass("nav-drawer-light-bg", visible);
+        
+      };
     };
 
     function getMenusList(result,data){
@@ -166,8 +202,8 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
     oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
     oj.Router.sync().then(
       function() {
-        ko.applyBindings(new MainViewModel(), document.getElementById('globalBody'));
-        $('#globalBody').show();
+        ko.applyBindings(new MainViewModel(), document.getElementById('page-container'));
+        $('#page-container').show();
       },
       function (error) {
         oj.Logger.error('Error in root start: ' + error.message);

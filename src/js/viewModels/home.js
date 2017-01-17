@@ -26,6 +26,7 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
         var chart20_url = 'js/data/home/chart/chart20.json';        
 
     	function HomeViewModel() {
+            self.displaymenu(true);
             // Start - Pending Decisions & Actions Display Content		
             self.pendingdecisions = ko.observable();
             service.fetch(decision_url,header).then(function(response) {

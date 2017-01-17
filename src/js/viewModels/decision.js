@@ -16,6 +16,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
         var impactdesires = 'js/data/decision/impactdesires.json';
 
     	function DecisionViewModel() {
+            self.displaymenu(true);
+            
     		self.title=ko.observable();
             self.description=ko.observable();
             self.duedate=ko.observable();
