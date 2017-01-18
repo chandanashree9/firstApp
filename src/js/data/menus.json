@@ -2,6 +2,7 @@
    {  
       "name":"My Plan",
       "id":"my_plan",
+      "value":"financialplan",
       "menus":[  
          {  
             "name":"Desires",
@@ -162,7 +163,7 @@
       ]
    },
    {  
-      "name":"knowledge Resources",
+      "name":"Knowledge Resources",
       "id":"knowledge_resource",
       "menus":[  
          {  

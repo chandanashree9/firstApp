@@ -2,11 +2,11 @@
     <div class="oj-flex-item">
         <div class="oj-flex">
             <div class="oj-flex-item">
-                <h2 class="financialplan">Financial Plan View</h2>
+                <span class="financialplan">Financial Plan View</span>
             </div>
              <div class="oj-flex-bar-end">
-                <button id= "button" class="btnstyle" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Get Advice' }"></button>
-                <button id= "button" class="btnstyle oj-padding" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Conversations'}"></button>
+                <button id= "buttonadvice" class="btngetadvice" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Get Advice' }"></button>
+                <button id= "buttonconversation" class="btnconversations oj-padding" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Conversations'}"></button>
             </div>
         </div>
     </div>
@@ -15,9 +15,9 @@
             <div class="oj-flex-item oj-sm-12 oj-md-4 oj-lg-3 oj-xl-3" style="border-right:1px solid grey;">
                 <div class="oj-flex-column oj-flex-items-pad">
                     <div class="oj-flex-item oj-padding">
-                        <button id= "desirebtn" class="btnstyle" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Desires' }"></button>
-                        <button id= "wishesbtn" class="btnstyle" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Wishes' }"></button>
-                        <button id= "actionsbtn" class="btnstyle" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Actions' }"></button>
+                        <button id= "desirebtn" class="btnfinancialplan" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Desires' }"></button>
+                        <button id= "wishesbtn" class="btnfinancialplan" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Wishes' }"></button>
+                        <button id= "actionsbtn" class="btnfinancialplan" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Actions' }"></button>
                     </div>
                      <div class="oj-flex-item oj-padding">
                         <div class="oj-flex">
@@ -40,33 +40,8 @@
                         </div>
                     </div>
                      <div class="oj-flex-item oj-padding">
-                        <!-- ko foreach: impactdesires -->
-                        <div data-bind="attr: {'id':id }, ojComponent: {component: 'ojCollapsible', expand: optionChangeHandler}">
-                            <span class="oj-header-border" data-bind="text: title, style: {color:probabilityColor(probability)}"></span>
-                            <div class="oj-panel">
-                                <div class="oj-flex-column">
-                                    <div class="oj-flex-item">
-                                        <label>Description:</label><span data-bind="text:description"></span>
-                                    </div>
-                                    <div class="oj-flex-item">
-                                        <label>Magnitude:</label><span data-bind="text:target_value"></span> 
-                                    </div>
-                                     <div class="oj-flex-item">
-                                        <label>Priority:</label><span data-bind="text:desire_priority"></span>
-                                    </div>
-                                    <div class="oj-flex-item">
-                                        <label>Expense Type:</label><span data-bind="text:expenseType"></span>
-                                    </div>
-                                    <div class="oj-flex-item">
-                                        <label>Expense Date & Values:</label><span data-bind="text:expense_Date"></span><span data-bind="text:expense_value"></span>
-                                    </div>
-                                    <div class="oj-flex-item">
-                                        <label>Status:</label><span data-bind="text:active_status"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /ko -->
+                        <div data-bind="visible: displaydesireslist,template: {name: 'desires_list_template', data: impactdesires}"></div>
+                        <div data-bind="visible: displaywishlist,template: {name: 'wish_list_template', data: wishlist}"></div>
                     </div>
                 </div>
             </div>
@@ -78,14 +53,14 @@
                                 <div class="oj-panel financialplanpanel">
                                     <div class="oj-flex-column" style="text-align: center;">
                                         <div class="oj-flex-item oj-padding">
-                                            <h3>Score: +B</h3>
+                                            <span class="score-label">Score: <span class="score-value">+B</span> </span>
                                         </div>
                                         <div class="oj-flex-item oj-padding">
-                                            <span>Desired Initiated</span><br>
+                                            <span class="score-initiated">Desired Initiated</span><br>
                                              <strong>5</strong>
                                         </div>
                                         <div class="oj-flex-item">
-                                            <span>Decision Made</span><br>
+                                            <span class="score-decisionmade">Decision Made</span><br>
                                             <strong>1</strong>
                                         </div>
                                     </div>
@@ -125,7 +100,7 @@
                                     timeAxisType: 'mixedFrequency',
                                     legend: {rendered: 'off'},
                                     dataCursor: 'on', dataCursorBehavior: 'snap', dataCursorPosition: dataCursorPositionValue,
-                                    yAxis: {majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName,style:{color: probabilityColor($data)}}},
+                                    yAxis: {majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName,style:'color: probabilityColor($data)'}},
                                     xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'grey', lineStyle:'dashed', rendered:'on'}},
                                     styleDefaults: {lineType: 'none', dataItemGaps: '0%', markerShape: 'circle'},
                                     valueFormats: [{type: 'series', tooltipLabel: 'Event'}, {type: 'value', tooltipDisplay: 'off'}]
@@ -165,13 +140,59 @@
     </div>
 </div>
 
+
+<script type="text/html" id="desires_list_template">
+    <!-- ko foreach: impactdesires -->
+    <div data-bind="attr: {'id':id }, ojComponent: {component: 'ojCollapsible', expand: optionChangeHandler}">
+        <span class="oj-header-border desires-list" data-bind="text: title, style: {color:probabilityColor(probability)}"></span>
+        <div class="oj-panel">
+            <div class="oj-flex-column desirelist-description">
+                <div class="oj-flex-item">
+                    <label>Description:</label><span data-bind="text:description"></span>
+                </div>
+                <div class="oj-flex-item">
+                    <label>Magnitude:</label><span data-bind="text:target_value"></span> 
+                </div>
+                 <div class="oj-flex-item">
+                    <label>Priority:</label><span data-bind="text:desire_priority"></span>
+                </div>
+                <div class="oj-flex-item">
+                    <label>Expense Type:</label><span data-bind="text:expenseType"></span>
+                </div>
+                <div class="oj-flex-item">
+                    <label>Expense Date & Values:</label><span data-bind="text:expense_Date"></span><span data-bind="text:expense_value"></span>
+                </div>
+                <div class="oj-flex-item">
+                    <label>Status:</label><span data-bind="text:active_status"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="wish_list_template">
+    <!-- ko foreach: wishlist -->
+    <div class="desires-list" data-bind="attr: {'id':id }, ojComponent: {component: 'ojCollapsible'}">
+        <span class="oj-header-border" data-bind="text: title"></span>
+        <div class="oj-panel">
+            <div class="oj-flex-column">
+                <div class="oj-flex-item">
+                    <label>Description:</label></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</script>
+
 <script type="text/html" id="bal_row_template">
     <tr>
-        <td style="width:30%">
+        <td style="width:30%" data-bind="style:{'background-color':$data.color}">
             <div data-bind="ojComponent: {component: 'ojRowExpander', context: $rowContext}"></div>
             <span data-bind="text: type"></span>
         </td>
-        <td colspan='4' style="width:70%">
+        <td colspan='4' style="width:70%" data-bind="style:{'background-color':$data.color}">
             <table id='account-data' style="width:100%">
                 <tr>
                     <!-- ko foreach: $data.balance -->

@@ -13,6 +13,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','oj
             self.menulaunch = function( model, event ) {
                 var menuId = "#menu"+model.id;
                 $(menuId).ojMenu("open", event); 
+
+                if(model.hasOwnProperty("value")) {
+                    router.go(model.value);
+                }
             };
 
             self.menuOpen = function( model, event ) {

@@ -14,13 +14,29 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
     var chart1 = 'js/data/home/chart/chart5.json';
     var balance_url = 'js/data/financial/accountbalance.json';
     var budget_url = 'js/data/financial/budget.json';
+    var wishlist_url = 'js/data/financial/wishlist.json';
 
 	function FinancialViewModel() {
         self.displaymenu(true);
         
+        self.displaydesireslist = ko.observable(true);
+        self.displaywishlist = ko.observable(false);
+        self.displaydactionlist = ko.observable(false);
+
 	    self.buttonClick = function(data, event){
-        	console.log(event.currentTarget.id);
-        	return true;
+        	if(event.currentTarget.id === 'desirebtn') {
+                self.displaydesireslist(true);
+                self.displaywishlist(false);
+                self.displaydactionlist(false);
+            } else if(event.currentTarget.id === 'wishesbtn') {
+                self.displaydesireslist(false);
+                self.displaywishlist(true);
+                self.displaydactionlist(false);
+            } else {
+                self.displaydesireslist(false);
+                self.displaywishlist(false);
+                self.displaydactionlist(true);
+            }
 		}
 
         // Start - ViewOptions 
@@ -49,6 +65,11 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
             selecteddesireId = desireslist[0].id;
             var planviewlist = computePlanView(desireslist,selecteddesireId, planViewNames);
             self.planviews(planviewlist);
+        });
+
+        self.wishlist=ko.observableArray([]);
+        service.fetch(wishlist_url,header).then(function(response) {
+            self.wishlist(response);
         });
 
         self.launchImpactDesires = function(event,data){

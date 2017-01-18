@@ -1,0 +1,93 @@
+@import url("base.css");
+
+.decision-label{
+	font-family:'Source Sans Pro Semibold';
+	font-size: 24pt;
+  	color:#333333;
+}
+
+.decision-btn-advice,.decision-btn-conversations{
+  font-family: 'Source Sans Pro';
+  font-size:10pt;
+  width:130px;
+  height:45px;
+  border-radius: 25px;
+  background-color: #FFFFFF;
+  color:#808080;
+  border-style: 1px solid #C9C9C9;
+  border-width:thin;
+}
+
+.decision-title {
+	font-family:'Source Sans Pro';
+	font-size: 16pt;
+	color: #4A5C66;
+}
+
+.decision-content {
+	font-family:'Source Sans Pro Semibold';
+	font-size: 14pt;
+	color: #999999;
+}
+
+.alternative-label{
+	font-family:'Source Sans Pro';
+	font-size: 14pt;
+	color: #4A5C66;
+}
+
+.decisionpanel{
+  background-color:#FAFAFA;
+  color:#4A5C66;
+}
+
+.decision-nav-item{
+	font-family:'Source Sans Pro';
+	font-size:16pt;
+}
+
+.desireimpact-label{
+	font-family:'Source Sans Pro';
+	font-size:24pt;
+	color:#333333;
+}
+
+.decisionselect-alternative{
+	font-family:'Source Sans Pro';
+	font-size:30pt;
+	color: #999999;
+}
+
+.decision-cashflow{
+	font-family: 'Source Sans Pro';
+	font-size: 13pt;
+	color:#2FAEA1;
+}
+
+.decision-cashflowlabel,.decision-portfolioimpactlabel{
+	font-family: 'Source Sans Pro';
+	font-size: 12pt;
+	color:#333333;
+}
+
+.decision-cashflowvalue{
+	font-family: 'Source Sans Pro';
+	font-size: 12pt;
+	color:#42AEA1;
+}
+
+.btnalternative{
+  width:170px;
+  height:40px;
+  background-color: #5CB69F;
+  border-radius: 25px;
+  font-size:10pt;
+  color:#FFFFFF;
+  border-style: none;
+}
+
+.decision-impactlabel{
+	font-family:'Source Sans Pro';
+	font-size: 20pt;
+	color:#333333;
+}

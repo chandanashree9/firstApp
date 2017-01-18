@@ -1,0 +1,90 @@
+@import url("base.css");
+
+button#desirebtn:focus{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+}
+
+button#wishesbtn:active{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+}
+
+button#actionsbtn:visited{
+  background-color: #57B7A1;
+  color:#FFFFFF;
+}
+
+.btnfinancialplan{
+  width:110px;
+  height:40px;
+  background-color:#FFFFFF;
+  color:#5FB5A0;
+  border-style: 1px solid #5FB6A1;
+  border-radius: 25px;
+  font-size:11pt;
+}
+
+.add-desire{
+	font-family:'Source Sans Pro';
+	font-size: 10pt;
+	color:#333333;
+}
+
+.desires-list{
+	font-family:'Source Sans Pro Semibold';
+	font-size: 14pt;
+}
+
+.desirelist-description{
+	font-family:'Source Sans Pro Light';
+	font-size:12pt;
+	color:grey;
+	line-height:150%;
+}
+
+.btngetadvice{
+  width:110px;
+  height:40px;
+  background-color:#FFFFFF;
+  color:#5FB5A0;
+  border-style: 1px solid #5FB6A1;
+  border-radius: 25px;
+  font-size:9pt;
+}
+.btnconversations{
+  width:130px;
+  height:40px;
+  background-color:#FFFFFF;
+  color:#5FB5A0;
+  border-style: 1px solid #5FB6A1;
+  border-radius: 25px;
+  font-size:9pt;
+}
+button#buttonadvice:focus{
+	background-color:#57B6A0;
+	color:#FFFFFF;
+}
+button#buttonconversation:focus{
+	background-color:#57B6A0;
+	color:#FFFFFF;
+}
+
+.score-label{
+	font-family:'Source Sans Pro Light';
+	font-size: 20pt;
+	color: #999999;
+}
+
+.score-value{
+	font-family:'Source Sans Pro Light';
+	font-size: 20pt;
+	color:#54B79F;
+}
+
+.score-initiated,.score-decisionmade{
+	font-family:'Source Sans Pro Semibold';
+	font-size:10pt;
+	color:#999999;
+}
+
