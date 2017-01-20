@@ -1,6 +1,6 @@
 'use strict';
 define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/convertors/date', 'viewModels/convertors/number', 
-    'ojs/ojknockout','ojs/ojmodule','ojs/ojlistview', 'ojs/ojbutton','ojs/ojarraytabledatasource', 'ojs/ojchart', 'ojs/ojInputText',
+    'ojs/ojknockout','ojs/ojmodule','ojs/ojlistview', 'ojs/ojbutton','ojs/ojarraytabledatasource', 'ojs/ojchart', 'ojs/ojinputtext',
     'ojs/ojdatetimepicker','ojs/ojselectcombobox', 'ojs/ojdialog'],
     function(oj, ko, service, dateconvertor, numberconvertor)
     {   

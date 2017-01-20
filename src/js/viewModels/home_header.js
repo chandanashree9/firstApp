@@ -1,5 +1,5 @@
 'use strict';
-define(['ojs/ojcore', 'knockout', 'ojs/ojknockout','ojs/ojmodule','ojs/ojInputText','ojs/ojdatetimepicker'],
+define(['ojs/ojcore', 'knockout', 'ojs/ojknockout','ojs/ojmodule','ojs/ojinputtext','ojs/ojdatetimepicker'],
     function(oj, ko)
     {   
     	function HomeHeaderViewModel() {

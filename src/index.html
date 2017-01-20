@@ -35,10 +35,8 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta class="oj-mq-lg-up">
-    <meta class="oj-mq-sm-only">
-    <meta class="oj-mq-md-only">
-    <!-- This is the main css file for the default Alta theme -->
+   
+       <!-- This is the main css file for the default Alta theme -->
     <!-- injector:theme -->
     <link rel="stylesheet" href="css/libs/oj/v2.2.0/alta/oj-alta-min.css" type="text/css"/>
     <!-- endinjector -->
@@ -59,15 +57,15 @@
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
   </head>
-  <body>
+  <body style="overflow-y:scroll;">
     <div id="page-container" class="page-container oj-web-applayout-page"> 
 
       <!-- Header Section-->
       <header role="banner" class="oj-flex-bar oj-web-applayout-header oj-sm-align-items-center" data-bind="ojModule: 'header'"></header> 
 
-      <div id="pageContent" class="oj-web-applayout-page oj-web-applayout-content">
+      <div id="pageContent" class="oj-web-applayout-content">
         <!-- Content Body Section-->
-        <div id="content" class="oj-offcanvas-outer-wrapper oj-sm-flex-direction-column oj-sm-flex-wrap-nowrap oj-flex oj-offcanvas-shift-start">
+        <div id="content" role="main" class="oj-offcanvas-outer-wrapper oj-sm-flex-direction-column oj-sm-flex-wrap-nowrap oj-flex">
           <div id="main-content-wrapper" class="oj-sm-flex-wrap-nowrap oj-flex-item">
             <div id="main-content" class="oj-flex-column">
               <div class="oj-flex-item" data-bind="ojModule: 'home_header'"></div>

@@ -22,20 +22,38 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
         self.displaydesireslist = ko.observable(true);
         self.displaywishlist = ko.observable(false);
         self.displaydactionlist = ko.observable(false);
+        self.finanacialPlanBtnValue = ko.observable('desirebtn');
+        self.finanacialPlanBtnColor = ko.observable('financial-plan-btn-default');
 
-	    self.buttonClick = function(data, event){
-        	if(event.currentTarget.id === 'desirebtn') {
-                self.displaydesireslist(true);
-                self.displaywishlist(false);
-                self.displaydactionlist(false);
-            } else if(event.currentTarget.id === 'wishesbtn') {
-                self.displaydesireslist(false);
-                self.displaywishlist(true);
-                self.displaydactionlist(false);
+        self.financialPlanBtn = [
+            {id: 'desirebtn', label: 'Desires'},
+            {id: 'wishesbtn', label: 'Wishes'},
+            {id: 'actionsbtn', label: 'Actions'},
+        ];
+
+	    self.finanacialPlanBtnfn = function(event, ui){
+            self.displaydesireslist(false);
+            self.displaywishlist(false);
+            self.displaydactionlist(false); 
+
+            $('#desirebtn').css('financial-plan-btn-default');
+            $('#wishesbtn').css('financial-plan-btn-default');
+            $('#actionsbtn').css('financial-plan-btn-default');
+
+            if(ui.option === "checked") {
+               if(self.finanacialPlanBtnValue._latestValue === 'wishesbtn') {
+                    $('#wishesbtn').toggleClass('financial-plan-btn-select');
+                    self.displaywishlist(true);
+                } else if(self.finanacialPlanBtnValue._latestValue === 'actionsbtn') {
+                    $('#actionsbtn').toggleClass('financial-plan-btn-select');
+                    self.displaydactionlist(true);
+                } else {
+                    $('#desirebtn').toggleClass('financial-plan-btn-select');
+                    self.displaydesireslist(true);
+                } 
             } else {
-                self.displaydesireslist(false);
-                self.displaywishlist(false);
-                self.displaydactionlist(true);
+                $('#desirebtn').toggleClass('financial-plan-btn-select');
+                self.displaydesireslist(true);
             }
 		}
 

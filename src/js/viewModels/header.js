@@ -1,6 +1,6 @@
 'use strict';
 
-define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','ojs/ojknockout', 
+define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','ojs/ojknockout', 
     'ojs/ojmodule', 'ojs/ojmenu','ojs/ojoffcanvas'],
     function(oj, ko, $, service) {   
 

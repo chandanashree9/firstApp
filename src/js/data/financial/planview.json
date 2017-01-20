@@ -20,7 +20,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id01",
-      "probability":85
+      "probability":85,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"New Roof",
@@ -43,7 +44,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id02",
-      "probability":65
+      "probability":65,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Kitchen Remodel",
@@ -66,7 +68,8 @@
       "expense_Date":"2022-06-01",
       "expense_value":4500,
       "id":"id03",
-      "probability":78
+      "probability":78,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"New tires for wife's car",
@@ -89,7 +92,8 @@
       "expense_Date":"2021-12-01",
       "expense_value":300,
       "id":"id04",
-      "probability":90
+      "probability":90,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Phone upgrade",
@@ -112,7 +116,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id05",
-      "probability":60
+      "probability":60,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Buy a Tesla",
@@ -135,7 +140,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id06",
-      "probability":40
+      "probability":40,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Save for Jimmy Jr's college",
@@ -158,7 +164,8 @@
       "expense_Date":"2018-07-01",
       "expense_value":30000,
       "id":"id07",
-      "probability":55
+      "probability":55,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"New Macbook",
@@ -181,7 +188,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id08",
-      "probability":95
+      "probability":95,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"ski Trip",
@@ -204,7 +212,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id09",
-      "probability":20
+      "probability":20,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Present for 10th Anniverssary",
@@ -227,7 +236,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id10",
-      "probability":99
+      "probability":99,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Family Vacation to Europe",
@@ -250,7 +260,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id11",
-      "probability":10
+      "probability":10,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Save for Little Jill's college",
@@ -273,7 +284,8 @@
       "expense_Date":"2017-12-20",
       "expense_value":25000,
       "id":"id12",
-      "probability":1
+      "probability":1,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Pool Installed in backyard",
@@ -296,7 +308,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id13",
-      "probability":75
+      "probability":75,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Fence for backyard",
@@ -319,7 +332,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id14",
-      "probability":85
+      "probability":85,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Repair guest house",
@@ -342,7 +356,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id5",
-      "probability":60
+      "probability":60,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Beach House Purchase",
@@ -365,7 +380,8 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id16",
-      "probability":50
+      "probability":50,
+      "icon":"fa fa-angle-down"
    },
    {  
       "title":"Christmas 2018",
@@ -388,6 +404,7 @@
       "expense_Date":"",
       "expense_value":0,
       "id":"id17",
-      "probability":88
+      "probability":88,
+      "icon":"fa fa-angle-down"
    }
 ]

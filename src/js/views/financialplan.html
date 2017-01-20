@@ -5,8 +5,8 @@
                 <span class="financialplan">Financial Plan View</span>
             </div>
              <div class="oj-flex-bar-end">
-                <button id= "buttonadvice" class="btngetadvice" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Get Advice' }"></button>
-                <button id= "buttonconversation" class="btnconversations oj-padding" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Conversations'}"></button>
+                <button id= "buttonadvice" class="btngetadvice" data-bind="ojComponent: { component: 'ojButton', label: 'Get Advice' }"></button>
+                <button id= "buttonconversation" class="btnconversations oj-padding" data-bind="ojComponent: { component: 'ojButton', label: 'Conversations'}"></button>
             </div>
         </div>
     </div>
@@ -15,9 +15,22 @@
             <div class="oj-flex-item oj-sm-12 oj-md-4 oj-lg-3 oj-xl-3" style="border-right:1px solid grey;">
                 <div class="oj-flex-column oj-flex-items-pad">
                     <div class="oj-flex-item oj-padding">
-                        <button id= "desirebtn" class="btnfinancialplan" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Desires' }"></button>
-                        <button id= "wishesbtn" class="btnfinancialplan" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Wishes' }"></button>
-                        <button id= "actionsbtn" class="btnfinancialplan" data-bind="click: buttonClick, ojComponent: { component: 'ojButton', label: 'Actions' }"></button>
+                         <div id="financial-plan-btn-set"  class="oj-flex" data-bind="ojComponent: {
+                                component: 'ojButtonset', 
+                                checked: finanacialPlanBtnValue, 
+                                optionChange: finanacialPlanBtnfn
+                            }" aria-label="Choose your plan view.">
+                            <!-- ko foreach: financialPlanBtn -->
+                                <div class="oj-flex-item">
+                                    <label data-bind="attr: {for: id}" class="financial-plan-btn"></label>
+                                    <input type="radio" name="financial-plan-btn-id" data-bind="value: id, attr: {id: id}, 
+                                        ojComponent: { component: 'ojButton', 
+                                            label: label,
+                                            rootAttributes:{style: 'background-color:#54B79F;color:#FFFFFF' }
+                                        }"/>
+                                </div>
+                            <!-- /ko -->
+                        </div>
                     </div>
                      <div class="oj-flex-item oj-padding">
                         <div class="oj-flex">
@@ -143,7 +156,10 @@
 
 <script type="text/html" id="desires_list_template">
     <!-- ko foreach: impactdesires -->
-    <div data-bind="attr: {'id':id }, ojComponent: {component: 'ojCollapsible', expand: optionChangeHandler}">
+    <div data-bind="attr: {'id':id }, ojComponent: {
+            component: 'ojCollapsible', 
+            expand: optionChangeHandler
+        }">
         <span class="oj-header-border desires-list" data-bind="text: title, style: {color:probabilityColor(probability)}"></span>
         <div class="oj-panel">
             <div class="oj-flex-column desirelist-description">
