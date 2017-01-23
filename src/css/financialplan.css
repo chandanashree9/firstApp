@@ -1,5 +1,10 @@
 @import url("base.css");
 
+.financialplanpanel{
+  height:90%;
+  width:80%;
+}
+
 .financial-plan-btn{
   width:105px;
   height: 40px;
@@ -15,6 +20,7 @@
 .financial-plan-btn-select{
   color: #FFFFFF;
   background-color: #54B79F;
+  border-radius: 25px;
 }
 
 .btngetadvice{
@@ -83,4 +89,10 @@ button#buttonconversation:focus{
 
 .oj-collapsible-header-icon {
   display: none;
+}
+
+.financial-plan{
+  font-family:'Source Sans Pro Light';
+  font-size:20pt;
+  color:#999999;
 }

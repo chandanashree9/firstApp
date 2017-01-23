@@ -2,7 +2,7 @@
 
 define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','viewModels/convertors/number', 
     'viewModels/service/financialService','ojs/ojknockout','ojs/ojmodule', 'ojs/ojbutton', 'ojs/ojcollapsible', 'ojs/ojchart','ojs/ojpopup',
-    'promise','ojs/ojselectcombobox','ojs/ojtable', 'ojs/ojrowexpander', 'ojs/ojflattenedtreedatagriddatasource', 'ojs/ojjsontreedatasource'],
+    'promise','ojs/ojselectcombobox','ojs/ojtable', 'ojs/ojrowexpander', 'ojs/ojflattenedtreedatagriddatasource', 'ojs/ojjsontreedatasource','ojs/ojpopup'],
 function(oj, ko, $, service, numberconvertor, financialservice) {   
 
     var header = {
@@ -206,6 +206,12 @@ function(oj, ko, $, service, numberconvertor, financialservice) {
         self.currencyformater = function(data){
             return numberconvertor.currencyformater(data);
         };
+
+        //Start - popup
+        self.displayPlanVersion = function(){
+            $('#financialpopup').ojPopup('open', '#btnhref');
+        }
+        //End - popup
 
         self.probabilityColor = function(d){
             return computeProbabilityColor(d);

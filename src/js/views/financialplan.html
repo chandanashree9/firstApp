@@ -1,8 +1,9 @@
-<div id="financialplanview-container" class="oj-flex-column">
+<div id="financialplanview-container" class="oj-flex-column oj-padding">
     <div class="oj-flex-item">
         <div class="oj-flex">
             <div class="oj-flex-item">
-                <span class="financialplan">Financial Plan View</span>
+                <span class="financial-plan">Financial Plan View</span>
+                <i class="fa fa-angle-down fa-2x" aria-hidden="true" style="color:#D5D5D5" data-bind="click:displayPlanVersion"></i>
             </div>
              <div class="oj-flex-bar-end">
                 <button id= "buttonadvice" class="btngetadvice" data-bind="ojComponent: { component: 'ojButton', label: 'Get Advice' }"></button>
@@ -26,7 +27,7 @@
                                     <input type="radio" name="financial-plan-btn-id" data-bind="value: id, attr: {id: id}, 
                                         ojComponent: { component: 'ojButton', 
                                             label: label,
-                                            rootAttributes:{style: 'background-color:#54B79F;color:#FFFFFF' }
+                                            rootAttributes:{style: 'background-color:#54B79F;color:#FFFFFF;border-radius:25px' }
                                         }"/>
                                 </div>
                             <!-- /ko -->
@@ -161,7 +162,7 @@
             expand: optionChangeHandler
         }">
         <span class="oj-header-border desires-list" data-bind="text: title, style: {color:probabilityColor(probability)}"></span>
-        <div class="oj-panel">
+        <div class="oj-panel" style="border-style: none">
             <div class="oj-flex-column desirelist-description">
                 <div class="oj-flex-item">
                     <label>Description:</label><span data-bind="text:description"></span>

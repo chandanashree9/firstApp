@@ -6,12 +6,19 @@
 
 .header-label{
 	font-family: 'Source Sans Pro ExtraLight';
-  	font-size: 20pt;
+  	font-size: 24pt;
   	color:#FFFFFF;
   	justify-content: center;
   	text-align: center;
   	align-content: center;
   	vertical-align: center;
+}
+
+#header-logo{
+    display : block;
+    margin : auto;
+    vertical-align: middle;
+    margin: 5px;
 }
 
 .header-menu-label{

@@ -1,17 +1,21 @@
 <div class="oj-flex" data-bind="visible: displaymenu">
-  <div class="oj-flex-item oj-padding oj-sm-12 oj-md-4 oj-lg-3 oj-xl-3">
+  <div class="oj-flex-item oj-padding oj-sm-12 oj-md-4 oj-lg-4 oj-xl-4">
      <span class="header-user-label">Hello again, Customer</span>
   </div>
-  <div class="oj-flex-item oj-padding oj-sm-12 oj-md-6 oj-lg-6 oj-xl-6">
+  <div class="oj-flex-item oj-padding oj-sm-12 oj-md-5 oj-lg-5 oj-xl-5">
     <div class="oj-flex">
-      <div class="oj-flex-item">
-        <input class="header-chat-box" type="text" data-bind="ojComponent: {component: 'ojInputText'}" placeholder="What can I help you with today?"/> 
+      <div class="oj-flex-item oj-sm-8 oj-md-8 oj-lg-10 oj-xl-10">
+        <input class="header-chat-box" data-bind="ojComponent: {
+            component: 'ojInputText',
+            rootAttributes: {style: 'max-width:97%'}
+          }" placeholder="What can I help you with today?"/> 
       </div>
-      <div class="oj-flex-item">
-        <button style="margin-left: auto;" id="chatbutton" data-bind="ojComponent: {
+      <div class="oj-flex-item oj-sm-4 oj-md-4 oj-lg-2 oj-xl-2">
+        <button id="chatbutton" data-bind="ojComponent: {
             component: 'ojButton', 
             display: 'icons', 
-            icons: {start:'fa fa-comments-o fa-2x'}
+            icons: {start:'fa fa-comments-o fa-2x'},
+            rootAttributes: {style: 'width:35px;height:35px;border-color:#CCCCCC'}
           },
           click: function()
           {
@@ -21,11 +25,11 @@
       </div>
     </div>
   </div>
-  <div class="oj-flex-item oj-padding oj-sm-12 oj-md-2 oj-lg-3 oj-xl-3 oj-sm-justify-content-center oj-lg-justify-content-left">   
-    <input class="header-appointment-box" style="margin-left: auto;" data-bind="ojComponent: {
+  <div class="oj-flex-item oj-padding oj-sm-12 oj-md-3 oj-lg-3 oj-xl-3 oj-sm-justify-content-center oj-lg-justify-content-left">   
+    <input class="header-appointment-box" data-bind="ojComponent: {
         component: 'ojInputDate',
         placeholder:'Make an appointment with Avatar',
-        rootAttributes: {style: 'background-color:none;min-width:90%;border-radius:25%'}
+        rootAttributes: {style: 'border:0;max-width:90%'}
       }"/>
   </div>
 </div>

@@ -1,5 +1,10 @@
 @import url("base.css");
 
+html:not([dir="rtl"]) .header-appointment-box {
+    border-width: 1px 0 1px 1px;
+    border-radius: 10px 0 0 10px; 
+}
+
 .header-user-label{
   font-family: 'Source Sans Pro ExtraLight';
   font-size: 28pt;
@@ -11,10 +16,8 @@
   font-size: 16pt;
   color:#666666;
   border-color: #CCCCCC;
-  width: 430px;
   height: 40px;
   border-radius: 10px;
-  justify-content: left;
 }
 
 .header-appointment-box{
@@ -22,6 +25,6 @@
   font-size: 13pt;
   color:#666666;
   border-color: #CCCCCC;
-  justify-content: left;
-  border-radius: 5px;
+  border-radius: 10px;
+  height: 40px;
 }

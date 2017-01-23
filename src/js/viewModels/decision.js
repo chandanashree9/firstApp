@@ -58,7 +58,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
 
             self.displayDesiresChartlabel = function(event){
                if(event.row){
-                    return "<ul><li>"+event.row.type +" : "+event.row.description+"</li></ul>";
+                    return "<ul><li style='color:"+event.row.color+"'>"+event.row.type +" : "+event.row.description+"</li></ul>";
                }                
             }
 
