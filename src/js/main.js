@@ -57,7 +57,8 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
       'financialplan': {value:'financialplan'},
       'budget': {value:'budget'},
       'budgettracking': { value:'budgettracking' },
-      'logout': { value:'logout' }
+      'logout': { value:'logout' },
+      'desires': { value:'desire'}
     });
 
     function MainViewModel() {      

@@ -1,0 +1,31 @@
+@import url("base.css");
+
+.desire-label{
+        font-family:'Source Sans Pro';
+        font-size:14pt;
+        color:#333333;
+}
+
+.desire-panel{
+        width:80%;
+        border-radius:5px;
+        height: 80px;
+}
+
+.wishes-label{
+        font-family:'Source Sans Pro';
+        font-size:14pt;
+        color:#333333;
+}
+
+.timeline-label{
+        font-family:'Source Sans Pro';
+        font-size:14pt;
+        color:#333333;
+}
+
+.wish-panel{
+        width:40%;
+        border-radius:5px;
+        color:#9A9A9A;
+}

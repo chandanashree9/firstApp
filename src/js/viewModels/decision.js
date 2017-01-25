@@ -38,7 +38,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
             self.projectEndDate = ko.observable(0);
             self.desires = ko.observable(false);
 
-            self.loadDesireImpact = function(data, event){
+            self.loadDesireImpact = function(data){
                 if(data == 1) {
                     service.fetch(cancelsubscription, header).then(function(response) {
                         self.subscription(response);
