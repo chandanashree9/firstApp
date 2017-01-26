@@ -63,12 +63,24 @@ function(){
         }
         return 0;
     }
+
+    function targetDateAsc(obj1,obj2){
+        var d = new Date(obj1.target_date).getTime();
+        var d1 = new Date(obj2.target_date).getTime();
+         if(d < d1){
+            return -1;
+        }else if (d > d1){
+            return 1;
+        }
+        return 0;
+    } 
     
 	return {
 		priorityDesc : priorityDesc,
 		priorityAsc : priorityAsc,
 		timelineAsc : timelineAsc,
     	timelineDesc : timelineDesc,
-        probabilityAsc : probabilityAsc
+        probabilityAsc : probabilityAsc,
+        targetDateAsc : targetDateAsc
     };
 });

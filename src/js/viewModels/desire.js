@@ -1,7 +1,8 @@
 'use strict';
 define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice',
-    'viewModels/convertors/number','viewModels/convertors/date', 'ojs/ojknockout', 'ojs/ojchart'],
-function(oj, ko, $, service, numberconvertor,dateconvertor)
+    'viewModels/convertors/number','viewModels/convertors/date', 'viewModels/service/financialService',
+    'ojs/ojknockout', 'ojs/ojchart'],
+function(oj, ko, $, service, numberconvertor,dateconvertor, financialservice)
 {
     var header = {
         "Access-Control-Allow-Origin": "*",
@@ -20,6 +21,7 @@ function(oj, ko, $, service, numberconvertor,dateconvertor)
         // Start - Impacts Desires
         self.impactdesires=ko.observableArray([]);
         service.fetch(planview_url,header).then(function(response) {
+            response = response.sort(financialservice.targetDateAsc);
             self.impactdesires(response);
             var planviewlist = computePlanView(response, planViewNames);
             self.planviews(planviewlist);
@@ -63,6 +65,7 @@ function(oj, ko, $, service, numberconvertor,dateconvertor)
                 planviewlist.push({items:[{y:i, x:new Date(desire.target_date).getTime()}],name:desire.title});
             }                
         }
+        planViewNames = planViewNames.reverse();
         return planviewlist;
     }
 
