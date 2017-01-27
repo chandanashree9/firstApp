@@ -48,8 +48,11 @@ function(oj, ko, $, service, numberconvertor,dateconvertor, financialservice)
             return computeProbabilityColor(d);
         }
 
+        self.selectedDesire=ko.observable();
         self.desireListDetailsfn =function(data){
-            $('#desirepopup').ojPopup('open', '#btndesirelist');
+            self.selectedDesire(data);
+            $('#desirepopup').ojPopup('open', '#desiredetails_'+data.id);
+
         };
 
         self.GetPlanViewName = {

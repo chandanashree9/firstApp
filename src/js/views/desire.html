@@ -62,7 +62,7 @@
         <div class="oj-panel desire-panel">
             <div class="oj-flex-column">
                 <div class="oj-flex-item">
-                    <span id="btndesirelist" data-bind="text: $data.title, style: {color:probabilityColor($data.probability)}"></span>
+                    <span data-bind="attr:{'id': 'desiredetails_'+id},text: $data.title, style: {color:probabilityColor($data.probability)}"></span>
                 </div>
                 <div class="oj-flex-item">
                     <div class="oj-flex-bar">
@@ -93,3 +93,11 @@
     </div>
     <!-- /ko -->
 </script>
+
+<div style="display:none" id="desirepopup" data-bind="ojComponent:{
+        component: 'ojPopup',
+        rootAttributes:{style:'width:500px;height:200px'},
+        position:{my:'start top'}
+    }">
+    <span data-bind="text: selectedDesire"></span>
+</div>
