@@ -48,6 +48,10 @@ function(oj, ko, $, service, numberconvertor,dateconvertor, financialservice)
             return computeProbabilityColor(d);
         }
 
+        self.desireListDetailsfn =function(data){
+            $('#desirepopup').ojPopup('open', '#btndesirelist');
+        };
+
         self.GetPlanViewName = {
             format: function(value) {
                 return planViewNames[value];
@@ -58,6 +62,7 @@ function(oj, ko, $, service, numberconvertor,dateconvertor, financialservice)
     function computePlanView(desireslist, planViewNames){
         var planviewlist = [];   
         var count = 0; 
+        desireslist = desireslist.reverse();
         for(var i = desireslist.length -1 ; i >= 0; i--){
             var desire = desireslist[i];  
             if(desire.target_date) {

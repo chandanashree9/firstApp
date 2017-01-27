@@ -1,28 +1,40 @@
 <div class="desire-container oj-flex oj-flex-items-pad">
     <div class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-3 oj-xl-3" style="border-right:1px dotted #D8D8D8;">
         <div class="oj-flex-column oj-flex-items-pad">
-            <div class="oj-flex-item oj-header-border" style="text-align: center;">
-                <span class="desire-label">Desires</span>
-                <i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>
-                <i class="fa fa-chevron-down" aria-hidden="true" style="color:#565656"></i>
+            <div class="oj-flex-item oj-header-border">
+                <div class="oj-flex-bar">
+                    <div class="oj-flex-bar-middle oj-sm-justify-content-center">
+                        <span class="desire-label">Desires</span>
+                    </div>
+                    <div class="oj-flex-bar-end">
+                        <i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>&nbsp;&nbsp;
+                        <i class="fa fa-chevron-down" aria-hidden="true" style="color:#565656"></i>
+                    </div>
+                </div>
             </div>
             <div data-bind="template: {name:'impact_desires_template', data: impactdesires}"></div>
         </div>
     </div>
-    <div class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-3 oj-xl-3" style="border-right:1px dotted #D8D8D8;">
+    <div class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-2 oj-xl-2" style="border-right:1px dotted #D8D8D8;">
         <div class="oj-flex-column oj-flex-items-pad">
-            <div class="oj-flex-item oj-header-border" style="text-align: center;">
-                <span class="wishes-label">Wishes</span>
-                <i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>
-                <i class="fa fa-chevron-down" aria-hidden="true" style="color:#565656"></i>
+            <div class="oj-flex-item oj-header-border">
+                <div class="oj-flex-bar">
+                    <div class="oj-flex-bar-middle oj-sm-justify-content-center">
+                        <span class="wishes-label">Wishes</span>
+                    </div>
+                    <div class="oj-flex-bar-end">
+                        <i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>&nbsp;&nbsp;
+                        <i class="fa fa-chevron-down" aria-hidden="true" style="color:#565656"></i>
+                    </div>
+                </div>
             </div>
             <div data-bind="template: {name:'wishlist_template', data: wishlist}"></div>
         </div>
     </div>
-    <div class="oj-flex-item oj-sm-12 oj-md-12 oj-lg-6 oj-xl-6" style="border-right:1px dotted #D8D8D8;">
+    <div class="oj-flex-item oj-sm-12 oj-md-12 oj-lg-7 oj-xl-7" style="border-right:1px dotted #D8D8D8;">
          <div class="oj-flex-column oj-flex-items-pad">
             <div class="oj-flex-item oj-header-border">
-                <span>Plan View</span>
+                <span>Timeline</span>
             </div>
             <div class="oj-flex-item">
                 <div id="eventDrops" data-bind="ojComponent: {
@@ -46,17 +58,21 @@
 
 <script type="text/html" id="impact_desires_template">
     <!-- ko foreach: impactdesires -->
-    <div class="oj-flex-item">
-        <div class="desire-panel">
+    <div class="oj-flex-item oj-padding" data-bind="click:desireListDetailsfn.bind($data)">
+        <div class="oj-panel desire-panel">
             <div class="oj-flex-column">
                 <div class="oj-flex-item">
-                    <span data-bind="text: $data.title, style: {color:probabilityColor($data.probability)}"></span>
+                    <span id="btndesirelist" data-bind="text: $data.title, style: {color:probabilityColor($data.probability)}"></span>
                 </div>
                 <div class="oj-flex-item">
-                    <span data-bind="text:formatToMedium($data.target_date), style: {color:probabilityColor($data.probability)}"></span>
-                </div>
-                <div class="oj-flex-item">
-                    <span data-bind="text:currencyformater($data.target_value), style: {color:probabilityColor($data.probability)}"></span>
+                    <div class="oj-flex-bar">
+                        <div class="oj-flex-bar-middle">
+                            <span data-bind="text:formatToMedium($data.target_date), style: {color:probabilityColor($data.probability)}"></span>
+                        </div>
+                        <div class="oj-flex-bar-end">
+                            <span data-bind="text:currencyformater($data.target_value), style: {color:probabilityColor($data.probability)}"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,9 +82,9 @@
 
 <script type="text/html" id="wishlist_template">
     <!-- ko foreach: wishlist -->
-    <div class="oj-flex-item">
-        <div class="wish-panel">
-            <div class="oj-flex-column" style="height:80px">
+    <div class="oj-flex-item oj-padding oj-sm-justify-content-center">
+        <div class="oj-panel wish-panel">
+            <div class="oj-flex-column">
                 <div class="oj-flex-item">
                     <div data-bind="text:$data.title" style="text-align:center"></div>
                 </div>
