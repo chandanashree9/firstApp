@@ -45,21 +45,25 @@ requirejs.config({
 * by the modules themselves), we are listing them explicitly to get the references to the 'oj' and 'ko'
 * objects in the callback
 */
-require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','ojs/ojknockout',
-  'ojs/ojmodule','ojs/ojrouter','ojs/ojnavigationlist', 'ojs/ojjsontreedatasource','ojs/ojoffcanvas'],
-  function (oj, ko, $, service) { // this callback gets executed when all required modules are loaded
+require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService', 'viewModels/service/navigationservice',
+  'ojs/ojknockout','ojs/ojmodule','ojs/ojrouter','ojs/ojnavigationlist', 'ojs/ojjsontreedatasource','ojs/ojoffcanvas'],
+  function (oj, ko, $, dataservice, navservice) { // this callback gets executed when all required modules are loaded
 
     // Router Instance and Configuration
     var router = oj.Router.rootInstance;
-    router.configure({
-      'home': {value:'home', isDefault: true},
-      'decision': {value:'decision'},
-      'financialplan': {value:'financialplan'},
-      'budget': {value:'budget'},
-      'budgettracking': { value:'budgettracking' },
-      'logout': { value:'logout' },
-      'desires': { value:'desire'}
-    });
+    router.configure(
+      {
+        'home': {value:'home', isDefault: true},
+        'decision': {value:'decision'},
+        'financialplan': {value:'financialplan'},
+        'budget': {value:'budget'},
+        'budgettracking': { value:'budgettracking' },
+        'logout': { value:'logout' },
+        'desires': { value:'desire'}
+      });
+
+    var menu_url = 'js/data/menus.json';
+    var header = {};
 
     function MainViewModel() {      
       self.router = router;
@@ -82,18 +86,18 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
       self.menuNavlist = ko.observable();
 
       // Retrieve Menu Data
-      service.fetch('js/data/menus.json',{}).then(function(response) {
+      dataservice.fetch(menu_url,header).then(function(response) {
           self.menulist(response);
           if(response && response.length > 0){
-              var list = [];                    
-              for(var i=0; i< response.length;i++){
-                  var child = [];
-                  var d = response[i];
-                  var obj = {'id':d.id,'name':d.name,'value':d.value};
-                  getMenusList(child,d.menus);
-                  list.push({"attr": obj, 'children': child});
-              }
-              self.menuNavlist(new oj.JsonTreeDataSource(list));
+            var list = [];                    
+            for(var i=0; i< response.length;i++){
+              var child = [];
+              var d = response[i];
+              var obj = {'id':d.id,'name':d.name,'value':d.value};
+              navservice.navMenulist(child,d.menus);
+              list.push({"attr": obj, 'children': child});
+            }
+            self.menuNavlist(new oj.JsonTreeDataSource(list));
           }
       });  
 
@@ -106,17 +110,17 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
 
       // Event handler for navigation list
       self.handleNavigation = function (event, ui) {
-          if ('navItem' === event.target.id && event.originalEvent) {
-              // router takes care of changing the selection
-              event.preventDefault();
+        if ('navItem' === event.target.id && event.originalEvent) {
+          // router takes care of changing the selection
+          event.preventDefault();
 
-              if ($('#navDrawer').length && $('#navDrawer').hasClass('oj-offcanvas-overlay')) {
-                  $('#toggleNavListButton').click();
-              }
+          if ($('#navDrawer').length && $('#navDrawer').hasClass('oj-offcanvas-overlay')) {
+              $('#toggleNavListButton').click();
           }
+        }
       };      
       
-       // Toggle Drawers [Start]
+      // Toggle Drawers [Start]
       self.offcanvasMap = {
         "toggleNavListButton": {
           "selector": "#navDrawer",
@@ -125,6 +129,7 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
           "query": oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.LG_UP)
         }
       };
+
       self.toggleDrawer = function (model, event) {
         var drawer, launcherId = event.currentTarget.id;
 
@@ -177,28 +182,9 @@ require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService','o
         drawer.toggleClass("oj-offcanvas-start", !visible);
 
         // toggle light background when visible
-        drawer.toggleClass("nav-drawer-light-bg", visible);
-        
+        drawer.toggleClass("nav-drawer-light-bg", visible);        
       };
-    };
-
-    function getMenusList(result,data){
-      if(data && data.length > 0) {
-        for(var i = 0; i < data.length; i++){
-            var d = data[i];
-            var obj = {'id':d.id,'name':d.name,'value':d.value};
-            var child = [];
-            if(d.hasOwnProperty("menus")) {
-                getMenusList(child,d.menus);
-            }
-            if(child.length > 0) {
-                result.push({"attr": obj, 'children': child});  
-            } else {
-                result.push({"attr": obj});
-            }
-        } 
-      }
-    } 
+    };    
 
     oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
     oj.Router.sync().then(

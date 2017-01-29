@@ -1,4 +1,4 @@
-<div id="decision-container" class="oj-flex-column oj-flex-items-pad oj-padding">	
+<div id="decision-container" class="oj-flex-column oj-flex-items-pad oj-padding"> 
   <div class="oj-flex-item oj-flex-bar">
     <div class="oj-flex-bar-start">
       <span class="decision-label">Decisions</span>
@@ -58,7 +58,7 @@
                 <span class="decisionselect-alternative">Please select an Alternative</span>
               </div>
               <div class="oj-flex-item">
-                <div class="oj-flex-column oj-padding" data-bind="if: selectedAlternatives" >
+                <div class="oj-flex-column oj-padding" data-bind="if: selectedAlternatives, visible: displayImpactDesires" >
                   <div class="oj-flex-item">
                     <span class="decision-cashflow" data-bind="text: subscription._latestValue.name" style="color:#2AAD9F"></span>
                     <i data-bind="css: subscription._latestValue.icon" aria-hidden="true" style="color:#2AAD9F"></i>
@@ -83,7 +83,7 @@
                 <hr style="border:2px dashed grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
               </div>
 
-              <div class="oj-flex-item" data-bind="if: selectedAlternatives">
+              <div class="oj-flex-item" data-bind="if: selectedAlternatives, visible: displayImpactDesires">
                 <div class="oj-panel">
                   <div class="oj-flex-column oj-flex-items-pad">
                     <div class="oj-flex-item">               
@@ -135,7 +135,7 @@
                 </div>
               </div>
 
-              <div class="oj-flex-item oj-padding" data-bind="if: selectedAlternatives">
+              <div class="oj-flex-item oj-padding" data-bind="if: selectedAlternatives, visible: displayImpactDesires">
                 <div id="tabs" data-bind="ojComponent:{component: 'ojTabs', rootAttributes: {style:'oj-padding'}}">
                   <!-- tab bar -->
                   <ul>
@@ -168,7 +168,7 @@
       <div class="oj-flex-item">
         <div class="oj-flex-bar">
           <div class="oj-flex-bar-start">
-            <span class="decision-nav-item" data-bind="text: name, style: { color : color }, click: loadDesireImpact.bind(id)"></span>
+            <span class="decision-nav-item" data-bind="text: name, style: { color : color }, click: loadDesireImpact(id, event)"></span>
           </div>
           <div class="oj-flex-bar-middle" style="align-items: center;">
             <i data-bind="css:icon, style: { color : color }" aria-hidden="true"></i>

@@ -3,13 +3,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
     'ojs/ojknockout','ojs/ojmodule', 'ojs/ojlistview', 'ojs/ojbutton','ojs/ojarraytabledatasource', 
     'ojs/ojInputText','ojs/ojdatetimepicker','ojs/ojmodel','ojs/ojnavigationlist','ojs/ojtabs','ojs/ojconveyorbelt',
     'ojs/ojtable','ojs/ojtimeutils', 'ojs/ojtimeaxis'],
-    function(oj, ko, $, service, dateconvertor, numberconvertor)
-    {   
-        var header = {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With",
-            "Access-Control-Allow-Methods":"GET, PUT, POST"
-        };
+    function(oj, ko, $, dataservice, dateconvertor, numberconvertor) {   
+        var header = {};
 
         var decision_url = 'js/data/decision/decision.json';
         var cancelsubscription = 'js/data/decision/cancelsubscription.json';
@@ -24,7 +19,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
             self.alternatives=ko.observable();
             var decisionObj = {};
 
-            service.fetch(decision_url,header).then(function(response) {
+            dataservice.fetch(decision_url,header).then(function(response) {
                 decisionObj =response["decision"];
                 self.title(decisionObj.title);
                 self.description(decisionObj.description);
@@ -36,19 +31,23 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
             self.subscription = ko.observable(false);
             self.projectStartDate = ko.observable(0);
             self.projectEndDate = ko.observable(0);
-            self.desires = ko.observable(false);
+            self.desires = ko.observable();
+            self.displayImpactDesires = ko.observable(false);
 
             self.loadDesireImpact = function(data){
                 if(data == 1) {
-                    service.fetch(cancelsubscription, header).then(function(response) {
+                    dataservice.fetch(cancelsubscription, header).then(function(response) {
                         self.subscription(response);
                     });
 
-                    service.fetch(impactdesires, header).then(function(response) {
+                    dataservice.fetch(impactdesires, header).then(function(response) {
                         self.projectStartDate(response['startdate']);
                         self.projectEndDate(response['enddate']);
                         self.desires(new oj.ArrayTableDataSource(response['desires'],{idAttribute: 'id'}));
+                        self.displayImpactDesires(true);
                     });
+                } else {
+                    self.displayImpactDesires(false);
                 }
             }
 
@@ -107,8 +106,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
             self.impactDetailStatus = ko.observable();
 
             self.displayDetails=function(event,data){
-                if (data['option'] == 'currentRow' && data['value'] != null)
-                {
+                if (data['option'] == 'currentRow' && data['value'] != null) {
                     self.imactDetails(true);
                     var rowIndex = data['value']['rowIndex'];
                     var obj = self.desires._latestValue.data[rowIndex];
