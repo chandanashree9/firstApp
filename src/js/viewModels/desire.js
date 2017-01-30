@@ -44,9 +44,11 @@ function(oj, ko, $, dataservice, numberconvertor,dateconvertor, sortservice, fin
             return financialservice.computeProbabilityColor(d);
         }
 
-        self.selectedDesire=ko.observable();
+        self.selectedDesireTitle=ko.observable();
+        self.selectedDesireColor = ko.observable();
         self.desireListDetailsfn =function(data){
-            self.selectedDesire(data);
+            self.selectedDesireTitle(data.title);
+            self.selectedDesireColor(financialservice.computeProbabilityColor(data.probability))
             $('#desirepopup').ojPopup('open', '#desiredetails_'+data.id);
 
         };

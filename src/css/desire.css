@@ -8,6 +8,7 @@
 
 .desire-panel{
         border-radius:5px;
+        height: 60px
 }
 
 .wishes-label{
@@ -26,4 +27,5 @@
         width:80%;
         border-radius:5px;
         color:#9A9A9A;
+        height: 60px
 }

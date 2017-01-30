@@ -96,8 +96,24 @@
 
 <div style="display:none" id="desirepopup" data-bind="ojComponent:{
         component: 'ojPopup',
-        rootAttributes:{style:'width:500px;height:200px'},
+        rootAttributes:{style:'width:500px'},
         position:{my:'start top'}
     }">
-    <span data-bind="text: selectedDesire"></span>
+    <div class="oj-flex-column">
+        <div class="oj-flex-item" style="text-align: center">
+            <span  data-bind="text: selectedDesireTitle, style:{'color':selectedDesireColor}"></span>
+             <hr/>
+        </div>
+        <div class="oj-flex-item" style="height: 100px">
+            <span>Details</span>
+        </div>
+        <div class="oj-flex-item" style="height: 100px">
+            <hr/>
+            <span>Knowledge</span>
+        </div>
+        <div class="oj-flex-item">
+            <button id= "selected-desire-cancel" class="btngetadvice" data-bind="ojComponent: { component: 'ojButton', label: 'cancel' }"></button>
+            <button id= "selected-desire-save" class="btnconversations oj-padding" data-bind="ojComponent: { component: 'ojButton', label: 'save'}"></button>
+        </div>
+    </div>
 </div>
