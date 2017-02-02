@@ -45,7 +45,7 @@ requirejs.config({
 * by the modules themselves), we are listing them explicitly to get the references to the 'oj' and 'ko'
 * objects in the callback
 */
-require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataService', 'viewModels/service/navigationservice',
+require(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice', 'viewModels/service/navigationservice',
   'ojs/ojknockout','ojs/ojmodule','ojs/ojrouter','ojs/ojnavigationlist', 'ojs/ojjsontreedatasource','ojs/ojoffcanvas'],
   function (oj, ko, $, dataservice, navservice) { // this callback gets executed when all required modules are loaded
 

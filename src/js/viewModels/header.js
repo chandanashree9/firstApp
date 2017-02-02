@@ -13,20 +13,23 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout',
             self.menulaunch = function( model, event ) {
                 var menuId = "#menu"+model.id;
                 $(menuId).ojMenu("open", event); 
-
-                if(model.hasOwnProperty("value")) {
-                    router.go(model.value);
-                }
             };
 
             self.menuOpen = function( model, event ) {
                 var currentLauncher = $(event.target).ojMenu("getCurrentOpenOptions").launcher;
-                if(currentLauncher)
+                if(currentLauncher) {
                     currentLauncher.addClass("bold");                
+                }
             };
 
-            self.menuClose = function( event ) {
+            self.menuClose = function( event, model) {
                 $("#menuLauncher").removeClass("bold");
+            };
+
+            self.menuClickEvent = function( model, event ) {
+                if(model.hasOwnProperty("value")) {
+                    router.go(model.value);
+                }
             };
 
             self.menuItemSelect = function( event, ui ) {
