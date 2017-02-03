@@ -31,6 +31,6 @@ a.header-menu-label:hover {
 	color: #69E3C8;
 }
 
-a.header-menu-label:visited, a.header-menu-label:link {
+a.header-menu-label:visited {
 	color: #FFFFFF;
 }

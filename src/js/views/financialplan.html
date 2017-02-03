@@ -22,12 +22,11 @@
                                 optionChange: finanacialPlanBtnfn
                             }" aria-label="Choose your plan view.">
                             <!-- ko foreach: financialPlanBtn -->
-                                <div class="oj-flex-item">
+                                <div data-bind="attr:{'id':GetfinanacialPlanBtn(id)}"  class="oj-flex-item">
                                     <label data-bind="attr: {for: id}" class="financial-plan-btn"></label>
                                     <input type="radio" name="financial-plan-btn-id" data-bind="value: id, attr: {id: id}, 
                                         ojComponent: { component: 'ojButton', 
-                                            label: label,
-                                            rootAttributes:{style: 'background-color:#54B79F;color:#FFFFFF;border-radius:25px' }
+                                            label: label
                                         }"/>
                                 </div>
                             <!-- /ko -->

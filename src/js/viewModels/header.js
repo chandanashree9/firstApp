@@ -11,7 +11,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout',
 
             // Menu Controls
             self.menulaunch = function( model, event ) {
-                var menuId = "#menu"+model.id;
+                var menuId = "#menu_"+model.id;
+                $(menuId).css("color","#69E3C8");
                 $(menuId).ojMenu("open", event); 
             };
 
@@ -27,6 +28,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout',
             };
 
             self.menuClickEvent = function( model, event ) {
+                var menuId = "#menu_"+model.id;
+                $(menuId).css("display","none"); 
+
                 if(model.hasOwnProperty("value")) {
                     router.go(model.value);
                 }

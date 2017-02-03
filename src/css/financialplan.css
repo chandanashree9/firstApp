@@ -8,19 +8,25 @@
 .financial-plan-btn{
   width:105px;
   height: 40px;
-  border-radius: 40%;
   font-size:11pt;
 }
 
-.financial-plan-btn-default{
+#financial-plan-btn_desirebtn > span, 
+  #financial-plan-btn_actionsbtn > span, 
+    #financial-plan-btn_wishesbtn > span {
   color: #54B79F;
-  background-color: #FFFFFF;
+  background : transparent;
+  border-color: #54B79F;
+  border-radius:25px;
 }
 
-.financial-plan-btn-select{
+#financial-plan-btn_desirebtn-selected > span, 
+  #financial-plan-btn_actionsbtn-selected> span, 
+    #financial-plan-btn_wishesbtn-selected > span {
   color: #FFFFFF;
   background-color: #54B79F;
   border-radius: 25px;
+  border-color: #54B79F;
 }
 
 .btngetadvice{

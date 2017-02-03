@@ -22,7 +22,6 @@ function(oj, ko, $, dataservice, numberconvertor, chartservice, sortservice, fin
         self.displaywishlist = ko.observable(false);
         self.displaydactionlist = ko.observable(false);
         self.finanacialPlanBtnValue = ko.observable('desirebtn');
-        self.finanacialPlanBtnColor = ko.observable('financial-plan-btn-default');
 
         self.financialPlanBtn = [
             {id: 'desirebtn', label: 'Desires'},
@@ -30,28 +29,40 @@ function(oj, ko, $, dataservice, numberconvertor, chartservice, sortservice, fin
             {id: 'actionsbtn', label: 'Actions'},
         ];
 
+        self.GetfinanacialPlanBtn= function(id, flag){
+            if(flag){
+                return id+'-selected';
+            }
+            return 'financial-plan-btn_'+id;
+        }
+
 	    self.finanacialPlanBtnfn = function(event, ui){
             self.displaydesireslist(false);
             self.displaywishlist(false);
             self.displaydactionlist(false); 
 
-            $('#desirebtn').css('financial-plan-btn-default');
-            $('#wishesbtn').css('financial-plan-btn-default');
-            $('#actionsbtn').css('financial-plan-btn-default');
-
             if(ui.option === "checked") {
+
+                if($('#financial-plan-btn_wishesbtn-selected').length > 0) {
+                    $('#financial-plan-btn_wishesbtn-selected').attr('id','financial-plan-btn_wishesbtn');
+                } 
+                if($('#financial-plan-btn_actionsbtn-selected').length > 0) {
+                    $('#financial-plan-btn_actionsbtn-selected').attr('id','financial-plan-btn_actionsbtn');
+                } 
+                if($('#financial-plan-btn_desirebtn-selected').length > 0) {
+                    $('#financial-plan-btn_desirebtn-selected').attr('id','financial-plan-btn_desirebtn');
+                }
+
+                var key = GetfinanacialPlanBtn(self.finanacialPlanBtnValue._latestValue, false);
                if(self.finanacialPlanBtnValue._latestValue === 'wishesbtn') {
-                    $('#wishesbtn').toggleClass('financial-plan-btn-select');
                     self.displaywishlist(true);
                 } else if(self.finanacialPlanBtnValue._latestValue === 'actionsbtn') {
-                    $('#actionsbtn').toggleClass('financial-plan-btn-select');
                     self.displaydactionlist(true);
                 } else {
-                    $('#desirebtn').toggleClass('financial-plan-btn-select');
                     self.displaydesireslist(true);
                 } 
+                $('#'+key).attr('id',GetfinanacialPlanBtn(key, true));
             } else {
-                $('#desirebtn').toggleClass('financial-plan-btn-select');
                 self.displaydesireslist(true);
             }
 		}
@@ -78,6 +89,8 @@ function(oj, ko, $, dataservice, numberconvertor, chartservice, sortservice, fin
         dataservice.fetch(planview_url,header).then(function(response) {
             desireslist = response.sort(sortservice.priorityDesc);
             self.impactdesires(desireslist);
+
+            $('#financial-plan-btn_desirebtn').attr('id','financial-plan-btn_desirebtn-selected');
 
             selecteddesireId = desireslist[0].id;
             var planviewlist = financialservice.computePlanView(desireslist,selecteddesireId, planViewNames);
