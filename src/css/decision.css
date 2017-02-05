@@ -1,21 +1,36 @@
 @import url("base.css");
 
-.decision-label{
+.decision-label {
 	font-family:'Source Sans Pro Semibold';
 	font-size: 24pt;
   	color:#333333;
 }
 
-.decision-btn-advice,.decision-btn-conversations{
+#decision-btn-advice > span, 
+  #decision-btn-conversations > span {
+  width:110px;
+  height:40px;
+  background : transparent;
+  color:#5FB5A0;
+  border-color: #5FB6A1;
+  border-radius: 25px;  
+}
+
+.decision-btn-advice-label, 
+  .decision-btn-conversations-label{
   font-family: 'Source Sans Pro';
   font-size:10pt;
-  width:130px;
-  height:45px;
+}
+
+#decision-btn-advice-selected > span, 
+  #decision-btn-conversations-selected > span{
+  width:110px;
+  height:40px;
+  color: #FFFFFF;
+  background-color: #5FB5A0;
+  border-color: #5FB5A0;
   border-radius: 25px;
-  background-color: #FFFFFF;
-  color:#808080;
-  border-style: 1px solid #C9C9C9;
-  border-width:thin;
+  background-image: none;
 }
 
 .decision-title {
@@ -30,7 +45,7 @@
 	color: #999999;
 }
 
-.alternative-label{
+.alternative-label {
 	font-family:'Source Sans Pro';
 	font-size: 14pt;
 	color: #4A5C66;
@@ -41,53 +56,88 @@
   color:#4A5C66;
 }
 
-.decision-nav-item{
+.decision-nav-item {
 	font-family:'Source Sans Pro';
 	font-size:16pt;
 }
 
-.desireimpact-label{
+.desireimpact-label {
 	font-family:'Source Sans Pro';
 	font-size:24pt;
 	color:#333333;
 }
 
-.decisionselect-alternative{
-	font-family:'Source Sans Pro';
-	font-size:30pt;
+.decisionselect-alternative {
+	font-family:'Source Sans Pro ExtraLight';
+	font-size:36pt;
 	color: #999999;
 }
 
-.decision-cashflow{
+.decision-cashflow {
 	font-family: 'Source Sans Pro';
 	font-size: 13pt;
 	color:#2FAEA1;
 }
 
-.decision-cashflowlabel,.decision-portfolioimpactlabel{
+.decision-cashflow-label,
+	.decision-portfolioimpact-label {
 	font-family: 'Source Sans Pro';
 	font-size: 12pt;
 	color:#333333;
 }
 
-.decision-cashflowvalue{
+.decision-cashflow-value {
 	font-family: 'Source Sans Pro';
 	font-size: 12pt;
 	color:#42AEA1;
 }
 
-.btnalternative{
+#decision-btn-alternative > span {
   width:170px;
   height:40px;
-  background-color: #5CB69F;
-  border-radius: 25px;
-  font-size:10pt;
-  color:#FFFFFF;
-  border-style: none;
+  background : transparent;
+  color:#5FB5A0;
+  border-color: #5FB6A1;
+  border-radius: 25px;  
 }
 
-.decision-impactlabel{
+.decision-btn-alternative-label {
+  font-family: 'Source Sans Pro';
+  font-size:10pt;
+}
+
+#decision-btn-alternative-selected > span {
+  width:170px;
+  height:40px;
+  color: #FFFFFF;
+  background-color: #5FB5A0;
+  border-color: #5FB5A0;
+  border-radius: 25px;
+  background-image: none;
+}
+
+.decision-impact-chart-label {
 	font-family:'Source Sans Pro';
 	font-size: 20pt;
 	color:#333333;
+}
+
+.decision-desires-chart-label{
+	font-family:'Source Sans Pro Semibold';
+	font-size: 14pt;
+}
+
+.decision-desires-chart-description{
+	font-family:'Source Sans Pro';
+	font-size: 14pt;
+}
+
+.decision-impact-chart-details-label {
+	font-family:'Source Sans Pro';
+	font-size: 16pt;
+}
+
+.decision-impact-chart-details-description {
+	font-family:'Source Sans Pro';
+	font-size: 14pt;
 }

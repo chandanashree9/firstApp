@@ -15,7 +15,14 @@ function(oj, ko, dataservice){
     	}
         dataservice.fetch(chartlink,header).then(function(response) {
             var grp = response['group'];
-            self.groupValues(grp);
+            if(grp && grp.length > 0) {
+                var grplist = [];
+                grp.forEach(function (a) {
+                   grplist.push(a); 
+                });
+                self.groupValues(grplist);
+            }
+            
             var data = [    
                 { name:'Total Asset Value', items: response['total_asset'] },
                 { name:'Desired Value', items: response['desired'] },

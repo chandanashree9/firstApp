@@ -1,13 +1,11 @@
 @import url("base.css");
 
-.financialplanpanel{
+.financial-plan-panel{
   height:90%;
   width:80%;
 }
 
-.financial-plan-btn{
-  width:105px;
-  height: 40px;
+.financial-plan-btn-label{  
   font-size:11pt;
 }
 
@@ -18,6 +16,8 @@
   background : transparent;
   border-color: #54B79F;
   border-radius:25px;
+  width:105px;
+  height: 40px;
 }
 
 #financial-plan-btn_desirebtn-selected > span, 
@@ -27,25 +27,35 @@
   background-color: #54B79F;
   border-radius: 25px;
   border-color: #54B79F;
+  width:105px;
+  height: 40px;
 }
 
-.btngetadvice{
+#financial-plan-btn-advice > span, 
+  #financial-plan-btn-conversations > span {
   width:110px;
   height:40px;
-  background-color:#FFFFFF;
+  background : transparent;
   color:#5FB5A0;
-  border-style: 1px solid #5FB6A1;
-  border-radius: 25px;
+  border-color: #5FB6A1;
+  border-radius: 25px;  
+}
+
+.financial-plan-btn-advice-label, 
+  .financial-plan-btn-conversations-label{
+  font-family: 'Source Sans Pro';
   font-size:9pt;
 }
-.btnconversations{
-  width:130px;
+
+#financial-plan-btn-advice-selected > span, 
+  #financial-plan-btn-conversations-selected > span{
+  width:110px;
   height:40px;
-  background-color:#FFFFFF;
-  color:#5FB5A0;
-  border-style: 1px solid #5FB6A1;
+  color: #FFFFFF;
+  background-color: #5FB5A0;
+  border-color: #5FB5A0;
   border-radius: 25px;
-  font-size:9pt;
+  background-image: none;
 }
 
 .add-desire{
@@ -64,15 +74,6 @@
 	font-size:12pt;
 	color:grey;
 	line-height:150%;
-}
-
-button#buttonadvice:focus{
-	background-color:#57B6A0;
-	color:#FFFFFF;
-}
-button#buttonconversation:focus{
-	background-color:#57B6A0;
-	color:#FFFFFF;
 }
 
 .score-label{
@@ -97,8 +98,14 @@ button#buttonconversation:focus{
   display: none;
 }
 
-.financial-plan{
+.financial-plan-label{
   font-family:'Source Sans Pro Light';
   font-size:20pt;
+  color:#999999;
+}
+
+.financial-plan-version-label{
+  font-family:'Source Sans Pro Light';
+  font-size:14pt;
   color:#999999;
 }

@@ -87,8 +87,8 @@ define(['ojs/ojcore', 'knockout', 'viewModels/service/dataservice', 'viewModels/
             self.groupValues = ko.observableArray();
             chartservice.fetchChartData(dataservice, '', header);
 
-            self.yAxisConverter = ko.observable(numberconvertor.currencyConverter());
             self.xAxisConverter = ko.observable(dateconvertor.converterMMMYY());
+            self.yAxisConverter = ko.observable(numberconvertor.currencyConverter());
             // End - Chart Display Contents
 
             // Converters

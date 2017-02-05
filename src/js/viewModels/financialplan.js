@@ -63,6 +63,9 @@ function(oj, ko, $, dataservice, numberconvertor, chartservice, sortservice, fin
                 } 
                 $('#'+key).attr('id',GetfinanacialPlanBtn(key, true));
             } else {
+                if($('#financial-plan-btn_desirebtn').length > 0) {
+                    $('#financial-plan-btn_desirebtn').attr('id','financial-plan-btn_desirebtn-selected');
+                }                
                 self.displaydesireslist(true);
             }
 		}
@@ -221,14 +224,35 @@ function(oj, ko, $, dataservice, numberconvertor, chartservice, sortservice, fin
 
         //Start - popup
         self.displayPlanVersion = function(){
-            $('#financialpopup').ojPopup('open', '#btnhref');
+            $('#popupplanversion').ojPopup('open', '#btnPlanVersion');
         }
         //End - popup
 
         self.probabilityColor = function(d){
             return financialservice.computeProbabilityColor(d);
         }
-	}
+
+        self.financialAdviceBtnfn = function(event, ui) {
+            if(ui.option === "checked") {
+                if($('#financial-plan-btn-advice-selected').length > 0) {
+                    $('#financial-plan-btn-advice-selected').attr('id','financial-plan-btn-advice');
+                } else {
+                    $('#financial-plan-btn-advice').attr('id','financial-plan-btn-advice-selected');
+                }
+            }
+        }
+        
+        self.financialConversationBtnfn = function(event, ui) {
+            if(ui.option === "checked") {
+                if($('#financial-plan-btn-conversations-selected').length > 0) {
+                    $('#financial-plan-btn-conversations-selected').attr('id','financial-plan-btn-conversations');
+                } else {
+                    $('#financial-plan-btn-conversations').attr('id','financial-plan-btn-conversations-selected');
+                }
+            }
+        }
+
+    }
 
     return FinancialViewModel;
 });

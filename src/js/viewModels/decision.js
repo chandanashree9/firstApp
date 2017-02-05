@@ -12,6 +12,36 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
 
     	function DecisionViewModel() {
             self.displaymenu(true);
+
+            self.decisionAdviceBtnfn = function(event, ui) {
+                if(ui.option === "checked") {
+                    if($('#decision-btn-advice-selected').length > 0) {
+                        $('#decision-btn-advice-selected').attr('id','decision-btn-advice');
+                    } else {
+                        $('#decision-btn-advice').attr('id','decision-btn-advice-selected');
+                    }
+                }
+            }
+            
+            self.decisionConversationBtnfn = function(event, ui) {
+                if(ui.option === "checked") {
+                    if($('#decision-btn-conversations-selected').length > 0) {
+                        $('#decision-btn-conversations-selected').attr('id','decision-btn-conversations');
+                    } else {
+                        $('#decision-btn-conversations').attr('id','decision-btn-conversations-selected');
+                    }
+                }
+            }
+
+            self.decisionAlternativeBtnfn = function(event, ui) {
+                if(ui.option === "checked") {
+                    if($('#decision-btn-alternative-selected').length > 0) {
+                        $('#decision-btn-alternative-selected').attr('id','decision-btn-alternative');
+                    } else {
+                        $('#decision-btn-alternative').attr('id','decision-btn-alternative-selected');
+                    }
+                }
+            }
             
     		self.title=ko.observable();
             self.description=ko.observable();
@@ -57,7 +87,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
 
             self.displayDesiresChartlabel = function(event){
                if(event.row){
-                    return "<ul><li style='color:"+event.row.color+"'>"+event.row.type +" : "+event.row.description+"</li></ul>";
+                    return "<ul><li style='color:"+event.row.color+"'> <span class='decision-desires-chart-label'>"+event.row.type 
+                        +"</span> : <span class='decision-desires-chart-description'>"+event.row.description+"</span></li></ul>";
                }                
             }
 
@@ -118,6 +149,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
                     self.impactDetailStatus(obj.status);
                 }
             } 
+
+            self.timeAxisConverter = ko.observable(dateconvertor.converterMMMYY());
     	}
     	return DecisionViewModel;
     }

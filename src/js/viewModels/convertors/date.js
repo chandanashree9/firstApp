@@ -21,7 +21,7 @@ function(oj)
     }
 
     function mmmyyConverter() {            
-        var option = {pattern: 'MMM yy'};
+        var option = {formatStyle: 'date', pattern: 'MMM yy'};
         return converterFactory.createConverter(option);
     }
 
