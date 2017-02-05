@@ -141,3 +141,52 @@
 	font-family:'Source Sans Pro';
 	font-size: 14pt;
 }
+
+.decision-tab-label {
+	font-family:'Source Sans Pro';
+	font-size: 14pt;
+	color: black;
+}
+
+.decision-tab-details {
+	font-family:'Source Sans Pro';
+	font-size: 14pt;
+}
+
+#decision-tabs-activities, 
+	#decision-tabs-budgets,
+		#decision-tabs-portfolio, 
+			#decision-tabs-info {
+	border:1px solid #E4E4E4;
+	border-top-right-radius:10px;
+	border-top-left-radius:10px;
+	width:100px; 
+	text-align:center
+}
+#decision-tabs-activities > .oj-tabs-tab-content,
+	#decision-tabs-budgets > .oj-tabs-tab-content,
+		#decision-tabs-portfolio > .oj-tabs-tab-content, 
+			#decision-tabs-info > .oj-tabs-tab-content	{
+	border-style: none;
+}
+
+#decision-tabs-activities > div > a:hover, a:visited, a:link {
+	color: black;
+}
+
+.decision-tabs-activities-content,
+	.decision-tabs-budgets-content {
+	font-family:'Source Sans Pro';
+	font-size: 16pt;
+}
+
+.decision-tabs-activities-content-note {
+	font-family:'Source Sans Pro Semibold';
+	font-size: 14pt;
+}
+
+.decision-tabs-activities-content-description {
+	font-family:'Source Sans Pro';
+	font-size: 14pt;
+}
+

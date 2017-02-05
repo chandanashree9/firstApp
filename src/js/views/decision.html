@@ -140,12 +140,13 @@
                             ready: monitorAxisWidth,
                             columns: [
                               {renderer: displayDesiresChartlabel, style:'width:40%'},
-                              {headerTemplate: 'timeaxisTmpl', template: 'taskbarTmpl'}
+                              {headerTemplate: 'timeaxisTmpl', template: 'taskbarTmpl', style:'width:60%'}
                             ],
                             selectionMode: {row: 'single', column: 'single'},
                             columnsDefault: {sortable: 'none'}, 
                             optionChange:displayDetails,
-                            rootAttributes:{style: 'min-width:100%;'}
+                            rootAttributes:{style: 'min-width:100%;'},
+                            scrollPolicy:'auto'
                           }">
                       </table>
                     </div>
@@ -221,20 +222,21 @@
                    </div>
                 </div>
               </div>
-
-              <div class="oj-flex-item oj-padding" data-bind="if: selectedAlternatives, visible: displayImpactDesires">
-                <div id="tabs" data-bind="ojComponent:{component: 'ojTabs', rootAttributes: {style:'oj-padding'}}">
+              <div class="oj-flex-item oj-padding">
+              </div>
+              <div class="oj-flex-item" data-bind="if: selectedAlternatives, visible: displayImpactDesires">
+                <div id="tabs" data-bind="ojComponent:{component: 'ojTabs'}">
                   <!-- tab bar -->
                   <ul>
                     <!-- ko foreach: subscription._latestValue.tabs -->
-                      <li data-bind="attr: {id: id}" style="border:1px solid #E4E4E4;border-top-right-radius:10px;border-top-left-radius:10px;width:100px; text-align:center">
-                        <span data-bind="text: label" style="color:#000000"></span>
+                      <li data-bind="attr: {id: 'decision-tabs-'+ id}">
+                        <span data-bind="text: label" class="decision-tab-label"></span>
                       </li>
                     <!-- /ko -->
                   </ul>
                   <!-- tab contents -->
                   <!-- ko foreach: subscription._latestValue.tabs -->
-                    <div data-bind="attr: {id: id +'-content'}" style="border: 1px solid grey;">
+                    <div data-bind="attr: {id: 'decision-tabs-' + id +'-content'}" style="border: 1px solid #E4E4E4;">
                       <div data-bind="ojModule: {name: 'decision-tabs/'+id +'-content', params: $data }">
                       </div>
                     </div>
@@ -277,7 +279,8 @@
             scale: 'years', 
             start: projectStartDate, 
             end: projectEndDate,
-            converter: timeAxisConverter
+            converter: timeAxisConverter,
+            trackResize: 'on'
           }" style="height:38px" aria-hidden="true">
     </div>
   </th>

@@ -1,55 +1,110 @@
-<div class="desire-container oj-flex oj-flex-items-pad">
-    <div class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-3 oj-xl-3" style="border-right:1px dotted #D8D8D8;">
-        <div class="oj-flex-column oj-flex-items-pad">
-            <div class="oj-flex-item oj-header-border">
-                <div class="oj-flex-bar">
-                    <div class="oj-flex-bar-middle oj-sm-justify-content-center">
-                        <span class="desire-label">Desires</span>
+<div class="desire-container oj-flex-column">
+    <div class="oj-flex-item">
+        <div class="oj-flex-bar">
+            <div class="oj-flex-bar-start">
+                <div class="oj-flex oj-flex-items-pad">
+                    <div class="oj-flex-item">
+                        <span class="desire-page-label">Desires</span>
                     </div>
-                    <div class="oj-flex-bar-end">
-                        <i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>&nbsp;&nbsp;
-                        <i class="fa fa-chevron-down" aria-hidden="true" style="color:#565656"></i>
-                    </div>
-                </div>
-            </div>
-            <div data-bind="template: {name:'impact_desires_template', data: impactdesires}"></div>
-        </div>
-    </div>
-    <div class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-2 oj-xl-2" style="border-right:1px dotted #D8D8D8;">
-        <div class="oj-flex-column oj-flex-items-pad">
-            <div class="oj-flex-item oj-header-border">
-                <div class="oj-flex-bar">
-                    <div class="oj-flex-bar-middle oj-sm-justify-content-center">
-                        <span class="wishes-label">Wishes</span>
-                    </div>
-                    <div class="oj-flex-bar-end">
-                        <i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>&nbsp;&nbsp;
-                        <i class="fa fa-chevron-down" aria-hidden="true" style="color:#565656"></i>
+                    <div class="oj-flex-item" data-bind="click:displayPlanVersion">
+                        <span class="desire-version-label">Plan Version</span>
+                        <i class="fa fa-angle-down fa-2x" aria-hidden="true" id="pop-plan-version-link" style="color:#D5D5D5"></i>
                     </div>
                 </div>
             </div>
-            <div data-bind="template: {name:'wishlist_template', data: wishlist}"></div>
+            <div class="oj-flex-bar-end">
+                 <div class="oj-flex oj-flex-items-pad">
+                    <div class="oj-flex-item">
+                        <div data-bind="ojComponent: {
+                                component: 'ojButtonset',
+                                checked: ['advice-val'],
+                                optionChange: desireAdviceBtnfn
+                            }">
+                            <div id="desire-btn-advice">
+                                <label for= "advice-id" class="desire-btn-advice-label"></label>
+                                <input type="checkbox" id="advice-id" value="advice-val" 
+                                    data-bind="ojComponent: {
+                                        component: 'ojButton', 
+                                        label: 'Get Advice'
+                                }"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oj-flex-item">
+                        <div data-bind="ojComponent: {
+                                component: 'ojButtonset',
+                                checked: ['conversations-val'],
+                                optionChange: desireConversationBtnfn
+                            }">
+                            <div id="desire-btn-conversations">
+                                <label for= "conversations-id" class="desire-btn-conversations-label"></label>
+                                <input type="checkbox" id="conversations-id" value="conversations-val" 
+                                    data-bind="ojComponent: {
+                                        component: 'ojButton', 
+                                        label: 'Conversations'
+                                }"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="oj-flex-item oj-sm-12 oj-md-12 oj-lg-7 oj-xl-7" style="border-right:1px dotted #D8D8D8;">
-         <div class="oj-flex-column oj-flex-items-pad">
-            <div class="oj-flex-item oj-header-border">
-                <span>Timeline</span>
+    <div class="oj-flex-item">
+        <div class="oj-flex oj-flex-items-pad">
+            <div class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-3 oj-xl-3" style="border-right:1px dotted #D8D8D8;">
+                <div class="oj-flex-column oj-flex-items-pad">
+                    <div class="oj-flex-item oj-header-border">
+                        <div class="oj-flex-bar">
+                            <div class="oj-flex-bar-middle oj-sm-justify-content-center">
+                                <span class="desire-label">Desires</span>
+                            </div>
+                            <div class="oj-flex-bar-end">
+                                <i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>&nbsp;&nbsp;
+                                <i class="fa fa-chevron-down" aria-hidden="true" style="color:#565656"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-bind="template: {name:'impact_desires_template', data: impactdesires}"></div>
+                </div>
             </div>
-            <div class="oj-flex-item">
-                <div id="eventDrops" data-bind="ojComponent: {
-                        component: 'ojChart', 
-                        type: 'line',
-                        series: planviews,
-                        selectionMode: 'single',
-                        timeAxisType: 'mixedFrequency',
-                        legend: {rendered: 'off'},
-                        yAxis: {step:1, majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName,style:'color: probabilityColor($data)'}},
-                        xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'grey', lineStyle:'dashed', rendered:'on'}},
-                        styleDefaults: {lineType: 'none', dataItemGaps: '0%', markerShape: 'circle'},
-                        valueFormats: [{type: 'series', tooltipLabel: 'Event'}, {type: 'value', tooltipDisplay: 'off'}]
-                    }"
-                    style="width:100%;height: 800px">
+            <div class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-2 oj-xl-2" style="border-right:1px dotted #D8D8D8;">
+                <div class="oj-flex-column oj-flex-items-pad">
+                    <div class="oj-flex-item oj-header-border">
+                        <div class="oj-flex-bar">
+                            <div class="oj-flex-bar-middle oj-sm-justify-content-center">
+                                <span class="wishes-label">Wishes</span>
+                            </div>
+                            <div class="oj-flex-bar-end">
+                                <i class="fa fa-plus-circle" aria-hidden="true" style="color:#9B9B9B"></i>&nbsp;&nbsp;
+                                <i class="fa fa-chevron-down" aria-hidden="true" style="color:#565656"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-bind="template: {name:'wishlist_template', data: wishlist}"></div>
+                </div>
+            </div>
+            <div class="oj-flex-item oj-sm-12 oj-md-12 oj-lg-7 oj-xl-7" style="border-right:1px dotted #D8D8D8;">
+                 <div class="oj-flex-column oj-flex-items-pad">
+                    <div class="oj-flex-item oj-header-border">
+                        <span>Timeline</span>
+                    </div>
+                    <div class="oj-flex-item">
+                        <div id="eventDrops" data-bind="ojComponent: {
+                                component: 'ojChart', 
+                                type: 'line',
+                                series: planviews,
+                                selectionMode: 'single',
+                                timeAxisType: 'mixedFrequency',
+                                legend: {rendered: 'off'},
+                                yAxis: {step:1, majorTick: {rendered: 'off'}, tickLabel: {converter: GetPlanViewName,style:'color: probabilityColor($data)'}},
+                                xAxis:{ majorTick:{baselineStyle:'dashed', lineColor:'grey', lineStyle:'dashed', rendered:'on'}},
+                                styleDefaults: {lineType: 'none', dataItemGaps: '0%', markerShape: 'circle'},
+                                valueFormats: [{type: 'series', tooltipLabel: 'Event'}, {type: 'value', tooltipDisplay: 'off'}]
+                            }"
+                            style="width:100%;height: 800px">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,4 +171,20 @@
             <button id= "selected-desire-save" class="btnconversations oj-padding" data-bind="ojComponent: { component: 'ojButton', label: 'save'}"></button>
         </div>
     </div>
+</div>
+
+<div style="display:none;width:440px;height:230px;" id="popup-plan-version" data-bind="ojComponent:{component: 'ojPopup'}">
+    <span class="planversion-label1">Plan Versions</span>
+    <hr style="color: #D5D5D5"/>
+    <span style="color:#57B7A1">Active Plan - Last set on 12/5/2016 9:33PM</span>
+    <hr style="color: #D5D5D5"/>
+    <span style="color:#3D93CF">Corvette Plan<span><span style="color:#9A9A9A;padding-right:170px">[plan score]</span>
+        <button id= "button" data-bind="ojComponent: { component: 'ojButton', label: 'Activate' }" style="width:85px;height:20px;background-color:#57B7A1">
+        </button>
+        <hr style="color: #D5D5D5"/>
+    <span style="color:#3D93CF;">Buy a Beach House Plan<span><span style="color:#9A9A9A;padding-right:100px">[plan score]</span>
+     <button id= "button" data-bind="ojComponent: { component: 'ojButton', label: 'Activate' }" style="width:85px;height:20px;background-color:#57B7A1;">
+        </button>
+    <hr style="color: #D5D5D5; padding: 30px"/>
+    <a href="#" style="color:#41B6A9;padding:380px">CANCEL</a>
 </div>

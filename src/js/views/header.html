@@ -30,11 +30,12 @@
         <!-- ko if: $data.icon -->
           <i data-bind="css: $data.icon" aria-hidden="true"></i>&nbsp;&nbsp;
         <!-- /ko -->
-        <a href="#" data-bind="attr: {'id': 'menuLauncher' + id}, event: { mouseover: menulaunch}, click: menuClickEvent, text: name" class="header-menu-label"></a>
-        <ul style="display:none" data-bind="attr: {'id': 'menu_' + id, 'aria-labelledby': 'myLauncher' + id}, ojComponent: {
+        <a href="#" data-bind="attr: {'id': 'menuLauncher_' + id}, event: { mouseover: menulaunch}, click: menuClickEvent, text: name" class="header-menu-label"></a>
+        <ul style="display:none" data-bind="attr: {'id': 'menu_' + id, 'aria-labelledby': 'myLauncher' + id}, 
+            ojComponent: {
               component: 'ojMenu', select: menuItemSelect, 
-              open: menuOpen, close: menuClose, 
-              openOptions: { launcher: '#menuLauncher'+id },
+              open: menuOpen, 
+              openOptions: { launcher: '#menuLauncher_'+id },
               rootAttributes : {style : 'background-color:#FFFFFF'}
             }">
           <!-- ko template: {name: 'menuItemTemplate', foreach: $data.menus, as: 'submenu'} -->

@@ -58,6 +58,32 @@ function(oj, ko, $, dataservice, numberconvertor,dateconvertor, sortservice, fin
                 return planViewNames[value];
             }
         };
+
+        self.desireAdviceBtnfn = function(event, ui) {
+            if(ui.option === "checked") {
+                if($('#desire-btn-advice-selected').length > 0) {
+                    $('#desire-btn-advice-selected').attr('id','desire-btn-advice');
+                } else {
+                    $('#desire-btn-advice').attr('id','desire-btn-advice-selected');
+                }
+            }
+        }
+        
+        self.desireConversationBtnfn = function(event, ui) {
+            if(ui.option === "checked") {
+                if($('#desire-btn-conversations-selected').length > 0) {
+                    $('#desire-btn-conversations-selected').attr('id','desire-btn-conversations');
+                } else {
+                    $('#desire-btn-conversations').attr('id','desire-btn-conversations-selected');
+                }
+            }
+        }
+
+        //Start - popup
+        self.displayPlanVersion = function(){
+            $('#popup-plan-version').ojPopup('open', '#pop-plan-version-link');
+        }
+        //End - popup
     }
 
     return DesireViewModel;

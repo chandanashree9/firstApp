@@ -224,7 +224,7 @@ function(oj, ko, $, dataservice, numberconvertor, chartservice, sortservice, fin
 
         //Start - popup
         self.displayPlanVersion = function(){
-            $('#popupplanversion').ojPopup('open', '#btnPlanVersion');
+            $('#popup-plan-version').ojPopup('open', '#pop-plan-version-link');
         }
         //End - popup
 

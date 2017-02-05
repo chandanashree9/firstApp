@@ -1,5 +1,43 @@
 @import url("base.css");
 
+.desire-page-label{
+  font-family:'Source Sans Pro Light';
+  font-size:20pt;
+  color:#999999;
+}
+
+.desire-version-label{
+  font-family:'Source Sans Pro Light';
+  font-size:14pt;
+  color:#999999;
+}
+
+#desire-btn-advice > span, 
+  #desire-btn-conversations > span {
+  width:110px;
+  height:40px;
+  background : transparent;
+  color:#5FB5A0;
+  border-color: #5FB6A1;
+  border-radius: 25px;  
+}
+
+.desire-btn-advice-label, 
+  .desire-btn-conversations-label{
+  font-family: 'Source Sans Pro';
+  font-size:9pt;
+}
+
+#desire-btn-advice-selected > span, 
+  #desire-btn-conversations-selected > span{
+  width:110px;
+  height:40px;
+  color: #FFFFFF;
+  background-color: #5FB5A0;
+  border-color: #5FB5A0;
+  border-radius: 25px;
+  background-image: none;
+}
 .desire-label{
         font-family:'Source Sans Pro';
         font-size:14pt;

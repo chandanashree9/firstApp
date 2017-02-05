@@ -13,6 +13,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout',
             self.menulaunch = function( model, event ) {
                 var menuId = "#menu_"+model.id;
                 $(menuId).css("color","#69E3C8");
+              //  $(menuId).css("display", "inline");
                 $(menuId).ojMenu("open", event); 
             };
 
@@ -23,8 +24,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout',
                 }
             };
 
-            self.menuClose = function( event, model) {
-                $("#menuLauncher").removeClass("bold");
+            self.menuClose = function( model, event) {
+                var key = '';
+                if(model && model.id) {
+                    $("#menu_"+model.id).css("display", "none");
+                    //$("#menu_"+model.id).ojMenu("close", event); 
+                }
+
             };
 
             self.menuClickEvent = function( model, event ) {
