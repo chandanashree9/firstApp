@@ -163,6 +163,11 @@
 	width:100px; 
 	text-align:center
 }
+
+#decision-tabs-activities{
+	background-color: #E4E4E4;
+}
+
 #decision-tabs-activities > .oj-tabs-tab-content,
 	#decision-tabs-budgets > .oj-tabs-tab-content,
 		#decision-tabs-portfolio > .oj-tabs-tab-content, 
@@ -170,7 +175,7 @@
 	border-style: none;
 }
 
-#decision-tabs-activities > div > a:hover, a:visited, a:link {
+#decision-tabs-activities > div  {
 	color: black;
 }
 

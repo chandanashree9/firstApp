@@ -4,66 +4,79 @@
 			<span class="decision-tabs-budgets-content">Budget Items</span>
 		</div>
 		<div class="oj-flex-item">
-			<ul id="budgetlistview" aria-label="list using collection" style="height:100%"
-			data-bind="ojComponent: {
-				component: 'ojListView', 
-				data: budgetlist, 
-				item: {template: 'budget_template'}, 
-				selectionMode: 'single', 
-				scrollPolicy: 'loadMoreOnScroll', 
-				scrollPolicyOptions: {fetchSize: 2}, 
-				rootAttributes: {style: 'width:80%;height:300px;overflow-x:hidden;border-style:none; justify-content:center'}}">
-			</ul>
+			<div class="oj-flex">
+				<div class="oj-flex-item oj-md-1 oj-lg-1 oj-xl-1">
+				</div>
+				<div class="oj-flex-item oj-sm-12 oj-md-10 oj-lg-10 oj-xl-10">
+					<ul id="budgetlistview" aria-label="list using collection"
+					data-bind="ojComponent: {
+						component: 'ojListView', 
+						data: budgetlist, 
+						item: {template: 'budget_template'}, 
+						selectionMode: 'single', 
+						scrollPolicy: 'loadMoreOnScroll', 
+						scrollPolicyOptions: {fetchSize: 2}, 
+						rootAttributes: {style: 'height:300px;overflow-x:hidden;border-style:none;'}}">
+					</ul>
+				</div>
+				<div class="oj-flex-item oj-md-1 oj-lg-1 oj-xl-1">
+				</div>
+			</div>
 		</div>
 	</div>
 
 		
 	<script type="text/html" id="budget_template">
-		<li>
-			<div class="oj-flex-column oj-flex-items-pad" style="flex-wrap: nowrap">
+		<li style="background-image:none">
+			<div class="oj-flex-column">
 				<div class="oj-flex-item">
-					<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap">
-						<div class="oj-flex-item">
+					<div class="oj-flex">
+						<div class="oj-flex-item oj-sm-3 oj-md-3 oj-lg-3 oj-xl-3">
 						</div>
-						<div class="oj-flex-item">
+						<div class="oj-flex-item oj-sm-3 oj-md-3 oj-lg-3 oj-xl-3">
 							<span>Date</span>
 						</div>
-						<div class="oj-flex-item">
+						<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
 							<span>Pre Decision</span>
 						</div>
-						<div class="oj-flex-item">
+						<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
 							<span>Post Decision</span>
 						</div>
-						<div class="oj-flex-item">
+						<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
 							<span>Delta</span>
 						</div>
 					</div>
 				</div>
-				<hr style="border:1px solid grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
 				<div class="oj-flex-item">
-					<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap">
-						<div class="oj-flex-item">
-							<strong style="word-wrap: break-word" data-bind="text: type"></strong>
+					<hr style="border:1px solid #E4E4E4; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;">
+				</div>
+				<div class="oj-flex-item">
+					<div class="oj-flex">
+						<div class="oj-flex-item oj-sm-3 oj-md-3 oj-lg-3 oj-xl-3">
+							<span data-bind="text: type"></span>
 						</div>
-						<div class="oj-flex-item">
-							
+						<div class="oj-flex-item oj-sm-3 oj-md-3 oj-lg-3 oj-xl-3">							
 						</div>
-						<div class="oj-flex-item">
-							<span style="word-wrap: break-word" data-bind="text: predecision"></span>
+						<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
+							<span data-bind="text: formatNumberToCurrency(predecision)"></span>
 						</div>
-						<div class="oj-flex-item">
-							<span style="word-wrap: break-word" data-bind="text: postdecision"></span>
+						<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
+							<span data-bind="text: formatNumberToCurrency(postdecision)"></span>
 						</div>
-						<div class="oj-flex-item">
-							<span style="word-wrap: break-word" data-bind="text: delta"></span>
+						<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
+							<span data-bind="text: formatNumberToCurrency(delta)"></span>
 						</div>
 					</div>
 				</div>
-				<hr style="border:1px dashed grey; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
+				<div class="oj-flex-item">
+					<hr style="border:1px dashed #E4E4E4; border-left-style: none;border-right-style: none; border-bottom-style: none; margin-top: 20px;"/>
+				</div>
 				<div class="oj-flex-item">
 					<ul id="budgetActivitiesview" aria-label="list using collection" style="height:100%"
-					data-bind="ojComponent: {component: 'ojListView', data: getBudgetActivities($data), item: {template: 'budget_acivity_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}, rootAttributes: {style: 'width:100%;height:100px;overflow-x:hidden;border-style:none'}}">
+					data-bind="ojComponent: {component: 'ojListView', data: getBudgetActivities($data), item: {template: 'budget_acivity_template'}, selectionMode: 'single', scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 2}, rootAttributes: {style: 'height:100px;overflow-x:hidden;border-style:none'}}">
 					</ul>
+				</div>
+				<div class="oj-flex-item oj-padding">
 				</div>
 			</div>
 		</li>
@@ -71,21 +84,21 @@
 
 	<script type="text/html" id="budget_acivity_template">
 		<li>
-			<div class="oj-flex oj-flex-items-pad" style="flex-wrap: nowrap">
-				<div class="oj-flex-item">
-					<span style="word-wrap: break-word" data-bind="text: name"></span>
+			<div class="oj-flex">
+				<div class="oj-flex-item oj-sm-3 oj-md-3 oj-lg-3 oj-xl-3"">
+					<span data-bind="text: name"></span>
 				</div>
-				<div class="oj-flex-item">
-					<span style="word-wrap: break-word" data-bind="text: date"></span>
+				<div class="oj-flex-item oj-sm-3 oj-md-3 oj-lg-3 oj-xl-3"">
+					<span data-bind="text: formatDateToMMDDYYY(date)"></span>
 				</div>
-				<div class="oj-flex-item">
-					<span style="word-wrap: break-word" data-bind="text: predecision"></span>
+				<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
+					<span data-bind="text: formatNumberToCurrency(predecision)"></span>
 				</div>
-				<div class="oj-flex-item">
-					<span style="word-wrap: break-word" data-bind="text: postdecision"></span>
+				<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
+					<span data-bind="text: formatNumberToCurrency(postdecision)"></span>
 				</div>
-				<div class="oj-flex-item">
-					<span style="word-wrap: break-word" data-bind="text: delta"></span>
+				<div class="oj-flex-item oj-sm-2 oj-md-2 oj-lg-2 oj-xl-2">
+					<span data-bind="text: formatNumberToCurrency(delta)"></span>
 				</div>
 			</div>
 		</li>

@@ -1,7 +1,7 @@
 'use strict';
 define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','viewModels/convertors/date','viewModels/convertors/number',
     'ojs/ojknockout','ojs/ojmodule', 'ojs/ojlistview', 'ojs/ojbutton','ojs/ojarraytabledatasource', 
-    'ojs/ojinputText','ojs/ojdatetimepicker','ojs/ojmodel','ojs/ojnavigationlist','ojs/ojtabs','ojs/ojconveyorbelt',
+    'ojs/ojinputtext','ojs/ojdatetimepicker','ojs/ojmodel','ojs/ojnavigationlist','ojs/ojtabs','ojs/ojconveyorbelt',
     'ojs/ojtable','ojs/ojtimeutils', 'ojs/ojtimeaxis'],
     function(oj, ko, $, dataservice, dateconvertor, numberconvertor) {   
         var header = {};
@@ -151,6 +151,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/service/dataservice','vi
             } 
 
             self.timeAxisConverter = ko.observable(dateconvertor.converterMMMYY());
+
+            self.desiretabfn = function(event, ui) {
+                var pervious = ui.previousValue;
+                var current = ui.value;
+
+                $("#"+current).css("background-color","#E4E4E4");
+                $("#"+pervious).css("background-color","transparent");
+            }
     	}
     	return DecisionViewModel;
     }
